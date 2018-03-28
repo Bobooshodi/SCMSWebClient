@@ -1,0 +1,13 @@
+.tooltip-cover{
+    position: relative;
+    display: none;
+}
+
+.tooltip{
+    width:100%;
+    max-width:400px;
+    background-color: #fff;
+    border: 2px solid red;
+    height: 200px;
+    position: absolute;
+}

@@ -1,0 +1,125 @@
+    <div class="section-header">
+      <div class="section-flex">
+        <h3>Manage Business Units</h3>
+        <div class="searcher">
+          <input type="text" placeholder="Search  business unit" class="input" />
+        </div>
+
+        <button class="md-trigger btn primary" data-modal="add-business-unit">Add Business Unit</button>
+      </div>
+    </div>
+
+    <div class="main-section">
+
+      <section class="section-row">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="thead">Bussiness Unit name</th>
+              <th class="thead">Bussiness Unit Description</th>
+              <th class="thead">Card Types </th>
+              <th class="thead">Buildings</th>
+
+              <th class="thead"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tableRow productList">
+              <td class="">Kudakwashe Appolo Shamu</td>
+              <td class="">Kaydee98</td>
+              <td class="">(3) Selected</td>
+              <td class="">(3) Selected</td>
+
+
+              <td>
+
+
+                <button class="md-trigger btn btn-sm outline" data-modal="add-user">Manage</button>
+                <button class="md-trigger btn btn-sm outline-danger" data-modal="add-user">Manage</button>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </div>
+
+  <div class="md-modal md-effect" id="add-business-unit">
+    <div class="md-content">
+      <h3 class="md-header">Manage Business Unit</h3>
+      <div class="body">
+        <div class="form-group form-vertical">
+          <label>Business Unit Name</label>
+          <input type="text" class="input" />
+          <span class="error-msg">Please enter business unit name</span>
+        </div>
+
+        <div class="form-group form-vertical">
+          <label>Business Unit Description</label>
+          <textarea class="input"></textarea>
+          <span class="error-msg">Please enter business unit description</span>
+        </div>
+
+
+
+
+
+
+        <div class="form-group">
+          <label>Select Card Types
+            <span class="pull-right">(3) Selected</span>
+          </label>
+          <input type="search" placeholder="search card types" class="input list-searcher" />
+          <div class="bu-units">
+            <label class="control control--checkbox">
+              Facility Management
+              <input type="checkbox" />
+              <div class="control__indicator"></div>
+            </label>
+            <label class="control control--checkbox">
+              Facility Management
+              <input type="checkbox" />
+              <div class="control__indicator"></div>
+            </label>
+            <label class="control control--checkbox">
+              Facility Management
+              <input type="checkbox" />
+              <div class="control__indicator"></div>
+            </label>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label>Select Building
+            <span class="pull-right">(3) Selected</span>
+          </label>
+          <input type="search" placeholder="search buildings" class="input list-searcher" />
+          <div class="bu-units">
+            <label class="control control--checkbox">
+              Facility Management
+              <input type="checkbox" />
+              <div class="control__indicator"></div>
+            </label>
+            <label class="control control--checkbox">
+              Facility Management
+              <input type="checkbox" />
+              <div class="control__indicator"></div>
+            </label>
+            <label class="control control--checkbox">
+              Facility Management
+              <input type="checkbox" />
+              <div class="control__indicator"></div>
+            </label>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="md-footer">
+        <button class="md-close btn outline">Cancel</button>
+        <button class="btn primary pull-right">Save Business Unit</button>
+      </div>
+    </div>
+  </div>

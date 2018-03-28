@@ -1,0 +1,69 @@
+/*******************************************
+ACCORDION COMPONENT 
+******************************************/
+
+.accordion {
+    border: 1px solid #e3e3e3;
+
+    &__header{
+        padding-left: 1em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    div{
+        background-color: #efefef;
+    }
+}
+
+.accordion li {
+   
+    position: relative;
+   // padding: 0 0.8em;
+}
+
+.accordion li p {
+    display: none;
+    padding: 0px;
+    font-size: 1em;
+}
+
+.accordion a {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    user-select: none;
+ 
+}
+
+.accordion a:after {
+    width: 8px;
+    height: 8px;
+    border-right: 1px solid #007DC3;
+    border-bottom: 1px solid #007DC3;
+    position: absolute;
+    right: 30px;
+    content: " ";
+    top: 22px;
+    color: #007DC3;
+    transform: rotate(-45deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.accordion p {
+    font-size: 13px;
+    font-size: 0.8125rem;
+    line-height: 2;
+
+}
+
+a.active:after {
+    transform: rotate(45deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}

@@ -1,0 +1,96 @@
+<div class="section-header">
+  <div class="section-flex">
+    <h3>Manage Card Inventory</h3>
+    <div class="searcher">
+      <input type="text" placeholder="Search card inventory numbers" class="input" />
+    </div>
+
+    <button class="md-trigger btn primary" data-modal="add-numbers">Add Inventory Numbers</button>
+
+  </div>
+
+  <ul class="tabs">
+    <li class="active">
+      <a href="">All</a>
+    </li>
+    <li>
+      <a href="">Employees</a>
+    </li>
+    <li>
+      <a href="">Individual</a>
+    </li>
+    <li>
+      <a href="">Tenant</a>
+    </li>
+    <li>
+      <a href="">Strata</a>
+    </li>
+  </ul>
+</div>
+
+
+<div class="main-section has-tabs">
+  <section class="section-row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="thead">Card Inventory Number</th>
+          <th class="thead">Date Register</th>
+          <th class="thead">Date Created</th>
+          <th class="thead">Batch Number</th>
+          <th class="thead">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tableRow productList">
+          <td class="">8899161200385</td>
+          <td class="">28 Dec 2020</td>
+          <td class="">2 July 2018</td>
+          <td class="">System Admin</td>
+          <td>
+            <div class="status-success">Registerd To Card</div>
+          </td>
+        </tr>
+
+        <tr class="tableRow productList">
+          <td class="">8899161200385</td>
+          <td class="">28 Dec 2020</td>
+          <td class="">apolloshamu@gmail.com</td>
+          <td class="">System Admin</td>
+          <td>
+            <div class="status-default">Pending Registration</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  </div>
+
+  <div class="md-modal md-effect" id="add-numbers">
+    <div class="md-content">
+      <h3 class="md-header">Create Inventory Numbers</h3>
+      <div class="body">
+        <div class="form-group form-vertical">
+          <label>Inventory Type</label>
+          <select class="input">
+            <option>1</option>
+            <option>2</option>
+          </select>
+          <span class="error-msg">Please select inventory type</span>
+        </div>
+
+        <div class="form-group">
+          <label>Quantity</label>
+          <input type="text" class="input" />
+          <span class="error-msg">Please enter a full name</span>
+        </div>
+
+
+
+      </div>
+      <div class="md-footer">
+        <button class="md-close btn outline">Cancel</button>
+        <button class="btn primary pull-right">Generate Inventory</button>
+      </div>
+    </div>
+  </div>

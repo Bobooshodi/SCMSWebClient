@@ -1,0 +1,46 @@
+.search-area {
+    display: flex;
+    height: 48px;
+    background-color: #fff;
+    overflow: visible;
+    width: 100%;
+    .owl-inputtext {
+        height: 3.4em;
+        margin-top: -4px;
+        border-width: 0 0 0 1px;
+    }
+    .owl-dateTime-inputWrapper {
+        position: relative;
+        margin-top: 4px;
+        &::after {
+            bottom: 14px !important;
+        }
+    }
+    //border-bottom: 1px solid $border-color;
+    .input {
+        background-color: transparent;
+        height: 100%;
+        border: 0;
+    }
+    input[type=date] {
+        border: 0;
+        border-left: 1px solid $border-color;
+        position: relative;
+        /*&::after{
+            position: absolute;
+            height: 35px;
+            width: 30px;
+            border-left: 1px solid $border-color;
+            content: '';
+            right: 0;
+            z-index: 0;
+        }*/
+    }
+    .btn {
+        height: 48px;
+        border-radius: 0;
+    }
+    &__keywords {
+        flex: 2;
+    }
+}

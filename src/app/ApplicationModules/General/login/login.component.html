@@ -1,0 +1,31 @@
+<div class="login-page">
+  <div class="login-form">
+
+    <div class="login-form__header">
+      <h3>Login To Your SCMS Account
+      </h3>
+      <p>Your Space To A Smart Connected World.</p>
+    </div>
+
+    <form [formGroup]="loginForm" novalidate (ngSubmit)="logout()">
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" class="input" formControlName="username" />
+      <span [hidden]="loginForm.controls.username.valid || (loginForm.controls.username.pristine && !submitted)"
+          class="error-msg">
+        Please enter a username
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="input" formControlName="password" />
+      <span [hidden]="loginForm.controls.password.valid || (loginForm.controls.password.pristine && !submitted)" class="error-msg">Please enter a password</span>
+    </div>
+
+    <div class="login-form__footer">
+
+      <button [disabled]="loginForm.pristine || !loginForm.valid" class="btn primary btn-full">Login</button>
+    </div>
+  </form>
+  </div>

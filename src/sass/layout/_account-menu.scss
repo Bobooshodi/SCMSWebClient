@@ -1,0 +1,29 @@
+ .account-menu {
+     background-color: #202e47;
+     width: 100%;
+     display: flex;
+     font-size: 0.8em;
+     padding-right: 1.3em;
+     &__item {
+         margin: 0 8px;
+         line-height: 3em;
+         padding: 0.5em 1em;
+         color: #fff;
+         i {
+             margin-right: 0.5em;
+             margin-top: -0.17em;
+             vertical-align: middle;
+         }
+
+         &:hover{
+            color: $primary;
+         }
+
+     }
+
+     #toggle-menu{
+         flex:auto;
+         align-self: flex-start;
+     }
+      
+ }

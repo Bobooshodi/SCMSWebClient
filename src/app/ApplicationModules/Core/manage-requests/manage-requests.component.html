@@ -1,0 +1,21 @@
+<div class="section-header">
+  <div class="section-flex">
+    <h3>Manage Requests</h3>
+    <div class="searcher">
+      <input type="text" placeholder="Search Request" class="input" />
+    </div>
+  </div>
+
+  <ul class="tabs">
+    <li rel="blacklist" routerLink="blacklist" routerLinkActive="active">Blacklist Request</li>
+    <li rel="replacement" routerLink="replacement" routerLinkActive="active">Card Replacemnent</li>
+    <li rel="personalization" routerLink="personalisation" routerLinkActive="active">Personalization Request</li>
+    <li rel="distribution" routerLink="distribution" routerLinkActive="active">Card Request</li>
+  </ul>
+</div>
+
+<div class="main-section has-tabs">
+  <div class="tab_container">
+<router-outlet></router-outlet>
+</div>
+</div>

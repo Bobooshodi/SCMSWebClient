@@ -1,0 +1,64 @@
+.container{
+    display: flex;
+    overflow: hidden !important;
+    height: 100vh;
+    overflow: scroll;
+    
+}
+
+.content{
+    width: 100%;
+    position: relative;
+    padding-top: 5em;
+  
+   
+}
+
+.section-flex{
+    display: flex;
+}
+
+.section-header{
+    position: absolute;
+    top: 0;
+    background-color: #fff;
+    width: 100%;
+  
+    padding: 0.5em 1em 0 1em;
+    
+    border-bottom: 1px solid #e9ebf0;
+    h3{
+        flex: 1;
+        margin-left: 0.7em;
+        margin-top: 0.3em;
+        font-weight: 300;
+        font-size: 1.2em;
+    }
+
+    .searcher{
+        flex: 1;
+        margin:0 1.5em;
+        display: flex;
+    }
+}
+
+
+
+.main-section{
+    height: 86vh;
+    
+    overflow: scroll;
+}
+
+.form-width{
+    margin-left: 2em;
+    max-width: 500px;
+}
+
+.has-tabs{
+    margin:1.8em 0 0 ;
+    
+}
+
+
+

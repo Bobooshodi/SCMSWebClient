@@ -1,0 +1,117 @@
+<div class="section-header">
+  <div class="section-flex">
+    <h3>Manage Access Group</h3>
+    <div class="searcher">
+      <input type="text" placeholder="Search access group" class="input" />
+    </div>
+    <button class="md-trigger btn primary" data-modal="add-accessgroup">Add Access Group</button>
+  </div>
+
+</div>
+<section class="section-row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="thead">Display Name</th>
+        <th class="thead">Access Control</th>
+        <th class="thead">Access Control Group </th>
+        <th class="thead"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="tableRow productList">
+        <td class="">Back Entrance</td>
+        <td class=""> no access control</td>
+        <td class="">No Access Group</td>
+        <td>
+          <a href="#" class="md-trigger btn outline" data-modal="add-accessgroup">Manage</a>
+          <a href="#" class="md-trigger btn btn-sm outline-danger" data-modal="add-user">Remove</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="md-modal md-effect" id="add-accessgroup">
+  <div class="md-content">
+    <h3 class="md-header">Manage Access Group</h3>
+    <div class="body">
+      <div class="form-group form-vertical">
+        <label>Display Name</label>
+        <input type="text" class="input" />
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="input"></textarea>
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+
+      <div class="form-group form-vertical">
+        <label>Access Control</label>
+        <select class="input">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+
+
+      <div class="form-group">
+        <label>Name In Access Control
+          <span class="pull-right">(3) Selected</span>
+        </label>
+        <input type="search" placeholder="search buildings" class="input list-searcher" />
+        <div class="bu-units">
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label>Select buildings
+          <span class="pull-right">(3) Selected</span>
+        </label>
+        <input type="search" placeholder="search buildings" class="input list-searcher" />
+        <div class="bu-units">
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+        </div>
+      </div>
+
+    </div>
+    <div class="md-footer">
+      <button class="md-close btn outline">Cancel</button>
+      <button class="btn primary pull-right">Save Access Group</button>
+    </div>
+  </div>
+</div>

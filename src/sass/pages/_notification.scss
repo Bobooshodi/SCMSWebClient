@@ -1,0 +1,39 @@
+
+/*************************************************************
+NOTIFICATION LIST
+*************************************************************/
+
+.nf-post {
+    border-bottom: 1px solid $border-color;
+    font-size: 13px;
+    nf-label {}
+    .nf-title {}
+    .nf-message {
+        margin-bottom: 0;
+        line-height: 1.1em;
+        a {
+            line-height: 1em;
+            color: blue;
+        }
+    }
+    .nf-actions {}
+}
+
+.nf-icon {
+    position: relative;
+    padding: 1em 2em 1em 5em;
+    &::after {
+        position: absolute;
+        content: '\E7F4';
+        width: 35px;
+        height: 33px;
+        border-radius: 50%;
+        border: 1px solid $border-color;
+        top: 20%;
+        left: 0.6em;
+        text-align: center;
+        font-size: 20px;
+        padding-top: 2px;
+        font-family: "Material Icons";
+    }
+}

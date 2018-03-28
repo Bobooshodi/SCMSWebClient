@@ -1,0 +1,136 @@
+{
+  "cardholders": [
+    {
+      "id": 1,
+      "firstName": "Jana",
+      "lastName": "Stroman",
+      "fullName": "Jana Stroman",
+      "gender": "male",
+      "identificationNo": "0gjurt6f1ith",
+      "nationality": "Bedfordshire"
+    },
+    {
+      "id": 2,
+      "firstName": "Avis",
+      "lastName": "McLaughlin",
+      "fullName": "Avis McLaughlin",
+      "gender": "female",
+      "identificationNo": "agp2a9m9dspm",
+      "nationality": "Borders"
+    },
+    {
+      "id": 3,
+      "firstName": "Yolanda",
+      "lastName": "Blick",
+      "fullName": "Yolanda Blick",
+      "gender": "male",
+      "identificationNo": "x57v6bho3280",
+      "nationality": "Berkshire"
+    },
+    {
+      "id": 4,
+      "firstName": "Tyra",
+      "lastName": "Crist",
+      "fullName": "Tyra Crist",
+      "gender": "male",
+      "identificationNo": "bbzcxqssm0qd",
+      "nationality": "Avon"
+    },
+    {
+      "id": 5,
+      "firstName": "Kim",
+      "lastName": "Runolfsson",
+      "fullName": "Kim Runolfsson",
+      "gender": "female",
+      "identificationNo": "5erwzsvvunjs",
+      "nationality": "Cambridgeshire"
+    },
+    {
+      "id": 6,
+      "firstName": "Wilfredo",
+      "lastName": "Moen",
+      "fullName": "Wilfredo Moen",
+      "gender": "female",
+      "identificationNo": "oxqmhfq377pk",
+      "nationality": "Buckinghamshire"
+    },
+    {
+      "id": 7,
+      "firstName": "Amani",
+      "lastName": "Rosenbaum",
+      "fullName": "Amani Rosenbaum",
+      "gender": "male",
+      "identificationNo": "73ipk6zwhc7p",
+      "nationality": "Avon"
+    },
+    {
+      "id": 8,
+      "firstName": "Cesar",
+      "lastName": "Jones",
+      "fullName": "Cesar Jones",
+      "gender": "female",
+      "identificationNo": "bu07mpo9c49n",
+      "nationality": "Cambridgeshire"
+    },
+    {
+      "id": 9,
+      "firstName": "Audreanne",
+      "lastName": "Tremblay",
+      "fullName": "Audreanne Tremblay",
+      "gender": "female",
+      "identificationNo": "p5sfxgqll63p",
+      "nationality": "Cambridgeshire"
+    },
+    {
+      "id": 10,
+      "firstName": "Jaylen",
+      "lastName": "Cassin",
+      "fullName": "Jaylen Cassin",
+      "gender": "female",
+      "identificationNo": "wf7kg29pxo7o",
+      "nationality": "Berkshire"
+    }
+  ],
+  "card-types": [
+    {
+      "id": "1",
+      "name": "Individual",
+      "description": " ",
+      "isPermanent": false,
+      "cardType": 0,
+      "businessUnits": []
+    },
+    {
+      "id": "2",
+      "name": "Tenants",
+      "description": " ",
+      "isPermanent": false,
+      "cardType": 1,
+      "businessUnits": []
+    },
+    {
+      "id": "3",
+      "name": "Employees",
+      "description": " ",
+      "isPermanent": false,
+      "cardType": 2,
+      "businessUnits": []
+    },
+    {
+      "id": "4",
+      "name": "Strata",
+      "description": " ",
+      "isPermanent": false,
+      "cardType": 3,
+      "businessUnits": []
+    },
+    {
+      "businessUnits": [],
+      "cardType": 1,
+      "description": "Unit test add",
+      "id": "9",
+      "isPermanent": true,
+      "name": "Unit Test Add"
+    }
+  ]
+}

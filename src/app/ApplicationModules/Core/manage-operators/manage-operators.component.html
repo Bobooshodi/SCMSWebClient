@@ -1,0 +1,136 @@
+<div class="section-header">
+  <div class="section-flex">
+    <h3>Manage Operators</h3>
+    <div class="searcher">
+      <input type="text" placeholder="Search System Operators" class="input" />
+    </div>
+
+    <button class="md-trigger btn primary" data-modal="add-operator">Add Operator</button>
+  </div>
+
+  <ul class="tabs">
+    <li class="active" rel="blacklist">Active</li>
+    <li rel="replacement">Suspended</li>
+  </ul>
+</div>
+
+<div class="main-section has-tabs">
+  <section class="section-row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="thead">Full name</th>
+          <th class="thead">Username</th>
+          <th class="thead">email </th>
+          <th class="thead">Role</th>
+          <th class="thead">Business Units</th>
+          <th class="thead">Status</th>
+          <th class="thead"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tableRow productList">
+          <td class="">Kudakwashe Appolo Shamu</td>
+          <td class="">Kaydee98</td>
+          <td class="">apolloshamu@gmail.com</td>
+          <td class="">(3) Selected</td>
+
+          <td class="">Car park</td>
+          <td class="">Active</td>
+          <td>
+            <a href="#" class="md-trigger btn btn-sm outline" data-modal="add-operator">Manage</a>
+            <a href="#" class="md-trigger btn btn-sm outline" data-modal="reset-password">Reset Password</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+
+<div class="md-modal md-effect" id="add-operator">
+  <div class="md-content">
+    <h3 class="md-header">Manage Operator</h3>
+    <div class="body">
+      <div class="form-group form-vertical">
+        <label>Full Name</label>
+        <input type="text" class="input" />
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+
+      <div class="form-group">
+        <label>User Name</label>
+        <input type="text" class="input" />
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+
+      <div class="form-group form-vertical">
+        <label>Email</label>
+        <input type="text" class="input" />
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+
+
+      <div class="form-group">
+        <label>Role</label>
+        <select class="select input">
+          <option>System Admin</option>
+          <option>Security</option>
+          <option>concierge</option>
+        </select>
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+      <div class="form-group">
+        <label>Select Business Units
+          <span class="pull-right">(3) Selected</span>
+        </label>
+        <input type="search" placeholder="search business units" class="input list-searcher" />
+        <div class="bu-units">
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+        </div>
+      </div>
+
+    </div>
+    <div class="md-footer">
+      <button class="md-close btn outline">Cancel</button>
+      <button class="btn primary pull-right">Save User</button>
+    </div>
+  </div>
+</div>
+
+<div class="md-modal md-effect" id="reset-password">
+  <div class="md-content">
+    <h3 class="md-header">Manage Operator</h3>
+    <div class="body">
+      <div class="form-group form-vertical">
+        <label>New Password </label>
+        <input type="password" class="input" />
+        <span class="error-msg">Please enter a password</span>
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" class="input" />
+        <span class="error-msg">Please confirm your password</span>
+        <span class="error-msg">Password enterd does not match with new password</span>
+      </div>
+    </div>
+    <div class="md-footer">
+      <button class="md-close btn outline">Cancel</button>
+      <button class="btn primary pull-right">Save New Password</button>
+    </div>
+  </div>
+</div>

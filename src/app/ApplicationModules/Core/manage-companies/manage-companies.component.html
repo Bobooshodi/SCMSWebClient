@@ -1,0 +1,87 @@
+<div class="section-header">
+  <div class="section-flex">
+    <h3>Manage Companies</h3>
+    <div class="searcher">
+      <input type="text" placeholder="Search companies" class="input" />
+    </div>
+
+    <button class="md-trigger btn primary" data-modal="add-company">Add Company</button>
+
+  </div>
+
+</div>
+<div class="main-section">
+  <section class="section-row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="thead">Company Name</th>
+          <th class="thead">Company Code</th>
+          <th class="thead">Business Unit </th>
+
+          <th class="thead"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tableRow productList">
+          <td class="">Damansara Utama CarPark</td>
+          <td class="">DUCP</td>
+
+          <td class="">(3) Selected</td>
+          <td>
+            <a href="#" class="md-trigger btn btn-sm outline" data-modal="add-company">Manage</a>
+            <a href="#" class="md-trigger btn btn-sm outline-danger" data-modal="add-user">Remove</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+
+<div class="md-modal md-effect" id="add-company">
+  <div class="md-content">
+    <h3 class="md-header">Manage Companies</h3>
+    <div class="body">
+      <div class="form-group form-vertical">
+        <label>Company Name</label>
+        <input type="text" class="input" />
+        <span class="error-msg">Please enter a company name</span>
+      </div>
+
+      <div class="form-group">
+        <label>Company Code</label>
+        <input type="text" class="input" />
+        <span class="error-msg">Please enter a company code</span>
+      </div>
+
+
+      <div class="form-group">
+        <label>Select Building
+          <span class="pull-right">(3) Selected</span>
+        </label>
+        <input type="search" placeholder="search buildings" class="input list-searcher" />
+        <div class="bu-units">
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+        </div>
+      </div>
+
+    </div>
+    <div class="md-footer">
+      <button class="md-close btn outline">Cancel</button>
+      <button class="btn primary pull-right">Save Company</button>
+    </div>
+  </div>

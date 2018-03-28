@@ -1,0 +1,45 @@
+/**
+ * Basic typography style for copy text
+ */
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300");
+
+body {
+  color: $text-color;
+ /* font: normal 125% / 1.4 $text-font-stack; */
+    font-family: 'Roboto', sans-serif;
+}
+
+.h1{
+    font-size: 5em;
+}
+
+.h2{
+    font-size: 3em;
+}
+
+.h3{
+    font-size: 2em;
+}
+
+.h4{
+    font-size:1.4em;
+}
+
+p{
+    margin:0.5em 0 1em 0;
+    line-height: 1.8em;
+       
+    word-break: break-all;
+}
+
+
+
+
+h1,h2,h3,h4,h5,h6,h6{
+   
+  
+        margin: 0 0 10px 0;
+    font-weight: bold;
+        letter-spacing: normal;
+}
+

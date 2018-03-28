@@ -1,0 +1,105 @@
+<div class="section-header">
+  <h3>Manage Users13</h3>
+  <div class="searcher">
+    <input type="text" placeholder="Search System Users" class="input" />
+  </div>
+  <button class="md-trigger btn primary" data-modal="add-user">Add System User</button>
+
+</div>
+<section class="section-row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="thead">Full name</th>
+        <th class="thead">Username</th>
+        <th class="thead">email </th>
+        <th class="thead">Role</th>
+        <th class="thead">Business Units</th>
+        <th class="thead">Status</th>
+        <th class="thead"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="tableRow productList">
+        <td class="">Kudakwashe Appolo Shamu</td>
+        <td class="">Kaydee98</td>
+        <td class="">apolloshamu@gmail.com</td>
+        <td class="">System Admin</td>
+        <td class="tooltip-cover">(3) Assigned
+          <a href="#">view more
+
+            <div class="tooltip"></div>
+
+          </a>
+        </td>
+        <td class="">Active</td>
+        <td>
+          <a href="#" class="md-trigger btn outline" data-modal="add-user">Manage</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="md-modal md-effect" id="add-user">
+  <div class="md-content">
+    <h3 class="md-header">Manage Users</h3>
+    <div class="body">
+      <div class="form-group form-vertical">
+        <label>Full Name</label>
+        <input type="text" class="input" />
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+
+      <div class="form-group">
+        <label>User Name</label>
+        <input type="text" class="input" />
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+
+      <div class="form-group form-vertical">
+        <label>Email</label>
+        <input type="text" class="input" />
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+
+
+      <div class="form-group">
+        <label>Role</label>
+        <select class="select input">
+          <option>System Admin</option>
+          <option>Security</option>
+          <option>concierge</option>
+        </select>
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+      <div class="form-group">
+        <label>Select Business Units
+          <span class="pull-right">(3) Selected</span>
+        </label>
+        <div class="bu-units">
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+        </div>
+      </div>
+
+    </div>
+    <div class="md-footer">
+      <button class="md-close btn outline">Cancel</button>
+      <button class="btn primary pull-right">Save User</button>
+    </div>
+  </div>
+</div>

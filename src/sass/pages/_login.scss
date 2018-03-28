@@ -1,0 +1,28 @@
+/*******************************************
+ACCORDION COMPONENT 
+******************************************/
+
+.login-page{
+    background-color: #eee;
+    height: 100vh;
+    padding: 10vh 0;
+}
+
+.login-form{
+    border-top: 4px solid $primary;
+    width: 380px;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 3em 2em 2em;
+
+    &__header{
+        display: block;
+       
+       margin-bottom: 2em; 
+       
+    }
+
+    &__footer{
+        margin-top: 2em;
+    }
+}

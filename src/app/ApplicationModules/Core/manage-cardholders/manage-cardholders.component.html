@@ -1,0 +1,132 @@
+<div class="section-header">
+  <div class="section-flex">
+    <h3>Manage Cardholders</h3>
+    <div class="searcher">
+      <input type="text" placeholder="Search cardholders" class="input" />
+    </div>
+
+    <a href="#" class="btn primary">Create Cardholder</a>
+  </div>
+
+  <ul class="tabs">
+    <li class="active" rel="blacklist">
+      <a href="">All</a>
+    </li>
+    <li rel="replacement">
+      <a href="">Employees</a>
+    </li>
+    <li rel="personalization">
+      <a href="">Individual</a>
+    </li>
+    <li rel="personalization">
+      <a href="">Tenant</a>
+    </li>
+    <li rel="distribution">
+      <a href="">Strata</a>
+    </li>
+    <li rel="distribution">
+      <a href="">Phantom</a>
+    </li>
+  </ul>
+
+</div>
+
+<div class="main-section has-tabs">
+
+  <div class="tab_container">
+
+    <div id="blacklist">
+
+      <div class="section-row">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="thead">Cardholder Details</th>
+
+              <th class="thead">ID Type </th>
+              <th class="thead">User Type</th>
+              <th class="thead">Status</th>
+              <th class="thead"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tableRow productList">
+              <td>
+                <span>Kudakwashe apollo shamu</span>
+                <span> 459-454-9565</span>
+              </td>
+              <td class="">Nationa Identification</td>
+              <td class="">Strata</td>
+              <td class="">Active</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="md-modal md-effect" id="add-user">
+  <div class="md-content">
+    <h3 class="md-header">Manage Users</h3>
+    <div class="body">
+      <div class="form-group form-vertical">
+        <label>Full Name</label>
+        <input type="text" class="input" />
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+
+      <div class="form-group">
+        <label>User Name</label>
+        <input type="text" class="input" />
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+
+      <div class="form-group form-vertical">
+        <label>Email</label>
+        <input type="text" class="input" />
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+
+
+      <div class="form-group">
+        <label>Role</label>
+        <select class="select input">
+          <option>System Admin</option>
+          <option>Security</option>
+          <option>concierge</option>
+        </select>
+        <span class="error-msg">Please enter a full name</span>
+      </div>
+      <div class="form-group">
+        <label>Select Business Units
+          <span class="pull-right">(3) Selected</span>
+        </label>
+        <div class="bu-units">
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+          <label class="control control--checkbox">
+            Facility Management
+            <input type="checkbox" />
+            <div class="control__indicator"></div>
+          </label>
+        </div>
+      </div>
+
+    </div>
+    <div class="md-footer">
+      <button class="md-close btn outline">Cancel</button>
+      <button class="btn primary pull-right">Save User</button>
+    </div>
+  </div>
+</div>

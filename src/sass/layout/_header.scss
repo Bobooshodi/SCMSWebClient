@@ -1,0 +1,117 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Desktop Styles
+// ---------------------------------------------------------------------------
+
+
+
+header {
+  z-index: 40;
+  overflow-y: scroll;
+  overflow-x: hidden;
+background-color: #f8faf9;
+border-right: 1px solid #e9ebf0;
+    background: #fbfbfb;
+
+
+
+  .sub-nav {
+    width: 280px;
+    position: relative;
+    padding-top: 60px;
+  }
+}
+
+.header-opened {
+  left: 0;
+}
+
+.menu-toggle{
+    
+    height: 54px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-right:1px solid  #e9ebf0;
+    width: 60px;
+}
+
+.logo-wrapper {
+    background-color: #fbfbfb;
+    z-index: 999;
+
+    
+top: 0;
+  display: flex;
+  padding: 10px 1em 10px 5em;
+  height: 55px;
+  position: fixed;
+  width: 100%;
+  max-width: 237px;
+  border-bottom:1px solid  #e9ebf0;
+  
+  span{
+      display: block;
+     
+      line-height: 2.3em;
+      
+  
+  }
+  
+}
+
+.sub-nav {
+  display: flex;
+  flex-direction: column;
+
+
+
+  &__item {
+    line-height: 2em;
+    font-size: 14px;
+    padding: 0.5em 1em;
+    margin: 0.5em 0;
+    color: #343a43;
+    display: block;
+
+    .user-name{
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .user-role{
+        font-size:12px;
+        
+        opacity: 0.8;
+    }
+
+    .user-unit{
+        font-size: 12px;
+        line-height: 8px;
+    }
+
+    &:hover{
+        background-color: $primary-hover;
+        cursor: pointer;
+        
+        
+    }
+
+   
+  
+}
+
+  &--active {
+    color: $primary;
+    background-color: #dcf3c9;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+
+}

@@ -1,0 +1,99 @@
+<div class="container">
+    <header>
+
+      <ul class="sub-nav">
+        <li>
+          <div class="logo-wrapper">
+
+            <div class="menu-toggle">
+
+            </div>
+            <span>SCMS </span>
+          </div>
+        </li>
+        <li>
+          <a class="sub-nav__item" href="dashboard.html">
+            <span class="row user-name">Kudakwashe Appolo Shamu</span>
+            <span class="row user-role">Edit Profile</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="sub-nav__item" routerLink="manage" routerLinkActive="sub-nav--active"> Dashboard</a>
+        </li>
+
+        <li>
+          <a class="sub-nav__item" routerLink="requests" routerLinkActive="sub-nav--active"> Manage Requests</a>
+        </li>
+
+
+        <li>
+          <a class="sub-nav__item" routerLink="cardholders" routerLinkActive="sub-nav--active"> Manage Cardholders</a>
+        </li>
+
+
+        <li>
+          <a class="sub-nav__item" routerLink="cards" routerLinkActive="sub-nav--active"> Manage Cards</a>
+        </li>
+
+
+        <li>
+          <a class="sub-nav__item" routerLink="inventory" routerLinkActive="sub-nav--active">Manage Inventory Numbers</a>
+
+        </li>
+
+        <ul class="accordion">
+          <li>
+            <a class="accordion__header drop">Settings</a>
+            <div>
+
+              <ul>
+                <li>
+                  <a class="sub-nav__item" routerLink="card-types" routerLinkActive="sub-nav--active"> Manage Card Types</a>
+                </li>
+                <li>
+                  <a class="sub-nav__item" routerLink="business-units" routerLinkActive="sub-nav--active"> Manage Business Units</a>
+                </li>
+                <li>
+                  <a class="sub-nav__item" routerLink="buildings" routerLinkActive="sub-nav--active">Manage Buildings</a>
+                </li>
+
+                <li>
+                  <a class="sub-nav__item" routerLink="access-units" routerLinkActive="sub-nav--active"> Manage Access Groups</a>
+
+                </li>
+
+                <li>
+                  <a class="sub-nav__item" routerLink="vendors" routerLinkActive="sub-nav--active"> Manage Card Vendors</a>
+
+                </li>
+
+                <li>
+                  <a class="sub-nav__item" routerLink="shc-tenants" routerLinkActive="sub-nav--active"> Manage SHC Tenants</a>
+
+                </li>
+                <li>
+                  <a class="sub-nav__item" routerLink="reports" routerLinkActive="sub-nav--active"> Manage Reports</a>
+
+                </li>
+                <li>
+                  <a class="sub-nav__item" routerLink="companies" routerLinkActive="sub-nav--active"> Manage Companies</a>
+                </li>
+                <li>
+                  <a class="sub-nav__item" routerLink="operators" routerLinkActive="sub-nav--active">Manage Operators</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </ul>
+
+    </header>
+<div class="content flex">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+    <div class="md-overlay"></div>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/main.js"></script>

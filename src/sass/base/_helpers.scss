@@ -1,0 +1,116 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+.container {
+  max-width: 100%;/*$max-width; /* 1 */
+  width: 100%; /* 1 */
+ }
+
+ .row{
+   display: block;
+ }
+
+ .section-row{
+      
+    background-color: #fff;
+      border: 1px solid #e5ecef;
+       margin: 0 1em;
+ }
+
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+
+.pull-right{
+    float:right;
+    align-self: flex-end;
+}
+
+
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0; /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+
+
+$text-default: #333;
+$border-color: #efefef;
+$input-border:rgba(0,0,0,.2);
+$background-color: /*#edeff3* #f3f3f3 rgba(246, 246, 246, 0.74) */ #f3f3f3;
+$primary: #78ca28;
+$primary-hover: #dcf3c9;
+$secondary: #030303;
+$success: #5b0  /*#00c8b4*/;
+$danger: #ff6769;
+$balance:#25a8ed;
+$small:13px;
+$medium:16px;
+$h1: 32px;
+$h2:26px;
+$h3: 20px;
+
+
+::-webkit-scrollbar {
+      background: transparent /*rgba(3, 1, 1, 0.4);*/;
+      width:5px;
+      padding: 0;
+      margin: 0;
+}
+
+ ::-webkit-scrollbar-thumb {
+      background:#999;
+      height: 20px;
+    }
+
+
+
+
+
