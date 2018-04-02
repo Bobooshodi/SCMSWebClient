@@ -6,8 +6,8 @@ import { ManageOperatorsComponent } from './manage-operators.component';
 import { AuthGuard } from '../../../Shared/auth/auth.guard';
 
 const operatorRoutes: Routes = [
-  { path: '', redirectTo: 'manage', pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'manage', component: ManageOperatorsComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'manage', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
+  { path: 'manage', component: ManageOperatorsComponent} // , canActivate: [AuthGuard] },
 ];
 
 @NgModule({

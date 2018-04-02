@@ -17,3 +17,19 @@
         opacity: 0.4;
     }
 }
+
+.search-list{
+    display: flex;
+    margin: 1em 0;
+    justify-content: space-between;
+
+    .btn{
+        
+    }
+
+    .searcher{
+        flex: 1;
+        margin-right: 1em;
+        max-width: 60%;
+    }
+}

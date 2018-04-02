@@ -5,8 +5,8 @@ import { CardInventoryComponent } from './card-inventory.component';
 import { AuthGuard } from '../../../Shared/auth/auth.guard';
 
 const inventoryRoutes: Routes = [
-  { path: '', redirectTo: 'manage', pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'manage', component: CardInventoryComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'manage', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
+  { path: 'manage', component: CardInventoryComponent} // , canActivate: [AuthGuard] },
 ];
 
 @NgModule({

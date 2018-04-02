@@ -5,7 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { LoginComponent } from './login.component';
-import { ToasterService } from 'angular2-toaster';
 import { UserService } from '../../../Services/user.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
@@ -19,8 +18,6 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
   declarations: [LoginComponent],
   providers: [
     UserService,
-    ToasterService,
-    Ng4LoadingSpinnerService
   ]
 })
 export class LoginModule { }

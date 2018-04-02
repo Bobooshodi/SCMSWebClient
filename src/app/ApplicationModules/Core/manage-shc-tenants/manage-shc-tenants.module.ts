@@ -5,8 +5,8 @@ import { ManageShcTenantsComponent } from './manage-shc-tenants.component';
 import { AuthGuard } from '../../../Shared/auth/auth.guard';
 
 const tenantRoutes: Routes = [
-  { path: '', redirectTo: 'manage', pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'manage', component: ManageShcTenantsComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'manage', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
+  { path: 'manage', component: ManageShcTenantsComponent} // , canActivate: [AuthGuard] },
 ];
 
 @NgModule({

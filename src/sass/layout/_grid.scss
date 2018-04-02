@@ -1,64 +1,95 @@
-.container{
+.container {
+  display: flex;
+  overflow: hidden !important;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.content {
+  width: 100%;
+  position: relative;
+  // padding-top: 5em;
+}
+
+.section-flex {
+  display: flex;
+}
+
+.form-separetor {
+  margin-top: 40px;
+  padding-top: 40px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e7e8e9;
+}
+
+.section-header {
+  position: absolute;
+  top: 0;
+  z-index: 9;
+  background-color: #fff;
+  background: linear-gradient(#f5f5f5, #fafbfd);
+  width: 100%;
+  // box-shadow: 0 0px 46px 0 rgba(80, 80, 80, 0.18);
+  padding: 0.5em 1em 0.5em 1em;
+
+  border-bottom: 1px solid #e9ebf0;
+  h3 {
+    flex: 1;
+    margin-left: 0.7em;
+    margin-top: 0.3em;
+    font-weight: 300;
+    font-size: 1.2em;
+  }
+
+  .searcher {
+    flex: 1;
+    margin: 0 1.5em;
     display: flex;
-    overflow: hidden !important;
-    height: 100vh;
-    overflow: scroll;
-    
+  }
 }
 
-.content{
-    width: 100%;
-    position: relative;
-    padding-top: 5em;
-  
-   
-}
-
-.section-flex{
-    display: flex;
-}
-
-.section-header{
+.section-footer {
     position: absolute;
-    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9;
     background-color: #fff;
     width: 100%;
+    padding: 0.5em 1em 0.5em 2em;
+    border-top: 1px solid #e9ebf0;
+}
+
+.section-row {
+  flex: 1;
+  margin: 0;
+  margin-top: 1em;
+}
+
+.main-section {
+  height: 86vh;
+  padding: 5em 1em;
+  padding-bottom: 0;
+  display: block !important;
+  overflow: scroll !important;
   
-    padding: 0.5em 1em 0 1em;
-    
-    border-bottom: 1px solid #e9ebf0;
-    h3{
-        flex: 1;
-        margin-left: 0.7em;
-        margin-top: 0.3em;
-        font-weight: 300;
-        font-size: 1.2em;
-    }
-
-    .searcher{
-        flex: 1;
-        margin:0 1.5em;
-        display: flex;
-    }
 }
 
-
-
-.main-section{
-    height: 86vh;
-    
-    overflow: scroll;
+.form-width {
+  margin-left: 2em;
+  max-width: 700px;
 }
 
-.form-width{
-    margin-left: 2em;
-    max-width: 500px;
+.has-tabs {
+  margin: 1.8em 0 0;
 }
 
-.has-tabs{
-    margin:1.8em 0 0 ;
+.has-cardholder-tabs{
+  margin: 5.5em 0 0 !important;
+  
+}
+
+.has-footer{
+    padding-bottom: 5em;
     
 }
-
-
-

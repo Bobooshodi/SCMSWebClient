@@ -2,24 +2,48 @@
 INPUT  FORMS
 ******************/
 
-.has-divider {
-    padding: 18px;
-    border-bottom: 1px solid $border-color;
-    margin: 0 !important;
+
+.flex-form{
+    display: flex;
+
+    .form-group{
+        flex: 1;
+        padding-right: 0em;
+        
+        margin-right: 1em;
+        border-right: 1px solid $border-color;
+
+        > label{
+            font-weight: normal;
+            margin-bottom: 1em;
+        }
+
+        &:last-child{
+            padding-right: 0;
+            margin-right: 0;
+            margin-left: 1em;
+            border: 0;
+        }
+    }
+}
+
+.form-header{
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .form-group {
-    /*min-height: 58px;*/
     position: relative;
-    margin-bottom: 1em;
-    border-image: initial;
+    margin-top: 1em;
+    
     transition: height 0.3s;
     margin-bottom: 0.5em;
 
     label{
         display: block;
-        margin-bottom: 4px;
-        font-size: 0.7em;
+        margin-bottom: 6px;
+        font-size: 0.8em;
         font-weight: bold;
     }
 }
@@ -41,6 +65,10 @@ HORIZONTAL FORMS
         display: flex;
         position: relative;
         margin-bottom: 1em;
+       
+        div{
+            margin-right: 1em !important;
+        }
   
         .form-input
          {
@@ -93,10 +121,6 @@ HORIZONTAL FORMS
 VERTICAL FORMS
 ******************/
 
-.form-vertical{
-    
-}
-
 
 .error-msg {
    
@@ -106,7 +130,7 @@ VERTICAL FORMS
  
 }
 
-.input {
+.input, .input-sm {
     width: 100%;
     height: 35px;
     box-sizing: border-box;
@@ -119,6 +143,13 @@ VERTICAL FORMS
     position: relative;
     font-size: 14px;
     background-color: rgba(230, 230, 230, 0.34);
+}
+
+.input-sm {
+    height: 29px;
+    padding-top: 0.4em;
+    width: 93%;
+    font-size: 12px;
 }
 
 .select{

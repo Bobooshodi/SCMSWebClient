@@ -12,6 +12,7 @@ import { AppToasterComponent } from './app-toaster.component';
     BrowserAnimationsModule,
     ToasterModule.forRoot(),
   ],
+  exports: [AppToasterComponent],
   bootstrap: [AppToasterComponent],
   declarations: [AppToasterComponent],
   providers: [ToasterService]

@@ -6,8 +6,8 @@ import { AuthGuard } from '../../../Shared/auth/auth.guard';
 
 
 const reportRoutes: Routes = [
-  { path: '', redirectTo: 'manage', pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'manage', component: ManageReportsComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'manage', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
+  { path: 'manage', component: ManageReportsComponent} // , canActivate: [AuthGuard] },
 ];
 
 

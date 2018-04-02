@@ -5,10 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
-import {ToasterModule, ToasterService} from 'angular2-toaster';
+import { Ng4LoadingSpinnerModule, Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { AppToasterModule } from './Shared/app-toaster/app-toaster.module';
 import { LoginModule } from './ApplicationModules/General/login/login.module';
+import { MainNavModule } from './ApplicationModules/General/main-nav/main-nav.module';
+import { ManageRequestsModule } from './ApplicationModules/Core/manage-requests/manage-requests.module';
+import { ManageCompaniesModule } from './ApplicationModules/Core/manage-companies/manage-companies.module';
+import { ManageShcTenantsModule } from './ApplicationModules/Core/manage-shc-tenants/manage-shc-tenants.module';
 import { CardInventoryModule } from './ApplicationModules/Core/card-inventory/card-inventory.module';
 import { ManageAccessUnitModule } from './ApplicationModules/Core/manage-access-unit/manage-access-unit.module';
 import { ManageBuildingModule } from './ApplicationModules/Core/manage-building/manage-building.module';
@@ -19,7 +22,6 @@ import { ManageCardholdersModule } from './ApplicationModules/Core/manage-cardho
 import { ManageCardsModule } from './ApplicationModules/Core/manage-cards/manage-cards.module';
 import { ManageOperatorsModule } from './ApplicationModules/Core/manage-operators/manage-operators.module';
 import { ManageReportsModule } from './ApplicationModules/Core/manage-reports/manage-reports.module';
-import { ManageVehiclesModule } from './ApplicationModules/Core/manage-vehicles/manage-vehicles.module';
 import { PageNotFoundModule } from './ApplicationModules/General/page-not-found/page-not-found.module';
 import { ApplicationRouterModule } from './Shared/application-router/application-router.module';
 
@@ -27,6 +29,8 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './ApplicationModules/General/page-not-found/page-not-found.component';
 import { LoginComponent } from './ApplicationModules/General/login/login.component';
 import { CardInventoryComponent } from './ApplicationModules/Core/card-inventory/card-inventory.component';
+import { MainNavComponent } from './ApplicationModules/General/main-nav/main-nav.component';
+
 
 import { Server } from './Models/Application/server.model';
 
@@ -34,25 +38,21 @@ import { AuthGuard } from './Shared/auth/auth.guard';
 import { environment } from '../environments/environment';
 import { LoginGuard } from './Shared/application-router/login.guard';
 
+import { ToasterService } from 'angular2-toaster';
 import { SettingsService } from './Services/settings.service';
 import { HttpRequestService } from './Services/common/http-request.service';
-import { MainNavComponent } from './ApplicationModules/General/main-nav/main-nav.component';
-import { MainNavModule } from './ApplicationModules/General/main-nav/main-nav.module';
-import { ManageRequestsModule } from './ApplicationModules/Core/manage-requests/manage-requests.module';
-import { ManageCompaniesModule } from './ApplicationModules/Core/manage-companies/manage-companies.module';
-import { ManageShcTenantsModule } from './ApplicationModules/Core/manage-shc-tenants/manage-shc-tenants.module';
+import { AppToasterServiceService } from './Services/common/app-toaster-service.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainNavComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    AppToasterModule,
     Ng4LoadingSpinnerModule.forRoot(),
-    BrowserAnimationsModule,
-    ToasterModule.forRoot(),
     LoginModule,
     MainNavModule,
     CardInventoryModule,
@@ -68,7 +68,6 @@ import { ManageShcTenantsModule } from './ApplicationModules/Core/manage-shc-ten
     ManageCardsModule,
     ManageOperatorsModule,
     ManageReportsModule,
-    ManageVehiclesModule,
     PageNotFoundModule,
     ApplicationRouterModule,
   ],
@@ -82,7 +81,10 @@ import { ManageShcTenantsModule } from './ApplicationModules/Core/manage-shc-ten
       useFactory: ConfigLoader,
       deps: [SettingsService],
       multi: true
-    }
+    },
+    ToasterService,
+    AppToasterServiceService,
+    Ng4LoadingSpinnerService
   ],
   bootstrap: [AppComponent]
 })

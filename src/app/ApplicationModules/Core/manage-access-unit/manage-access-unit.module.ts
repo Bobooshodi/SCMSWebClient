@@ -5,8 +5,8 @@ import { ManageAccessUnitComponent } from './manage-access-unit.component';
 import { AuthGuard } from '../../../Shared/auth/auth.guard';
 
 const accessGroupRoutes: Routes = [
-  { path: '', redirectTo: 'manage', pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'manage', component: ManageAccessUnitComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'manage', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
+  { path: 'manage', component: ManageAccessUnitComponent} // , canActivate: [AuthGuard] },
 ];
 
 @NgModule({

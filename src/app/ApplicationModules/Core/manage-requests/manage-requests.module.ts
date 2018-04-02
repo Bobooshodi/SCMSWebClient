@@ -10,14 +10,14 @@ import { CardDistributionRequestsComponent } from './card-distribution-requests/
 import { AuthGuard } from '../../../Shared/auth/auth.guard';
 
 const requestsRoutes: Routes = [
-  { path: '', redirectTo: 'main', pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'main', component: ManageRequestsComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
+  { path: '', redirectTo: 'main', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
+  { path: 'main', component: ManageRequestsComponent, // , canActivate: [AuthGuard], canActivateChild: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'blacklist', pathMatch: 'full', canActivate: [AuthGuard] },
-      { path: 'blacklist', component: BlacklistRequestsComponent, canActivate: [AuthGuard] },
-      { path: 'replacement', component: ReplaceCardRequestsComponent, canActivate: [AuthGuard] },
-      { path: 'distribution', component: CardDistributionRequestsComponent, canActivate: [AuthGuard] },
-      { path: 'personalisation', component: PersonalizationRequestsComponent, canActivate: [AuthGuard] },
+      { path: '', redirectTo: 'blacklist', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
+      { path: 'blacklist', component: BlacklistRequestsComponent}, // , canActivate: [AuthGuard] },
+      { path: 'replacement', component: ReplaceCardRequestsComponent}, // , canActivate: [AuthGuard] },
+      { path: 'distribution', component: CardDistributionRequestsComponent}, // , canActivate: [AuthGuard] },
+      { path: 'personalisation', component: PersonalizationRequestsComponent} // , canActivate: [AuthGuard] },
     ]
   },
 ];

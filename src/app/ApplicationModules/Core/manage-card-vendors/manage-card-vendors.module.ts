@@ -5,8 +5,8 @@ import { ManageCardVendorsComponent } from './manage-card-vendors.component';
 import { AuthGuard } from '../../../Shared/auth/auth.guard';
 
 const vendorRoutes: Routes = [
-  { path: '', redirectTo: 'manage', pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'manage', component: ManageCardVendorsComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'manage', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
+  { path: 'manage', component: ManageCardVendorsComponent} // , canActivate: [AuthGuard] },
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 
 import { HttpRequestService } from './http-request.service';
 import { CardType } from '../../Models/Domain/card-type.model';

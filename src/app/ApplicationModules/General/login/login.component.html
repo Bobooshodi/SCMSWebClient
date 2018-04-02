@@ -7,7 +7,7 @@
       <p>Your Space To A Smart Connected World.</p>
     </div>
 
-    <form [formGroup]="loginForm" novalidate (ngSubmit)="logout()">
+    <form [formGroup]="loginForm" novalidate (ngSubmit)="openNextPage()">
     <div class="form-group">
       <label>Username</label>
       <input type="text" class="input" formControlName="username" />

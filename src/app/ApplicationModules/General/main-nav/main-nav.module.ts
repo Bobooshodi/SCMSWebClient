@@ -17,10 +17,11 @@ import { ManageAccessUnitModule } from '../../Core/manage-access-unit/manage-acc
 import { ManageRequestsModule } from '../../Core/manage-requests/manage-requests.module';
 import { ManageShcTenantsModule } from '../../Core/manage-shc-tenants/manage-shc-tenants.module';
 import { ManageCompaniesModule } from '../../Core/manage-companies/manage-companies.module';
+import { ManageCardsModule } from '../../Core/manage-cards/manage-cards.module';
 
 const appMainRoutes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'main', component: MainNavComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
+  { path: 'main', component: MainNavComponent, // , canActivate: [AuthGuard], canActivateChild: [AuthGuard],
     children: [
       {
         path: '',
@@ -33,6 +34,10 @@ const appMainRoutes: Routes = [
       {
         path: 'business-units',
         loadChildren : () => ManageBusinessUnitModule
+      },
+      {
+        path: 'cards',
+        loadChildren : () => ManageCardsModule
       },
       {
         path: 'card-types',
@@ -84,8 +89,9 @@ const appMainRoutes: Routes = [
     RouterModule.forChild(appMainRoutes)
   ],
   exports: [
-    RouterModule
+    RouterModule,
+    MainNavComponent
   ],
-  declarations: []
+  declarations: [MainNavComponent]
 })
 export class MainNavModule { }

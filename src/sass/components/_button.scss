@@ -13,7 +13,7 @@
     letter-spacing: 0;
     font-size:13px;
     font-weight: bold;
-    color: #777777;
+    letter-spacing: 0.3px;
     white-space: nowrap;
     border: 1px transparent solid;
     padding: 10px 20px 9px 20px;
@@ -39,8 +39,9 @@
 }
 
 .btn-sm{
-  padding: 6px 20px 6px 20px;
-    line-height: 18px;
+    font-size: 0.7em !important;
+    padding: 8px 10px 9px 10px;
+    letter-spacing: 0.6px;
     
 }
 
@@ -50,14 +51,11 @@
     padding: 0 0.2em 0 0;
     padding-left: 0;
     line-height: 1.1em;
-    
 }
-
-
 
 .primary {
     background-color:$primary;
-    color: #fff !important;
+    color: #fff;
     box-shadow: inset 0 -1px 0 rgba(52,58,67,0.4);
     
     &:hover {
@@ -67,8 +65,9 @@
 
 
 .danger {
+    color: #fff;
     background-color: $danger;
-    border: 2px solid $primary;
+    border: 2px solid $danger;
     box-shadow: inset 0 -1px 0 rgba(52,58,67,0.4);
   
 }
@@ -124,19 +123,82 @@
     height: 50px;
 }
 
-.status-success, .status-default{
-    padding:0.3em 0.7em;
-    margin: 0.3em 0;
- 
+
+
+
+// GROUP BUTTONS STYLE ============================================
+ // toggle button  ===================
+ .toggle-btn {
+    width: 28px;
+    height: 14px;
+    margin-bottom: -7px;
+    border-radius: 50px;
+    border: 0;
     display: inline-block;
-}
-.status-success{
-    border:1px solid $success;
-    color:  $success;
-}
-
-
-.status-default{
-    border:1px solid $success;
-    color:  $success;
+    position: relative;
+    cursor: pointer;
+    -webkit-transition: background-color .40s ease-in-out;
+    -moz-transition: background-color .40s ease-in-out;
+    -o-transition: background-color .40s ease-in-out;
+    transition: background-color .40s ease-in-out;
+    cursor: pointer;
+    &.inactive {
+        background: no-repeat 40px center $danger;
+        .round-btn {
+            left: -1px;
+        }
+        &::after {
+            position: absolute;
+            content: 'Inactive';
+            right: -55px;
+            top: 0px;
+            font-size: 0.7em;
+        }
+    }
+    &.active {
+        background: $success;
+        .round-btn {
+            left: 15px;
+        }
+        &::after {
+            position: absolute;
+            content: 'Active';
+            left: 40px;
+            top: 0px;
+            font-size: 0.8em;
+        }
+    }
+    .round-btn {
+        width: 15px;
+        height: 15px;
+        background-color: #fff;
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        top: 66.5%;
+        margin-top: -10.399px;
+        -webkit-transition: all .30s ease-in-out;
+        -moz-transition: all .30s ease-in-out;
+        -o-transition: all .30s ease-in-out;
+        transition: all .30s ease-in-out;
+    }
+    .cb-value {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 9;
+        cursor: pointer;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    }
+    .cb-text {
+        position: absolute;
+        font-size: 1em;
+        right: 10px;
+        top: 5px;
+        color: #fff;
+    }
 }
