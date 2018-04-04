@@ -2,7 +2,7 @@
   <div class="section-flex">
     <h3>Manage Card Vendors</h3>
     <div class="searcher">
-      <input type="text" placeholder="Search card vendors" class="input" />
+      <input type="text" placeholder="Search card vendors" class="input" name="filter" [(ngModel)]="filter"/>
     </div>
 
     <button class="md-trigger btn primary" data-modal="add-vendor">Add Card Vendor</button>
@@ -19,18 +19,17 @@
           <th class="thead">Vendor Name</th>
           <th class="thead">Vendor Description</th>
           <th class="thead">Contact Number </th>
-          <th class="thead">Email Address</th>
+          <th class="thead">Address</th>
 
           <th class="thead"></th>
         </tr>
       </thead>
       <tbody>
-        <tr class="tableRow productList">
-          <td class="">PACLIN(M)Sdn Bhd</td>
-          <td class="">Smart card Consumables and Printing Services</td>
-          <td class="">+6 03 7880 6181</td>
-          <td class="">sales@paclin.com.my</td>
-
+        <tr class="tableRow productList" *ngFor="let vendor of filteredList | vendorListFilter:filter">
+          <td class="">{{vendor.name}}</td>
+          <td class="">{{vendor.description}}</td>
+          <td class="">{{vendor.phone}}</td>
+          <td class="">{{vendor.address}}</td>
           <td>
             <a href="#" class="md-trigger btn btn-sm outline" data-modal="add-vendor">Manage</a>
             <a href="#" class="md-trigger btn btn-sm outline-danger" data-modal="add-vendor">Remove</a>

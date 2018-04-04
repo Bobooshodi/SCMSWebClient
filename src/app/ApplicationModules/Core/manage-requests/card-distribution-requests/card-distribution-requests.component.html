@@ -12,11 +12,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="tableRow productList">
+        <tr class="tableRow productList" *ngFor="let request of filteredRequests" >
           <td>
-            <span>Admin</span>
+            <span>{{request.businessUnit}}</span>
           </td>
-          <td class="">28/50</td>
+          <td class="">{{request.quantityDistributed}}/{{request.quantity}}</td>
           <td class="">22</td>
           <td class="">Strata</td>
           <td class="">03/03/2018 </td>

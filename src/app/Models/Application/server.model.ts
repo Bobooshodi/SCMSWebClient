@@ -23,9 +23,9 @@ export class Server {
     }
 
     if (this.protocol === 'http') {
-      return `http://${this.ipAddress}:${this.port}`;
+      return `http://${this.ipAddress}:${this.port}/`;
     } else if (this.protocol === 'https') {
-      return `https://${this.ipAddress}:${this.port}`;
+      return `https://${this.ipAddress}:${this.port}/`;
     }
   }
 }

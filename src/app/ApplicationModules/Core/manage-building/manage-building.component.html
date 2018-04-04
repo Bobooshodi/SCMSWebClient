@@ -23,10 +23,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="tableRow productList">
-            <td class="">Uptown 1</td>
-            <td class="">9403</td>
-            <td class="">Active</td>
+          <tr class="tableRow productList" *ngFor="let building of filteredList">
+            <td class="">{{building.name}}</td>
+            <td class="">{{building.phone}}</td>
+            <td class="">{{building.contactPerson}}</td>
 
             <td>
               <a href="#" class="md-trigger btn-sm btn outline" data-modal="add-building">Manage</a>

@@ -8,6 +8,9 @@ import { ReplaceCardRequestsComponent } from './replace-card-requests/replace-ca
 import { BlacklistRequestsComponent } from './blacklist-requests/blacklist-requests.component';
 import { CardDistributionRequestsComponent } from './card-distribution-requests/card-distribution-requests.component';
 import { AuthGuard } from '../../../Shared/auth/auth.guard';
+import { CardReplacementRequestsService } from '../../../Services/card-replacement-requests.service';
+import { PersonalisationRequestsService } from '../../../Services/personalisation-requests.service';
+import { CardRequestsService } from '../../../Services/card-requests.service';
 
 const requestsRoutes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
@@ -36,6 +39,11 @@ const requestsRoutes: Routes = [
     ReplaceCardRequestsComponent,
     PersonalizationRequestsComponent,
     CardDistributionRequestsComponent,
+  ],
+  providers: [
+    CardRequestsService,
+    CardReplacementRequestsService,
+    PersonalisationRequestsService,
   ]
 })
 export class ManageRequestsModule { }

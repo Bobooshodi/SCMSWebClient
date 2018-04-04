@@ -4,6 +4,7 @@ import { CardUserStatus } from '../Enums/card-user-status.enum';
 import { Card } from './card.model';
 import { CarPark } from './car-park.model';
 import { Vehicle } from './vehicle.model';
+import { SHCCardType } from '../Enums/shc-card-type.enum';
 
 export class Cardholder extends BaseModel {
   firstName: string;
@@ -20,6 +21,7 @@ export class Cardholder extends BaseModel {
   address: string;
   city: string;
   state: string;
+  userType: SHCCardType;
   identificationType: IdentificationType;
   status: CardUserStatus;
   dateOfBirth: Date;

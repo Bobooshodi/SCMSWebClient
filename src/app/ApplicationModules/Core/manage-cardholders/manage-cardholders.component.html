@@ -2,30 +2,30 @@
   <div class="section-flex">
     <h3>Manage Cardholders</h3>
     <div class="searcher">
-      <input type="text" placeholder="Search cardholders" class="input" />
+      <input type="text" placeholder="Search cardholders" class="input" name="filter" [(ngModel)]="filter" />
     </div>
 
     <a href="#" class="btn primary">Create Cardholder</a>
   </div>
 
   <ul class="tabs">
-    <li class="active" rel="blacklist">
-      <a href="">All</a>
+    <li [ngClass]="{'active':currentTypeTab === 10}"rel="blacklist">
+      <a (click)="filterList(10)">All</a>
     </li>
-    <li rel="replacement">
-      <a href="">Employees</a>
+    <li [ngClass]="{'active':currentTypeTab === 2}" rel="replacement">
+      <a (click)="filterList(2)">Employees</a>
     </li>
-    <li rel="personalization">
-      <a href="">Individual</a>
+    <li [ngClass]="{'active':currentTypeTab === 0}" rel="personalization">
+      <a (click)="filterList(0)">Individual</a>
     </li>
-    <li rel="personalization">
-      <a href="">Tenant</a>
+    <li [ngClass]="{'active':currentTypeTab === 1}" rel="personalization">
+      <a (click)="filterList(1)">Tenant</a>
+    </li>
+    <li [ngClass]="{'active':currentTypeTab === 3}" rel="distribution">
+      <a (click)="filterList(3)">Strata</a>
     </li>
     <li rel="distribution">
-      <a href="">Strata</a>
-    </li>
-    <li rel="distribution">
-      <a href="">Phantom</a>
+      <a>Phantom</a>
     </li>
   </ul>
 
@@ -50,14 +50,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="tableRow productList">
+            <tr class="tableRow productList" *ngFor="let cardholder of filteredList | cardholderListFilter:filter" >
               <td>
-                <span>Kudakwashe apollo shamu</span>
-                <span> 459-454-9565</span>
+                <span>{{cardholder.fullName}}</span>
+                <span>{{cardholder.identificationNo}}</span>
               </td>
-              <td class="">Nationa Identification</td>
-              <td class="">Strata</td>
-              <td class="">Active</td>
+              <td class="">{{cardholder.identificationType | cardholderIdTypeFormatter}}</td>
+              <td class="">{{cardholder.userType | cardTypeFormatter}}</td>
+              <td class="">{{cardholder.status | cardholderStatusFormatter}}</td>
             </tr>
           </tbody>
         </table>

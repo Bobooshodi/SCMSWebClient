@@ -8,11 +8,11 @@ export class ApiEndPoints {
   static getAccessUnit = '';
 
   // Building
-  static createNewBuilding = '';
-  static updateBuilding = '';
-  static deleteBuilding = '';
-  static allBuildings = '';
-  static getBuilding = '';
+  static createNewBuilding = 'api/buildings/create';
+  static updateBuilding = 'api/buildings/update';
+  static deleteBuilding = 'api/buildings/delete';
+  static allBuildings = 'api/buildings/get/all';
+  static getBuilding = 'api/buildings/get/';
 
   // Card Inventory
   static createNewCardInventory = '';
@@ -22,32 +22,32 @@ export class ApiEndPoints {
   static allCardInventories = '';
 
   // Card Types
-  static createNewCardType = 'card-types';
-  static updateCardType = 'card-types/update/';
-  static deleteCardType = 'card-types/delete/';
-  static getCardType = 'card-types/find/id/';
-  static allCardTypes = 'card-types';
+  static createNewCardType = 'api/card-types/create';
+  static updateCardType = 'api/card-types/update';
+  static deleteCardType = 'api/card-types/delete';
+  static getCardType = 'api/card-types/get/';
+  static allCardTypes = 'api/card-types/get/all';
 
   // Card Vendor
-  static createNewCardVendor = '';
-  static updateCardVendor = '';
-  static deleteCardVendor = '';
-  static getCardVendor = '';
-  static allCardVendors = '';
+  static createNewCardVendor = 'api/card-vendors/create';
+  static updateCardVendor = 'api/card-vendors/update';
+  static deleteCardVendor = 'api/card-vendors/delete';
+  static getCardVendor = 'api/card-vendors/get/';
+  static allCardVendors = 'api/card-vendors/get/all';
 
   // Card
-  static createNewCard = '';
-  static updateCard = '';
-  static deleteCard = '';
-  static getCard = '';
-  static allCards = '';
+  static createNewCard = 'api/cards/create';
+  static updateCard = 'api/cards/update';
+  static deleteCard = 'api/cards/delete';
+  static getCard = 'api/cards/get/';
+  static allCards = 'api/cards/get/all';
 
   // Cardholder
-  static createNewCardholder = '';
-  static updateCardholder = '';
-  static deleteCardholder = '';
-  static getCardholder = '';
-  static allCardholders = '';
+  static createNewCardholder = 'api/cardholders/create';
+  static updateCardholder = 'api/cardholders/update';
+  static deleteCardholder = 'api/cardholders/delete';
+  static getCardholder = 'api/cardholders/get/';
+  static allCardholders = 'api/cardholders/get/all';
 
    // Operator
    static createNewOperator = '';
@@ -68,4 +68,25 @@ export class ApiEndPoints {
   static deleteVehicle = '';
   static getVehicle = '';
   static allVehicles = '';
+
+    // card-request
+    static createNewCardRequest = 'api/card-requests/create';
+    static updateCardRequest = 'api/card-requests/update';
+    static deleteCardRequest = 'api/card-requests/delete';
+    static getCardRequest = 'api/card-requests/get/';
+    static allCardRequests = 'api/card-requests/get/all';
+
+    // personalisation-request
+    static createNewPersonalisationRequest = 'api/personalisation-requests/create';
+    static updatePersonalisationRequest = 'api/personalisation-requests/update';
+    static deletePersonalisationRequest = 'api/personalisation-requests/delete';
+    static getPersonalisationRequest = 'api/personalisation-requests/get/';
+    static allPersonalisationRequests = 'api/personalisation-requests/get/all';
+
+    // card-replacements
+    static createNewCardReplacement = 'api/card-replacements/create';
+    static updateCardReplacement = 'api/card-replacements/update';
+    static deleteCardReplacement = 'api/card-replacements/delete';
+    static getCardReplacement = 'api/card-replacements/get/';
+    static allCardReplacements = 'api/card-replacements/get/all';
 }

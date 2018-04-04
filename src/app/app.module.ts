@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -31,7 +32,6 @@ import { LoginComponent } from './ApplicationModules/General/login/login.compone
 import { CardInventoryComponent } from './ApplicationModules/Core/card-inventory/card-inventory.component';
 import { MainNavComponent } from './ApplicationModules/General/main-nav/main-nav.component';
 
-
 import { Server } from './Models/Application/server.model';
 
 import { AuthGuard } from './Shared/auth/auth.guard';
@@ -52,7 +52,6 @@ import { AppToasterServiceService } from './Services/common/app-toaster-service.
     BrowserModule,
     HttpClientModule,
     AppToasterModule,
-    Ng4LoadingSpinnerModule.forRoot(),
     LoginModule,
     MainNavModule,
     CardInventoryModule,
@@ -70,6 +69,10 @@ import { AppToasterServiceService } from './Services/common/app-toaster-service.
     ManageReportsModule,
     PageNotFoundModule,
     ApplicationRouterModule,
+    Ng4LoadingSpinnerModule.forRoot(),
+  ],
+  exports: [
+    FormsModule,
   ],
   providers: [
     LoginGuard,

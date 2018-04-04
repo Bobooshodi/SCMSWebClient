@@ -2,27 +2,26 @@
   <div class="section-flex">
       <h3>Manage Card Inventory</h3>
       <div class="searcher">
-          <input type="text" placeholder="Search cards" class="input" />
+          <input type="text" placeholder="Search cards" class="input" name="filter" [(ngModel)]="filter" />
       </div>
   </div>
 
   <ul class="tabs">
-      <li class="active">
-          <a href="">All</a>
-      </li>
-      <li>
-          <a href="">Employees</a>
-      </li>
-      <li>
-          <a href="">Individual</a>
-      </li>
-      <li>
-          <a href="">Tenant</a>
-      </li>
-
-      <li>
-          <a href="">Strata</a>
-      </li>
+    <li [ngClass]="{'active':currentTypeTab === 10}">
+      <a (click)="filterCards('all')">All</a>
+    </li>
+    <li [ngClass]="{'active':currentTypeTab === 2}">
+      <a (click)="filterCards('employee')">Employees</a>
+    </li>
+    <li [ngClass]="{'active':currentTypeTab === 0}">
+      <a (click)="filterCards('individual')">Individual</a>
+    </li>
+    <li [ngClass]="{'active':currentTypeTab === 1}">
+      <a (click)="filterCards('tenant')">Tenant</a>
+    </li>
+    <li [ngClass]="{'active':currentTypeTab === 3}" rel="distribution">
+      <a (click)="filterCards('strata')">Strata</a>
+    </li>
   </ul>
 </div>
 
@@ -41,13 +40,13 @@
               </tr>
           </thead>
           <tbody>
-              <tr class="tableRow ">
-                  <td class="">4ED0F04C</td>
-                  <td class="">6361517436462</td>
-                  <td class="">Tenant</td>
-                  <td class="">SHC</td>
-                  <td class="">SHC</td>
-                  <td class="">SHC</td>
+              <tr class="tableRow" *ngFor="let card of filteredCards | cardListFilter:filter" >
+                  <td class="">{{card.mifareId.toUpperCase()}}</td>
+                  <td class="">{{card.cardInventoryNo}}</td>
+                  <td class="">{{card.cardType}}</td>
+                  <td class="">{{card.cardVendor.name}}</td>
+                  <td class="">{{card.distributionId}}</td>
+                  <td class="">{{card.startDate | date:'fullDate'}}</td>
                   <td>
                       <button class="btn btn-sm outline-danger">Deactivate Card</button>
                   </td>

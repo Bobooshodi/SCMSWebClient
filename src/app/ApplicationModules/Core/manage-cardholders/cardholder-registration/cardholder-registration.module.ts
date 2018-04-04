@@ -9,7 +9,7 @@ import { CardholderRegistrationComponent } from './cardholder-registration.compo
 import { RegisterVehiclesComponent } from './register-vehicles/register-vehicles.component';
 
 const registrationRoutes: Routes = [
-  { path: '', redirectTo: 'cardholder', pathMatch: 'full' }, // , canActivate: [AuthGuard] },
+  // { path: '', redirectTo: 'cardholder', pathMatch: 'full' }, // , canActivate: [AuthGuard] },
   { path: 'cardholder', component: CreateCardholderComponent},
   { path: 'employee', component: CreateEmployeeComponent},
   { path: 'tenant', component: CreateTenantComponent},

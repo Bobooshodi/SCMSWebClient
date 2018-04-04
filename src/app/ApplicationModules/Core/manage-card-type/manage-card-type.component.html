@@ -2,7 +2,7 @@
   <div class="section-flex">
     <h3>Manage Card Types</h3>
     <div class="searcher">
-      <input type="text" placeholder="Search card types" class="input" />
+      <input type="text" placeholder="Search card types" class="input" name="filter" [(ngModel)]="filter" />
     </div>
 
     <button class="md-trigger btn primary" data-modal="add-user">Add Card Types</button>
@@ -23,11 +23,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="tableRow productList">
-
-          <td class="">System Admin</td>
-
-          <td class="">Active</td>
+        <tr class="tableRow productList" *ngFor="let cardType of filteredList" >
+          <td class="">{{cardType.name}}</td>
+          <td class="">{{cardType.description}}</td>
           <td>
             <a href="#" class="md-trigger btn btn-sm outline" data-modal="add-user">Manage</a>
             <a href="#" class="md-trigger btn btn-sm outline-danger" data-modal="add-user">Remove</a>
