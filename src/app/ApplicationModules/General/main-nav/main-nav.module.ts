@@ -18,6 +18,7 @@ import { ManageRequestsModule } from '../../Core/manage-requests/manage-requests
 import { ManageShcTenantsModule } from '../../Core/manage-shc-tenants/manage-shc-tenants.module';
 import { ManageCompaniesModule } from '../../Core/manage-companies/manage-companies.module';
 import { ManageCardsModule } from '../../Core/manage-cards/manage-cards.module';
+import { ManageSettingsModule } from '../../Core/manage-settings/manage-settings.module';
 
 const appMainRoutes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full', canActivate: [AuthGuard] },
@@ -50,6 +51,10 @@ const appMainRoutes: Routes = [
       {
         path: 'cardholders',
         loadChildren : () => ManageCardholdersModule
+      },
+      {
+        path: 'settings',
+        loadChildren : () => ManageSettingsModule
       },
       {
         path: 'inventory',

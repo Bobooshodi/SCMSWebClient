@@ -2,7 +2,8 @@
   <div class="section-flex">
     <h3>Manage Requests</h3>
     <div class="searcher">
-      <input type="text" placeholder="Search Request" class="input" />
+      <input type="text" placeholder="Search Request" class="input" name="filter" [(ngModel)]="filter"
+             (input)="sendFilterData($event.target.value)" />
     </div>
   </div>
 

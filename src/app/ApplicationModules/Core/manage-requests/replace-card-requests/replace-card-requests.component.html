@@ -12,15 +12,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="tableRow">
+        <tr class="tableRow" *ngFor="let request of filteredList | replacementRequestsFilter:listFilter" >
           <td>
-            <span>vanessa Wang Gua</span>
+            <span>{{request.cardholder}}</span>
           </td>
-          <td class="">536117073708166</td>
-          <td class="">28 Dec 2018</td>
-          <td class="">Admin</td>
-          <td class="">28 Dec 2018</td>
-
+          <td class="">{{request.cardId}}</td>
+          <td class="">{{request.requestedDate | date:"fullDate"}}</td>
+          <td class="">{{request.replacedBy}}</td>
+          <td class="">{{request.replacedDate | date:"fullDate"}}</td>
           <td class="">
             <a href="#" class="btn btn-sm outline-success">Process</a>
           </td>

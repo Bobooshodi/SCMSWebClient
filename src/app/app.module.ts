@@ -42,6 +42,8 @@ import { ToasterService } from 'angular2-toaster';
 import { SettingsService } from './Services/settings.service';
 import { HttpRequestService } from './Services/common/http-request.service';
 import { AppToasterServiceService } from './Services/common/app-toaster-service.service';
+import { AppModalModule } from './Shared/modal/modal.module';
+import { ModalService } from './Shared/modal/modal.service';
 
 
 @NgModule({
@@ -50,6 +52,7 @@ import { AppToasterServiceService } from './Services/common/app-toaster-service.
   ],
   imports: [
     BrowserModule,
+    AppModalModule,
     HttpClientModule,
     AppToasterModule,
     LoginModule,
@@ -77,6 +80,7 @@ import { AppToasterServiceService } from './Services/common/app-toaster-service.
   providers: [
     LoginGuard,
     AuthGuard,
+    ModalService,
     HttpRequestService,
     SettingsService,
     {

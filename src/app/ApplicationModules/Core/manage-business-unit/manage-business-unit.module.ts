@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ManageBusinessUnitComponent } from './manage-business-unit.component';
 import { AuthGuard } from '../../../Shared/auth/auth.guard';
+import { AppModalModule } from '../../../Shared/modal/modal.module';
+import { ModalService } from './../../../Shared/modal/modal.service';
 
 const businessUnitRoutes: Routes = [
   { path: '', redirectTo: 'manage', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
@@ -12,11 +14,15 @@ const businessUnitRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    AppModalModule,
     RouterModule.forChild(businessUnitRoutes)
   ],
   exports: [
     RouterModule
   ],
-  declarations: [ManageBusinessUnitComponent]
+  declarations: [ManageBusinessUnitComponent],
+  providers: [
+    ModalService
+  ]
 })
 export class ManageBusinessUnitModule { }

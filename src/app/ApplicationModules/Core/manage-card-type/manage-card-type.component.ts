@@ -5,6 +5,7 @@ import { CardType } from '../../../Models/Domain/card-type.model';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { AppToasterServiceService } from '../../../Services/common/app-toaster-service.service';
 import { BaseComponent } from '../../General/base/base.component';
+import { ModalService } from '../../../Shared/modal/modal.service';
 
 @Component({
   selector: 'app-manage-card-type',
@@ -18,7 +19,9 @@ export class ManageCardTypeComponent extends BaseComponent<CardType> implements 
   filteredCardTypes: CardType[];
 
   constructor(service: CardTypeService, spinner: Ng4LoadingSpinnerService,
-    toaster: AppToasterServiceService) { super(spinner, service, toaster); }
+    toaster: AppToasterServiceService, modalService: ModalService) {
+      super(spinner, service, toaster, modalService);
+    }
 
   ngOnInit() {
     this.loadAll();

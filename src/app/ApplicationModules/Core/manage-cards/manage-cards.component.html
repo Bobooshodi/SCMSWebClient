@@ -8,19 +8,19 @@
 
   <ul class="tabs">
     <li [ngClass]="{'active':currentTypeTab === 10}">
-      <a (click)="filterCards('all')">All</a>
+      <a (click)="filterList('all')">All</a>
     </li>
     <li [ngClass]="{'active':currentTypeTab === 2}">
-      <a (click)="filterCards('employee')">Employees</a>
+      <a (click)="filterList('employee')">Employees</a>
     </li>
     <li [ngClass]="{'active':currentTypeTab === 0}">
-      <a (click)="filterCards('individual')">Individual</a>
+      <a (click)="filterList('individual')">Individual</a>
     </li>
     <li [ngClass]="{'active':currentTypeTab === 1}">
-      <a (click)="filterCards('tenant')">Tenant</a>
+      <a (click)="filterList('tenant')">Tenant</a>
     </li>
     <li [ngClass]="{'active':currentTypeTab === 3}" rel="distribution">
-      <a (click)="filterCards('strata')">Strata</a>
+      <a (click)="filterList('strata')">Strata</a>
     </li>
   </ul>
 </div>
@@ -40,7 +40,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr class="tableRow" *ngFor="let card of filteredCards | cardListFilter:filter" >
+              <tr class="tableRow" *ngFor="let card of filteredList | cardListFilter:filter" >
                   <td class="">{{card.mifareId.toUpperCase()}}</td>
                   <td class="">{{card.cardInventoryNo}}</td>
                   <td class="">{{card.cardType}}</td>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ModalService } from './../../../Shared/modal/modal.service';
 
 @Component({
   selector: 'app-manage-business-unit',

@@ -10,6 +10,8 @@ import { CardholderRegistrationComponent } from './cardholder-registration/cardh
 import { CardholderService } from '../../../Services/cardholder.service';
 import { CardholderPipesModule } from '../../../Shared/pipes/cardholder-pipes/cardholder-pipes.module';
 import { CardPipesModule } from '../../../Shared/pipes/card-pipes/card-pipes.module';
+import { AppModalModule } from '../../../Shared/modal/modal.module';
+import { ModalService } from '../../../Shared/modal/modal.service';
 
 const cardholderRoutes: Routes = [
   { path: '', redirectTo: 'manage', pathMatch: 'full' }, // , canActivate: [AuthGuard] },
@@ -28,6 +30,7 @@ const cardholderRoutes: Routes = [
   imports: [
     FormsModule,
     CommonModule,
+    AppModalModule,
     CardPipesModule,
     CardholderPipesModule,
     CardholderRegistrationModule,
@@ -41,6 +44,7 @@ const cardholderRoutes: Routes = [
     CardholderDetailsComponent,
   ],
   providers: [
+    ModalService,
     CardholderService
   ]
 })

@@ -6,6 +6,8 @@ import { ManageCardVendorsComponent } from './manage-card-vendors.component';
 import { AuthGuard } from '../../../Shared/auth/auth.guard';
 import { CardVendorService } from '../../../Services/card-vendor.service';
 import { CardVendorPipesModule } from '../../../Shared/pipes/card-vendor-pipes/card-vendor-pipes.module';
+import { AppModalModule } from '../../../Shared/modal/modal.module';
+import { ModalService } from '../../../Shared/modal/modal.service';
 
 const vendorRoutes: Routes = [
   { path: '', redirectTo: 'manage', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
@@ -16,6 +18,7 @@ const vendorRoutes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    AppModalModule,
     CardVendorPipesModule,
     RouterModule.forChild(vendorRoutes)
   ],
@@ -24,7 +27,8 @@ const vendorRoutes: Routes = [
   ],
   declarations: [ManageCardVendorsComponent],
   providers: [
-    CardVendorService
+    CardVendorService,
+    ModalService
   ]
 })
 export class ManageCardVendorsModule { }

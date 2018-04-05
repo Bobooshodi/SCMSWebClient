@@ -6,6 +6,7 @@ import { AppToasterServiceService } from '../../../Services/common/app-toaster-s
 import { CardholderService } from '../../../Services/cardholder.service';
 import { SHCCardType } from '../../../Models/Enums/shc-card-type.enum';
 import { BaseComponent } from '../../General/base/base.component';
+import { ModalService } from './../../../Shared/modal/modal.service';
 
 @Component({
   selector: 'app-manage-cardholders',
@@ -17,7 +18,9 @@ export class ManageCardholdersComponent extends BaseComponent<Cardholder> implem
   currentTypeTab = 10;
 
   constructor(spinnerService: Ng4LoadingSpinnerService, cardholderService: CardholderService,
-    toaster: AppToasterServiceService) { super(spinnerService, cardholderService, toaster); }
+    toaster: AppToasterServiceService, modalService: ModalService) {
+      super(spinnerService, cardholderService, toaster, modalService);
+    }
 
   ngOnInit() {
     this.loadAll();

@@ -12,14 +12,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="tableRow productList" *ngFor="let request of filteredRequests" >
+        <tr class="tableRow productList" *ngFor="let request of filteredList | cardRequestsFilter:listFilter" >
           <td>
             <span>{{request.businessUnit}}</span>
           </td>
-          <td class="">{{request.quantityDistributed}}/{{request.quantity}}</td>
-          <td class="">22</td>
-          <td class="">Strata</td>
-          <td class="">03/03/2018 </td>
+          <td class="">{{request.quantityDistributed}}</td>
+          <td class="">{{request.quantity}}</td>
+          <td class="">{{request.cardType.name}}</td>
+          <td class="">{{request.requestDate | date:"fullDate"}}</td>
           <td class="">
             <a href="#" class="btn btn-sm outline-success">Process</a>
           </td>

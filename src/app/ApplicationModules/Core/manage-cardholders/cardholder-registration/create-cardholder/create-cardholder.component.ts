@@ -1,4 +1,10 @@
+import { Router } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+
+import { Cardholder } from '../../../../../Models/Domain/cardholder.model';
+
+import { CardholderService } from '../../../../../Services/cardholder.service';
 
 @Component({
   selector: 'app-create-cardholder',
@@ -7,7 +13,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateCardholderComponent implements OnInit {
 
-  constructor() { }
+  loginForm: FormGroup;
+  user = new Cardholder();
+
+  constructor(private service: CardholderService, private router: Router,
+    private fb: FormBuilder) { }
 
   ngOnInit() {
   }

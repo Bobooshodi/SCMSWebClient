@@ -1,4 +1,4 @@
-<div>
+
   <div class="section-header">
     <div class="section-flex">
       <h3>Manage Buildings</h3>
@@ -6,7 +6,7 @@
         <input type="text" placeholder="Search Buildings" class="input" />
       </div>
 
-      <button class="md-trigger btn primary" data-modal="add-building">Add Buildings</button>
+      <button (click)='initAdd()' class="btn primary">Add Buildings</button>
     </div>
   </div>
 
@@ -29,8 +29,8 @@
             <td class="">{{building.contactPerson}}</td>
 
             <td>
-              <a href="#" class="md-trigger btn-sm btn outline" data-modal="add-building">Manage</a>
-              <a href="#" class="md-trigger btn-sm btn outline-danger" data-modal="add-building">Remove</a>
+              <a class="md-trigger btn-sm btn outline" data-modal="add-building">Manage</a>
+              <a class="md-trigger btn-sm btn outline-danger" data-modal="add-building">Remove</a>
             </td>
 
           </tr>
@@ -39,11 +39,13 @@
     </section>
 
   </div>
-</div>
 
-<div class="md-modal md-effect" id="add-building">
+
+
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='modalAddId'>
   <div class="md-content">
-    <h3 class="md-header">Manage Buildings</h3>
+  <h3 class="md-header">Add Access Control</h3>
+
     <div class="body">
       <div class="form-group form-vertical">
         <label>Building Name</label>
@@ -67,8 +69,8 @@
       </div>
     </div>
     <div class="md-footer">
-      <button class="md-close btn outline">Cancel</button>
+      <button (click)="closeModal()" class="md-close btn outline">Cancel</button>
       <button class="btn primary pull-right">Save Building</button>
     </div>
   </div>
-</div>
+</app-modal>

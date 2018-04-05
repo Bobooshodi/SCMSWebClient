@@ -8,9 +8,9 @@ export class VendorListFilterPipe implements PipeTransform {
 
   transform(listItems: CardVendor[], filter): any {
     return filter
-            ? (listItems.filter(item => item.name.toLowerCase().indexOf(filter) !== -1) ||
-              listItems.filter(item => item.phone.toLowerCase().indexOf(filter) !== -1) ||
-              listItems.filter(item => item.address.toLowerCase().indexOf(filter) !== -1))
+            ? (listItems.filter(item => item.name.toLowerCase().indexOf(filter) !== -1 ||
+               item.phone.toLowerCase().indexOf(filter) !== -1 ||
+               item.address.toLowerCase().indexOf(filter) !== -1))
             : listItems;
   }
 

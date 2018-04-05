@@ -5,6 +5,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { CardService } from '../../../Services/card.service';
 import { AppToasterServiceService } from '../../../Services/common/app-toaster-service.service';
 import { BaseComponentTabs } from '../../General/base/base-component-tabs';
+import { ModalService } from './../../../Shared/modal/modal.service';
 
 @Component({
   selector: 'app-manage-cards',
@@ -14,7 +15,9 @@ import { BaseComponentTabs } from '../../General/base/base-component-tabs';
 export class ManageCardsComponent extends BaseComponentTabs<Card> implements OnInit {
 
   constructor(protected spinnerService: Ng4LoadingSpinnerService, protected cardService: CardService,
-    protected toaster: AppToasterServiceService) { super(spinnerService, cardService, toaster); }
+    protected toaster: AppToasterServiceService, protected modalService: ModalService) {
+      super(spinnerService, cardService, toaster, modalService);
+    }
 
   ngOnInit() {
     this.loadAll();

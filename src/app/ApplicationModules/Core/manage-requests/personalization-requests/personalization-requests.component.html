@@ -11,14 +11,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="tableRow productList">
+        <tr class="tableRow productList" *ngFor="let request of filteredList | personalisationRequestsFilter:listFilter" >
           <td>
-            <span>Kudakwashe apollo shamu</span>
-            <span>ID: 459-454-9565</span>
+            <span>{{request.cardholder}}</span>
+            <span>ID: {{request.identificationNo}}</span>
           </td>
-          <td class="">28 Dec 2018</td>
-          <td class="">L3</td>
-          <td class="">Active</td>
+          <td class="">{{request.contractNo}}</td>
+          <td class="">{{request.cardInventoryNo}}</td>
+          <td class="">{{request.cardType.name}}</td>
           <td class="">
             <a href="#" class="btn btn-sm outline-success">Process</a>
           </td>

@@ -8,8 +8,8 @@ export class CardholderListFilterPipe implements PipeTransform {
 
   transform(listItems: Cardholder[], filter): any {
     return filter
-            ? (listItems.filter(item => item.fullName.toLowerCase().indexOf(filter) !== -1) ||
-              listItems.filter(item => item.identificationNo.toLowerCase().indexOf(filter) !== -1))
+            ? (listItems.filter(item => item.fullName.toLowerCase().indexOf(filter) !== -1 ||
+               item.identificationNo.toLowerCase().indexOf(filter) !== -1))
             : listItems;
   }
 }

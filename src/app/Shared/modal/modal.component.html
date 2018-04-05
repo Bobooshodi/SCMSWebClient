@@ -1,0 +1,6 @@
+<div [ngClass]="{'closed': !isOpen}">
+    <div class="modal-overlay" (click)="close(true)"></div>
+    <div class="modal" >
+        <ng-content></ng-content>
+    </div>
+</div>
