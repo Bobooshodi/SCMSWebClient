@@ -1,96 +1,61 @@
-<div class="main-section has-footer">
-  <div class="form-width">
+<div class="cardholder-container">
+  <div class="section-header">
+    <div class="registration__process">
+      <a routerLink="./main/cardholders/create/cardholder" class="step step-active">
+        <span>Personal Details</span>
+      </a>
+      <a class="step step-active">
+        <span>Tenant Details</span>
+      </a>
 
-    <div class="form-group form-vertical">
-      <label>Tenant Name</label>
-      <input type="text" class="input" />
-      <span class="error-msg">Please enter a tenant name</span>
+      <a class="step">
+        <span>Vehicle Details</span>
+      </a>
+
     </div>
+  </div>
+  <div class="main-section has-footer">
+    <div class="form-width">
 
-    <div class="form-group">
-      <label>Contact Person Name</label>
-      <input type="text" class="input" />
-      <span class="error-msg">Please enter a contact person name</span>
-    </div>
+        <select class="input" formControlName="tenant">
+            <option value="individual" selected>Individual</option>
+            <option value="employee">Employee</option>
+            <option value="tenant">Tenant</option>
+          </select>
 
-    <div class="form-group form-vertical">
-      <label>Phone Number</label>
-      <input type="text" class="input" />
-      <span class="error-msg">Please enter tenant phone number</span>
-    </div>
+      <div class="form-separetor">
+        <div class="form-group">
+          <div class="form-header">Buildings</div>
 
-    <div class="form-group form-vertical">
-      <label>Email</label>
-      <input type="email" class="input" />
-      <span class="error-msg">Please enter a tenant email</span>
-    </div>
-
-    <div class="form-group form-vertical">
-      <label>Address</label>
-      <input type="email" class="input" />
-      <span class="error-msg">Please enter a tenant address</span>
-    </div>
-
-    <div class="form-separetor">
-      <div class="form-group">
-        <div class="form-header">Buildings</div>
-
-        <label>Select Business Units
-          <span class="pull-right">(3) Selected</span>
-        </label>
-        <input class="input list-searcher" placeholder="search" />
-        <div class="bu-units">
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
-            <div class="control__indicator"></div>
+          <label>Select Business Units
+            <span class="pull-right">(3) Selected</span>
           </label>
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
-            <div class="control__indicator"></div>
-          </label>
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
-            <div class="control__indicator"></div>
-          </label>
+          <input class="input list-searcher" placeholder="search" />
+          <div class="bu-units">
+            <label class="control control--checkbox">
+              Facility Management
+              <input type="checkbox" />
+              <div class="control__indicator"></div>
+            </label>
+            <label class="control control--checkbox">
+              Facility Management
+              <input type="checkbox" />
+              <div class="control__indicator"></div>
+            </label>
+            <label class="control control--checkbox">
+              Facility Management
+              <input type="checkbox" />
+              <div class="control__indicator"></div>
+            </label>
+          </div>
         </div>
+
       </div>
 
-    </div>
-    <div class="form-separetor">
 
-
-      <div class="form-group">
-        <div class="form-header">Buildings</div>
-        <label>Select Business Units
-          <span class="pull-right">(3) Selected</span>
-        </label>
-        <input class="input list-searcher" placeholder="search" />
-        <div class="bu-units">
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
-            <div class="control__indicator"></div>
-          </label>
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
-            <div class="control__indicator"></div>
-          </label>
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
-            <div class="control__indicator"></div>
-          </label>
-        </div>
+      <div class="section-footer">
+        <button class="btn primary">Save Tenant</button>
       </div>
     </div>
-
-    <div class="section-footer">
-      <button class="btn primary">Save Tenant</button>
-    </div>
-
   </div>
 </div>

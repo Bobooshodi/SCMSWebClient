@@ -11,12 +11,13 @@ export abstract class BaseComponent<T> {
   modalName: string;
   @Input() blocking = false;
   isOpen = false;
-  modalAddId;
-  modalRemoveId;
+  warningModal;
+  deleteObjectModal;
+  objectDetailsModal;
   filter;
-  currentTypeTab;
   mainList: T[];
   filteredList: T[];
+  selectedObject: T;
 
   constructor(protected spinnerService: Ng4LoadingSpinnerService, protected service: AbstractService,
     protected toaster: AppToasterServiceService, protected modalService: ModalService) { }
@@ -38,18 +39,21 @@ export abstract class BaseComponent<T> {
   );
   }
 
-  initAdd() {
-    this.modalName = 'Add';
-    this.modalService.open(this.modalAddId);
+  initAdd(add: boolean) {
+    if (add) {
+      this.modalName = 'Add';
+      this.modalService.open(this.objectDetailsModal);
+    } else {
+      this.modalName = 'Remove';
+    this.modalService.open(this.deleteObjectModal);
+    }
   }
 
-  initRemove() {
-    this.modalName = 'Remove';
-    this.modalService.open(this.modalRemoveId);
-  }
+  abstract viewObject(object: T);
 
   closeModal() {
-    this.modalService.close(this.modalAddId);
+    this.modalService.close(this.deleteObjectModal);
+    this.modalService.close(this.objectDetailsModal);
   }
 
 }

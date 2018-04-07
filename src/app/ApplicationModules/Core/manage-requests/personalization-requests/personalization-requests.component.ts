@@ -6,7 +6,7 @@ import { SOAPersonalizationRequest } from '../../../../Models/Domain/soa-persona
 
 import { BaseComponent } from '../../../General/base/base.component';
 
-import { DataService } from '../data.service';
+import { DataSendingService } from '../../../../Services/application/data-sending.service';
 import { ModalService } from '../../../../Shared/modal/modal.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { AppToasterServiceService } from '../../../../Services/common/app-toaster-service.service';
@@ -23,13 +23,17 @@ export class PersonalizationRequestsComponent extends BaseComponent<SOAPersonali
   subscription: Subscription;
 
   constructor(service: PersonalisationRequestsService, modalService: ModalService,
-    spinner: Ng4LoadingSpinnerService, toaster: AppToasterServiceService, private dataService: DataService) {
+    spinner: Ng4LoadingSpinnerService, toaster: AppToasterServiceService, private dataService: DataSendingService) {
       super(spinner, service, toaster, modalService);
-      this.subscription = this.dataService.getData().subscribe(x => { this.listFilter = x; });
+      this.subscription = this.dataService.getObject1Data.subscribe(x => { this.listFilter = x; });
     }
 
   ngOnInit() {
     this.loadAll();
+  }
+
+  viewObject(request: SOAPersonalizationRequest) {
+
   }
 
   ngOnDestroy(): void {

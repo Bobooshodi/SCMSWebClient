@@ -1,3 +1,4 @@
+import { DataSendingService } from './../../../Services/application/data-sending.service';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -37,7 +38,7 @@ const cardholderRoutes: Routes = [
     RouterModule.forChild(cardholderRoutes)
   ],
   exports: [
-    RouterModule
+    RouterModule,
   ],
   declarations: [
     ManageCardholdersComponent,
@@ -45,7 +46,8 @@ const cardholderRoutes: Routes = [
   ],
   providers: [
     ModalService,
-    CardholderService
+    CardholderService,
+    DataSendingService
   ]
 })
 export class ManageCardholdersModule { }

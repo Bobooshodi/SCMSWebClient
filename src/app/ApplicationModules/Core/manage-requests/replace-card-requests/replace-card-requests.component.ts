@@ -6,9 +6,9 @@ import { SOAReplaceCardRequest } from '../../../../Models/Domain/soa-replace-car
 
 import { BaseComponent } from '../../../General/base/base.component';
 
-import { DataService } from '../data.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ModalService } from './../../../../Shared/modal/modal.service';
+import { DataSendingService } from '../../../../Services/application/data-sending.service';
 import { AppToasterServiceService } from '../../../../Services/common/app-toaster-service.service';
 import { CardReplacementRequestsService } from '../../../../Services/card-replacement-requests.service';
 
@@ -24,13 +24,17 @@ export class ReplaceCardRequestsComponent extends BaseComponent<SOAReplaceCardRe
 
   constructor(service: CardReplacementRequestsService, modalService: ModalService,
     spinner: Ng4LoadingSpinnerService, toaster: AppToasterServiceService,
-    private dataService: DataService) {
+    private dataService: DataSendingService) {
       super(spinner, service, toaster, modalService);
-      this.subscription = this.dataService.getData().subscribe(x => { this.listFilter = x; });
+      this.subscription = this.dataService.getObject1Data.subscribe(x => { this.listFilter = x; });
     }
 
   ngOnInit() {
     this.loadAll();
+  }
+
+  viewObject(request: SOAReplaceCardRequest) {
+
   }
 
   ngOnDestroy(): void {

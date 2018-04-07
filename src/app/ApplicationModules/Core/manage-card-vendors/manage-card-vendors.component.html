@@ -5,7 +5,7 @@
       <input type="text" placeholder="Search card vendors" class="input" name="filter" [(ngModel)]="filter"/>
     </div>
 
-    <button class="md-trigger btn primary" data-modal="add-vendor">Add Card Vendor</button>
+    <button (click)="initAdd()" class="md-trigger btn primary" data-modal="add-vendor">Add Card Vendor</button>
 
   </div>
 </div>
@@ -31,8 +31,8 @@
           <td class="">{{vendor.phone}}</td>
           <td class="">{{vendor.address}}</td>
           <td>
-            <a (click)="initAdd()" class="btn btn-sm outline" >Manage</a>
-            <a (click)="initAdd()" class="btn btn-sm outline-danger" >Remove</a>
+            <a (click)="updateObject(vendor)" class="btn btn-sm outline" >Manage</a>
+            <a (click)="initAdd(false)" class="btn btn-sm outline-danger" >Remove</a>
           </td>
         </tr>
       </tbody>
@@ -40,7 +40,7 @@
   </section>
 </div>
 
-<div class="md-modal md-effect" id="add-vendor">
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='objectDetailsModal'>
   <div class="md-content">
     <h3 class="md-header">Manage Card Vendors</h3>
     <div class="body">
@@ -76,13 +76,13 @@
 
     </div>
     <div class="md-footer">
-      <button class="md-close btn outline">Cancel</button>
+      <button (click)="closeModal()" class="md-close btn outline">Cancel</button>
       <button class="btn primary pull-right">Save Vendor</button>
     </div>
   </div>
-</div>
+</app-modal>
 
-<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='modalAddId'>
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='deleteObjectModal'>
   <div class="md-content">
       <h3 class="md-header">Change Status</h3>
       <div class="body">

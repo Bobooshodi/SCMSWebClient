@@ -1,59 +1,69 @@
-<div class="main-section has-footer">
-  <div class="form-width">
+<div class="cardholder-container">
+  <div class="section-header">
+    <div class="registration__process">
 
-    <div class="form-group form-vertical">
-      <label>Employee ID</label>
-      <input type="text" class="input" />
-      <span class="error-msg">Please enter employee ID</span>
+      <a routerLink="./main/cardholders/create/cardholder" class="step step-active">
+        <span>Personal Details</span>
+      </a>
+      <a class="step step-active">
+        <span>Employee Details</span>
+      </a>
+
+      <a class="step">
+        <span>Vehicle Details</span>
+      </a>
+
     </div>
+  </div>
 
-    <div class="form-group">
-      <label>Company Name</label>
-      <input type="text" class="input" />
-      <span class="error-msg">Please enter company name</span>
-    </div>
+  <div class="main-section has-footer">
+    <form [formGroup]="registrationForm" novalidate (ngSubmit)="sendCardholderData(registrationForm.value)">
+      <div class="form-width">
+        <div class="form-group form-vertical">
+          <label>Employee ID</label>
+          <input type="text" class="input" formControlName="employeeId" />
+          <span *ngIf="!registrationForm.controls.employeeId.valid && !registrationForm.controls.employeeId.pristine" class="error-msg">Please enter employee ID</span>
+        </div>
 
-    <div class="form-group form-vertical">
-      <label>Department</label>
-      <input type="text" class="input" />
-      <span class="error-msg">Please enter department</span>
-    </div>
+        <div class="form-group">
+          <label>Company Name</label>
+          <input type="text" class="input" formControlName="companyName" />
+          <span *ngIf="!registrationForm.controls.companyName.valid && !registrationForm.controls.companyName.pristine" class="error-msg">Please enter company name</span>
+        </div>
 
-    <div class="form-group form-vertical">
-      <label>Designation</label>
-      <input type="email" class="input" />
-      <span class="error-msg">Please enter designation</span>
-    </div>
+        <div class="form-group form-vertical">
+          <label>Department</label>
+          <input type="text" class="input" formControlName="department" />
+          <span *ngIf="!registrationForm.controls.department.valid && !registrationForm.controls.department.pristine" class="error-msg">Please enter department</span>
+        </div>
 
-    <div class="form-separetor">
-      <div class="form-group">
-        <div class="form-header">Buildings</div>
+        <div class="form-group form-vertical">
+          <label>Designation</label>
+          <input type="email" class="input" formControlName="designation" />
+          <span *ngIf="!registrationForm.controls.designation.valid && !registrationForm.controls.designation.pristine" class="error-msg">Please enter designation</span>
+        </div>
 
-        <label>Select Business Units
-          <span class="pull-right">(3) Selected</span>
-        </label>
-        <input class="input list-searcher" placeholder="search" />
-        <div class="bu-units">
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
-            <div class="control__indicator"></div>
-          </label>
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
-            <div class="control__indicator"></div>
-          </label>
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
-            <div class="control__indicator"></div>
-          </label>
+        <div class="form-separetor">
+          <div class="form-group">
+            <div class="form-header">Buildings</div>
+
+            <label>Select Business Units
+              <span class="pull-right">({{selectedBuildings.length}}) Selected</span>
+            </label>
+            <input class="input list-searcher" placeholder="search" />
+            <div class="bu-units">
+              <label class="control control--checkbox" *ngFor="let building of allBuildings; let idx = index">
+                {{building.name}}
+                <input type="checkbox" value="{{building.name}}" (change)="processBuildingSelection(building, $event.target.checked)" />
+                <div class="control__indicator"></div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="section-footer">
+          <button type="submit" class="btn primary">Continue Registration</button>
         </div>
       </div>
-    </div>
-    <div class="section-footer">
-      <a href="register-vehicles.html" class="btn primary">Continue Registration</a>
-    </div>
+    </form>
   </div>
 </div>

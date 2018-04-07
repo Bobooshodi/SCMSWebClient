@@ -14,10 +14,6 @@ import { ModalService } from '../../../Shared/modal/modal.service';
 })
 export class ManageCardTypeComponent extends BaseComponent<CardType> implements OnInit {
 
-  filter;
-  allCardTypes: CardType[];
-  filteredCardTypes: CardType[];
-
   constructor(service: CardTypeService, spinner: Ng4LoadingSpinnerService,
     toaster: AppToasterServiceService, modalService: ModalService) {
       super(spinner, service, toaster, modalService);
@@ -25,6 +21,10 @@ export class ManageCardTypeComponent extends BaseComponent<CardType> implements 
 
   ngOnInit() {
     this.loadAll();
+  }
+
+  viewObject(cardType: CardType) {
+
   }
 
 }

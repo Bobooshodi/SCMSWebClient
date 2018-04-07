@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+
+import { Subscription } from 'rxjs/Subscription';
+
+import { DataSendingService } from '../../../../Services/application/data-sending.service';
 
 @Component({
   selector: 'app-cardholder-registration',
@@ -7,9 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardholderRegistrationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataSendingService: DataSendingService) {
+   }
 
   ngOnInit() {
   }
-
 }

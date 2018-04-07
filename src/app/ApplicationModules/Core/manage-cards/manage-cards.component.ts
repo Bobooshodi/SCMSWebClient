@@ -33,4 +33,7 @@ export class ManageCardsComponent extends BaseComponentTabs<Card> implements OnI
     }
   }
 
+  viewObject(vendor: Card): void {
+  }
+
 }

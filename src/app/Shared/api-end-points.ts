@@ -69,6 +69,20 @@ export class ApiEndPoints {
   static getVehicle = '';
   static allVehicles = '';
 
+  // Business Units
+  static createNewSHCTenant = 'api/shc-tenants/create';
+  static updateSHCTenant = 'api/shc-tenants/update';
+  static deleteSHCTenant = 'api/shc-tenants/delete';
+  static getSHCTenant = 'api/shc-tenants/get/';
+  static allSHCTenants = 'api/shc-tenants/get/all';
+
+    // Business Units
+    static createNewBusinessUnit = 'api/business-units/create';
+    static updateBusinessUnit = 'api/business-units/update';
+    static deleteBusinessUnit = 'api/business-units/delete';
+    static getBusinessUnit = 'api/business-units/get/';
+    static allBusinessUnits = 'api/business-units/get/all';
+
     // card-request
     static createNewCardRequest = 'api/card-requests/create';
     static updateCardRequest = 'api/card-requests/update';

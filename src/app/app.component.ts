@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { SettingsService } from './Services/settings.service';
+import { SettingsService } from './Services/application/settings.service';
 import { Server } from './Models/Application/server.model';
 
 @Component({

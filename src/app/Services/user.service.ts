@@ -5,7 +5,7 @@ import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 
 import { ApiEndPoints } from './../Shared/api-end-points';
 import { User } from './../Models/Domain/user.model';
-import { SettingsService } from './settings.service';
+import { SettingsService } from './application/settings.service';
 
 @Injectable()
 export class UserService {

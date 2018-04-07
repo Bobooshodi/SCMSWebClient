@@ -5,6 +5,7 @@ import { ManageBusinessUnitComponent } from './manage-business-unit.component';
 import { AuthGuard } from '../../../Shared/auth/auth.guard';
 import { AppModalModule } from '../../../Shared/modal/modal.module';
 import { ModalService } from './../../../Shared/modal/modal.service';
+import { BusinessUnitsService } from '../../../Services/business-units.service';
 
 const businessUnitRoutes: Routes = [
   { path: '', redirectTo: 'manage', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
@@ -22,7 +23,8 @@ const businessUnitRoutes: Routes = [
   ],
   declarations: [ManageBusinessUnitComponent],
   providers: [
-    ModalService
+    ModalService,
+    BusinessUnitsService
   ]
 })
 export class ManageBusinessUnitModule { }

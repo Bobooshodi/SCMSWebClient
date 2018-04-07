@@ -5,7 +5,7 @@
       <input type="text" placeholder="Search card types" class="input" name="filter" [(ngModel)]="filter" />
     </div>
 
-    <button class="md-trigger btn primary" data-modal="add-user">Add Card Types</button>
+    <button (click)="initAdd()" class="md-trigger btn primary" data-modal="add-user">Add Card Types</button>
 
   </div>
 
@@ -36,7 +36,7 @@
   </section>
 </div>
 
-<div class="md-modal md-effect" id="add-user">
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='modalAddId'>
   <div class="md-content">
     <h3 class="md-header">Manage Card Type</h3>
     <div class="body">
@@ -52,10 +52,10 @@
       </div>
     </div>
     <div class="md-footer">
-      <button class="md-close btn outline">Cancel</button>
+      <button (click)="closeModal()" class="md-close btn outline">Cancel</button>
       <button class="btn primary pull-right">Save Card Type</button>
     </div>
   </div>
-</div>
+</app-modal>
 
 <div class="md-overlay"></div>

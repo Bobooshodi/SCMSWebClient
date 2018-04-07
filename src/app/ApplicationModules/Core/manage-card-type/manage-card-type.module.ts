@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ManageCardTypeComponent } from './manage-card-type.component';
 import { AuthGuard } from '../../../Shared/auth/auth.guard';
 import { CardTypePipesModule } from './../../../Shared/pipes/card-type-pipes/card-type-pipes.module';
+import { AppModalModule } from '../../../Shared/modal/modal.module';
 
 const cardTypeRoutes: Routes = [
   { path: '', redirectTo: 'manage', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
@@ -16,6 +17,7 @@ const cardTypeRoutes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    AppModalModule,
     CardTypePipesModule,
     RouterModule.forChild(cardTypeRoutes)
   ],

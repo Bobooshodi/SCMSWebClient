@@ -11,7 +11,7 @@ import { ReplaceCardRequestsComponent } from './replace-card-requests/replace-ca
 import { BlacklistRequestsComponent } from './blacklist-requests/blacklist-requests.component';
 import { CardDistributionRequestsComponent } from './card-distribution-requests/card-distribution-requests.component';
 
-import { DataService } from './data.service';
+import { DataSendingService } from '../../../Services/application/data-sending.service';
 import { CardReplacementRequestsService } from '../../../Services/card-replacement-requests.service';
 import { PersonalisationRequestsService } from '../../../Services/personalisation-requests.service';
 import { CardRequestsService } from '../../../Services/card-requests.service';
@@ -48,7 +48,7 @@ const requestsRoutes: Routes = [
     CardDistributionRequestsComponent,
   ],
   providers: [
-    DataService,
+    DataSendingService,
     CardRequestsService,
     CardReplacementRequestsService,
     PersonalisationRequestsService,

@@ -8,7 +8,7 @@ import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
 
 import { UserService } from '../user.service';
-import { SettingsService } from '../settings.service';
+import { SettingsService } from '../application/settings.service';
 
 
 @Injectable()

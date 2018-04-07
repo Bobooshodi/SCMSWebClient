@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataService } from './data.service';
+
+import { DataSendingService } from '../../../Services/application/data-sending.service';
+
 
 @Component({
   selector: 'app-manage-requests',
@@ -10,7 +12,7 @@ export class ManageRequestsComponent implements OnInit, OnDestroy {
 
   filter;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataSendingService) {
 
   }
 
@@ -18,7 +20,7 @@ export class ManageRequestsComponent implements OnInit, OnDestroy {
   }
 
   sendFilterData(data: string) {
-    this.dataService.sendData(data);
+    this.dataService.sendObject1Data(data);
   }
 
   ngOnDestroy(): void {

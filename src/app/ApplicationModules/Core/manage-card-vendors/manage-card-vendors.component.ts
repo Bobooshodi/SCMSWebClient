@@ -13,9 +13,15 @@ import { ModalService } from './../../../Shared/modal/modal.service';
 })
 export class ManageCardVendorsComponent extends BaseComponent<CardVendor> implements OnInit {
 
+  deleteObjectModal = 'removeCardVendorModal';
+  objectDetailsModal = 'cardVendorDetailsModal';
+
   constructor(toaster: AppToasterServiceService, spinner: Ng4LoadingSpinnerService,
     service: CardVendorService, modalService: ModalService) {
       super(spinner, service, toaster, modalService);
+    }
+
+    viewObject(vendor: CardVendor): void {
     }
 
   ngOnInit() {

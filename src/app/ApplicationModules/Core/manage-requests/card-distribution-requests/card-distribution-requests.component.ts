@@ -6,9 +6,9 @@ import { SOACardRequest } from '../../../../Models/Domain/soa-card-request.model
 
 import { BaseComponent } from '../../../General/base/base.component';
 
-import { DataService } from '../data.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ModalService } from '../../../../Shared/modal/modal.service';
+import { DataSendingService } from '../../../../Services/application/data-sending.service';
 import { AppToasterServiceService } from '../../../../Services/common/app-toaster-service.service';
 import { CardRequestsService } from '../../../../Services/card-requests.service';
 
@@ -24,13 +24,17 @@ export class CardDistributionRequestsComponent extends BaseComponent<SOACardRequ
 
   constructor(service: CardRequestsService, modalService: ModalService,
     private spinner: Ng4LoadingSpinnerService, toaster: AppToasterServiceService,
-    private dataService: DataService) {
+    private dataService: DataSendingService) {
       super(spinner, service, toaster, modalService);
-      this.subscription = this.dataService.getData().subscribe(x => { this.listFilter = x; });
+      this.subscription = this.dataService.getObject1Data.subscribe(x => { this.listFilter = x; });
      }
 
   ngOnInit() {
     this.loadAll();
+  }
+
+  viewObject(request: SOACardRequest) {
+
   }
 
   ngOnDestroy(): void {

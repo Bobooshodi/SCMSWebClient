@@ -36,4 +36,8 @@ export class ManageCardholdersComponent extends BaseComponent<Cardholder> implem
     }
   }
 
+  viewObject(cardholder: Cardholder) {
+
+  }
+
 }

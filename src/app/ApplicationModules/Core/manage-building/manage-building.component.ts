@@ -28,4 +28,7 @@ export class ManageBuildingComponent extends BaseComponent<Building> implements 
     throw new Error('Method not implemented.');
   }
 
+  viewObject(vendor: Building): void {
+  }
+
 }

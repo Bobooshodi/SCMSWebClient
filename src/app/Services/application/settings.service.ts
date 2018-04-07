@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Server } from '../Models/Application/server.model';
-import { ApplicationSettings } from '../Models/Application/application-settings.model';
+
+import { Server } from './../../Models/Application/server.model';
+import { ApplicationSettings } from './../../Models/Application/application-settings.model';
 
 @Injectable()
 export class SettingsService {

@@ -1,140 +1,155 @@
-<div class="main-section has-tabs has-footer">
-  <div class="form-width">
-
-    <div class="form-header">Personal Information</div>
-
-    <div class="form-group">
-      <label>User Type</label>
-      <select class="input">
-        <option>Select User Type</option>
-        <option>Male</option>
-      </select>
-      <span class="error-msg">Please enter a contact person name</span>
+<div class="cardholder-container">
+  <div class="section-header">
+    <div class="registration__process">
+      <a routerLink="./main/cardholders/create/cardholder" class="step step-active">
+        <span>Personal Details</span>
+      </a>
+      <a class="step">
+        <span>Other Details</span>
+      </a>
+      <a class="step">
+        <span>Vehicle Details</span>
+      </a>
     </div>
-
-    <div class="form-group form-horizontal">
-      <div>
-        <label>First Name</label>
-        <input type="text" class="input" />
-        <span class="error-msg">Please enter a tenant name</span>
-      </div>
-
-      <div>
-        <label>last Name</label>
-        <input type="text" class="input" />
-        <span class="error-msg">Please enter a tenant name</span>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>Prefferd Name</label>
-      <input type="text" class="input" />
-      <span class="error-msg">Please enter a tenant name</span>
-    </div>
-
-    <div class="form-group">
-      <label>Nationality</label>
-      <input type="text" class="input" />
-      <span class="error-msg">Please enter a tenant name</span>
-    </div>
-
-    <div class="form-group form-horizontal">
-      <div class="form-group">
-        <label>Gender</label>
-        <select class="input">
-          <option>Female</option>
-          <option>Male</option>
-        </select>
-        <span class="error-msg">Please enter a contact person name</span>
-      </div>
-
-      <div class="form-group form-vertical">
-        <label>Date of Birth</label>
-        <input type="text" class="input" />
-        <span class="error-msg">Please enter tenant phone number</span>
-      </div>
-    </div>
-
-
-    <div class="form-group form-horizontal">
-      <div class="form-group">
-        <label>Identification Type</label>
-        <select class="input">
-          <option>Female</option>
-          <option>Male</option>
-
-        </select>
-        <span class="error-msg">Please enter a contact person name</span>
-      </div>
-
-      <div class="form-group form-vertical">
-        <label>Identification Number</label>
-        <input type="text" class="input" />
-        <span class="error-msg">Please enter tenant phone number</span>
-      </div>
-    </div>
-
-
   </div>
 
-  <div class="form-separetor">
-    <div class="form-width">
-      <div class="form-header">Contact Information</div>
-      <div class="form-group">
-        <label>Street Address</label>
-        <input type="text" class="input" />
-        <input type="text" class="input" />
-        <span class="error-msg">Please enter tenant phone number</span>
-      </div>
-
-      <div class="form-group form-horizontal">
+  <form [formGroup]="registrationForm" novalidate (ngSubmit)="sendCardholderData(registrationForm.value)">
+    <div class="main-section has-tabs has-footer">
+      <div class="form-width">
+        <div class="form-header">Personal Information</div>
         <div class="form-group">
-          <label>State</label>
-          <select class="input">
-            <option>Female</option>
+          <label>User Type</label>
+          <select class="input" formControlName="userType">
+            <option value="individual" selected>Individual</option>
+            <option value="employee">Employee</option>
+            <option value="tenant">Tenant</option>
+          </select>
+        </div>
+
+        <div class="form-group form-horizontal">
+          <div>
+            <label>First Name</label>
+            <input type="text" class="input" formControlName="firstName" />
+            <span *ngIf="!registrationForm.controls.firstName.valid && !registrationForm.controls.firstName.pristine" class="error-msg">Please enter First Name</span>
+          </div>
+
+          <div>
+            <label>last Name</label>
+            <input type="text" class="input" formControlName="lastName" />
+            <span *ngIf="!registrationForm.controls.lastName.valid && !registrationForm.controls.lastName.pristine" class="error-msg">Please enter Last Name</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Prefferd Name</label>
+          <input type="text" class="input" formControlName="preferredName" />
+          <span *ngIf="!registrationForm.controls.preferredName.valid && !registrationForm.controls.preferredName.pristine" class="error-msg">Please enter Preferred name</span>
+        </div>
+
+        <div class="form-group">
+          <label>Nationality</label>
+          <select class="input" formControlName="nationality">
+            <option>Select Cardholder Nationality</option>
             <option>Male</option>
           </select>
-          <span class="error-msg">Please enter a contact person name</span>
         </div>
 
-        <div class="form-group form-vertical">
-          <label>Zipcode</label>
-          <input type="text" class="input" />
-          <span class="error-msg">Please enter tenant phone number</span>
+        <div class="form-group form-horizontal">
+          <div class="form-group">
+            <label>Gender</label>
+            <select class="input" formControlName="gender">
+              <option>Female</option>
+              <option>Male</option>
+            </select>
+          </div>
+
+          <div class="form-group form-vertical">
+            <label>Date of Birth</label>
+            <input type="text" class="input" formControlName="dateOfBirth" />
+            <span *ngIf="!registrationForm.controls.dateOfBirth.valid && !registrationForm.controls.dateOfBirth.pristine" class="error-msg">Please enter Date of Birth</span>
+          </div>
+        </div>
+
+        <div class="form-group form-horizontal">
+          <div class="form-group">
+            <label>Identification Type</label>
+            <select class="input" formControlName="identificationType">
+              <option>Female</option>
+              <option>Male</option>
+            </select>
+            <span <span *ngIf="!registrationForm.controls.identificationType.valid && !registrationForm.controls.identificationType.pristine"
+              class="error-msg">Please Select Identification Type</span>
+          </div>
+
+          <div class="form-group form-vertical">
+            <label>Identification Number</label>
+            <input type="text" class="input" formControlName="identificationNumber" />
+            <span *ngIf="!registrationForm.controls.identificationNumber.valid && !registrationForm.controls.identificationNumber.pristine"
+              class="error-msg">Please enter ID Number</span>
+          </div>
         </div>
       </div>
 
-      <div class="form-group form-horizontal">
-        <div class="form-group">
-          <label>Handphone</label>
-          <input class="input" />
-          <span class="error-msg">Please enter a contact person name</span>
-        </div>
+      <div class="form-separetor">
+        <div class="form-width">
+          <div class="form-header">Contact Information</div>
+          <div class="form-group" formGroupName="contactDetails">
+            <label>Street Address</label>
+            <input type="text" class="input" formControlName="streetAddress" />
+            <span *ngIf="!registrationForm.controls.contactDetails.controls.streetAddress.valid && !registrationForm.controls.contactDetails.controls.streetAddress.pristine"
+              class="error-msg">Please enter Street Address</span>
+          </div>
 
-        <div class="form-group form-vertical">
-          <label>Workphone</label>
-          <input type="text" class="input" />
-          <span class="error-msg">Please enter tenant phone number</span>
+          <div class="form-group form-horizontal">
+            <div class="form-group" formGroupName="contactDetails">
+              <label>State</label>
+              <select class="input" formControlName="state">
+                <option>Female</option>
+                <option>Male</option>
+              </select>
+            </div>
+
+            <div class="form-group form-vertical" formGroupName="contactDetails">
+              <label>Zipcode</label>
+              <input type="number" class="input" formControlName="zipCode" />
+              <span *ngIf="!registrationForm.controls.contactDetails.controls.zipCode.valid && !registrationForm.controls.contactDetails.controls.zipCode.pristine"
+                class="error-msg">Please enter tenant phone number</span>
+            </div>
+
+          </div>
+
+          <div class="form-group form-horizontal">
+            <div class="form-group" formGroupName="contactDetails">
+              <label>Handphone</label>
+              <input type="number" class="input" formControlName="handPhone" />
+              <span *ngIf="!registrationForm.controls.contactDetails.controls.handPhone.valid && !registrationForm.controls.contactDetails.controls.handPhone.pristine"
+                class="error-msg">Please enter a valid handphone number</span>
+            </div>
+
+            <div class="form-group form-vertical" formGroupName="contactDetails">
+              <label>Workphone</label>
+              <input type="text" class="input" formControlName="workPhone" />
+            </div>
+          </div>
+
+          <div class="form-group form-horizontal">
+            <div class="form-group" formGroupName="contactDetails">
+              <label>Primary email</label>
+              <input type="email" class="input" formControlName="primaryEmail" />
+              <span *ngIf="!registrationForm.controls.contactDetails.controls.primaryEmail.valid && !registrationForm.controls.contactDetails.controls.primaryEmail.pristine"
+                class="error-msg">Please enter a valid email address</span>
+            </div>
+
+            <div class="form-group form-vertical" formGroupName="contactDetails">
+              <label>Work email</label>
+              <input type="email" type="text" class="input" formControlName="workEmail" />
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="form-group form-horizontal">
-        <div class="form-group">
-          <label>Primary email</label>
-          <input class="input" />
-          <span class="error-msg">Please enter a contact person name</span>
-        </div>
-
-        <div class="form-group form-vertical">
-          <label>Work email</label>
-          <input type="text" class="input" />
-          <span class="error-msg">Please enter tenant phone number</span>
-        </div>
+      <div class="section-footer">
+          <button type="submit" class="btn primary">Continue registration</button>
       </div>
     </div>
-  </div>
-
-  <div class="section-footer">
-    <a href="register-vehicles.html" class="btn primary">Continue registration</a>
-  </div>
+  </form>
 </div>
