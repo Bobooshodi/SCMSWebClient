@@ -7,19 +7,19 @@
   </div>
 
   <ul class="tabs">
-    <li [ngClass]="{'active':currentTypeTab === 10}">
+    <li [ngClass]="{'active':currentTypeTab === 'all'}">
       <a (click)="filterList('all')">All</a>
     </li>
-    <li [ngClass]="{'active':currentTypeTab === 2}">
+    <li [ngClass]="{'active':currentTypeTab === 'employee'}">
       <a (click)="filterList('employee')">Employees</a>
     </li>
-    <li [ngClass]="{'active':currentTypeTab === 0}">
+    <li [ngClass]="{'active':currentTypeTab === 'individual'}">
       <a (click)="filterList('individual')">Individual</a>
     </li>
-    <li [ngClass]="{'active':currentTypeTab === 1}">
+    <li [ngClass]="{'active':currentTypeTab === 'tenant'}">
       <a (click)="filterList('tenant')">Tenant</a>
     </li>
-    <li [ngClass]="{'active':currentTypeTab === 3}" rel="distribution">
+    <li [ngClass]="{'active':currentTypeTab === 'strata'}" rel="distribution">
       <a (click)="filterList('strata')">Strata</a>
     </li>
   </ul>

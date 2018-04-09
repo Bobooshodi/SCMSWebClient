@@ -16,6 +16,7 @@ import { CardReplacementRequestsService } from '../../../Services/card-replaceme
 import { PersonalisationRequestsService } from '../../../Services/personalisation-requests.service';
 import { CardRequestsService } from '../../../Services/card-requests.service';
 import { RequestPipesModule } from '../../../Shared/pipes/request-pipes/request-pipes.module';
+import { ModalService } from '../../../Shared/modal/modal.service';
 
 const requestsRoutes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
@@ -48,6 +49,7 @@ const requestsRoutes: Routes = [
     CardDistributionRequestsComponent,
   ],
   providers: [
+    ModalService,
     DataSendingService,
     CardRequestsService,
     CardReplacementRequestsService,

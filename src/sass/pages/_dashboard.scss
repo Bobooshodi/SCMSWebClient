@@ -1,0 +1,251 @@
+/*******************************************
+DASHBOARD COMPONENT 
+******************************************/
+.dashboard {
+  // background-color: #f5f5fa;
+
+  height: 88vh;
+  overflow: hidden;
+  padding: 1.5em 2em 0 2em;
+
+  &__welcome {
+    h3 {
+      font-weight: 300;
+      line-height: 0;
+      padding-top: 0.9em;
+    }
+
+    p {
+      margin-left: 1em;
+    }
+  }
+}
+
+.dashboard-panel {
+  display: flex;
+
+  h4 {
+    font-weight: 300;
+  }
+
+  h2 {
+    font-weight: 300;
+    small {
+      font-size: 0.5em;
+    }
+  }
+
+  div {
+    flex: 1;
+  }
+
+  .requests {
+    flex: 2.3;
+
+    position: relative;
+    padding-top: 5em;
+
+    &__header {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      border: 1px solid #e5ecef;
+      background-color: #fff;
+
+     &>h4{
+        padding: 1em 1em 0em 1em;
+        margin-bottom: -0.4em;
+      }
+
+      .tabs {
+        border-bottom: 1px solid $border-color;
+       padding-left: 1em;
+        margin-bottom: 0.5em;
+
+        li {
+          padding-right: 3em;
+          padding-left: 0;
+          margin-right: 1em;
+        }
+
+        .notification {
+          position: absolute;
+          background-color: red;
+          padding: 3.2px 3px 3.5px 3px;
+          border-radius: 50%;
+          color: #fff;
+          top: 4px;
+          font-weight: bold;
+          right: 0;
+          font-size: 0.65em;
+        }
+      }
+    }
+
+    .c-requests {
+      background-color: #fff;
+      border-bottom: 1px solid $border-color;
+      height: 71vh;
+      overflow-y: scroll;
+
+      .section-row {
+        margin-top: 0;
+      }
+
+     
+
+      &__searcher {
+        width: 100%;
+        border-bottom: 1px solid $border-color;
+        padding: 0em 1em 0.3em 0.7em;
+        margin-top:2.3em;
+        display: flex;
+        justify-content: space-between;
+
+
+
+        .head {
+          align-self: center;
+          margin: 0 0 0 0.3em;
+          
+        }
+
+        .input {
+          max-width: 400px;
+          height: 30px;
+        }
+      }
+    }
+  }
+}
+
+.panel__head{
+  background-color: #fff;
+  margin-right: 2em;
+  padding: 1em 1em 1.2em 1em;
+  border: 1px solid #e5ecef;
+  margin-bottom: -1.6em;
+}
+
+.panel__item {
+  flex: 1;
+  //background-color: #fff;
+  margin-right: 2em;
+  // padding: 1em 0 0.5em 0;
+  margin-bottom: 1.5em;
+  //border-right: 1px solid $border-color;
+}
+
+.dashboard-graph {
+  width: 100%;
+  height: 20px;
+
+  &__item {
+    float: left;
+    height: 17px;
+
+    //margin: 0.5em 0;
+  }
+
+  &__item:nth-child(1) {
+    background: #2064f5;
+  }
+
+  &__item:nth-child(2) {
+    background: #bf6ff5;
+  }
+
+  &__item:nth-child(3) {
+    background: #f1da09;
+  }
+
+  &__item:nth-child(4) {
+    background: #95989c;
+  }
+
+  &__item:nth-child(5) {
+    background: #b9c7d4;
+  }
+}
+
+.stats {
+  td {
+    padding: 12px 12px;
+  }
+
+  &__type {
+    position: relative;
+    margin-left: 20px !important;
+    padding: 12px 5px 12px 30px !important;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 14px;
+      width: 14px;
+      left: 10px;
+    }
+  }
+
+  &--employee {
+    &::after {
+      background-color: #2064f5;
+    }
+  }
+
+  &--individual {
+    &::after {
+      background-color: #bf6ff5;
+    }
+  }
+
+  &--tenant {
+    &::after {
+      background-color: #f1da09;
+    }
+  }
+
+  &--strata {
+    &::after {
+      background-color: red;
+    }
+  }
+
+  &--phantom {
+    &::after {
+      background-color: #95989c;
+    }
+  }
+}
+
+.placer {
+  display: flex;
+  &__img {
+    height: 26px;
+    max-width: 26px;
+    margin: 0.5em 0.9em 0 0;
+    border-radius: 50%;
+    //border:1px solid #000;
+    background-color: #ddd;
+
+    i svg {
+      width: 17px;
+      margin: 4px 2px 3px 4px;
+      fill: red;
+    }
+  }
+
+  &__info {
+    margin: 0.4em 0 0;
+    span {
+      line-height: 1em;
+      font-size: 0.85em;
+
+      &:first-child {
+        font-size: 1em;
+        font-weight: bold;
+        margin-bottom: 0.3em;
+      }
+    }
+  }
+}

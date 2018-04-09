@@ -1,3 +1,4 @@
+import { FormBuilder } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Subscription } from 'rxjs/Subscription';
@@ -22,18 +23,14 @@ export class PersonalizationRequestsComponent extends BaseComponent<SOAPersonali
   listFilter: any;
   subscription: Subscription;
 
-  constructor(service: PersonalisationRequestsService, modalService: ModalService,
+  constructor(service: PersonalisationRequestsService, modalService: ModalService, fb: FormBuilder,
     spinner: Ng4LoadingSpinnerService, toaster: AppToasterServiceService, private dataService: DataSendingService) {
-      super(spinner, service, toaster, modalService);
+      super(spinner, service, toaster);
       this.subscription = this.dataService.getObject1Data.subscribe(x => { this.listFilter = x; });
     }
 
   ngOnInit() {
     this.loadAll();
-  }
-
-  viewObject(request: SOAPersonalizationRequest) {
-
   }
 
   ngOnDestroy(): void {

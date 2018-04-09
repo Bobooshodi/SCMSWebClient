@@ -4,7 +4,7 @@
     <div class="searcher">
       <input type="text" placeholder="Search  business unit" class="input" />
     </div>
-    <button (click)='initAdd()' class="btn primary">Add Business Unit</button>
+    <button (click)='openModal(true)' class="btn primary">Add Business Unit</button>
   </div>
 </div>
 
@@ -27,8 +27,8 @@
           <td class="">({{businessUnit.cardTypes.length}}) Selected</td>
           <td class="">({{businessUnit.companies.length}}) Selected</td>
           <td>
-            <button (click)='initAdd()' class="md-trigger btn btn-sm outline" data-modal="add-user">Manage</button>
-            <button (click)='initAdd()' class="md-trigger btn btn-sm outline-danger" data-modal="add-user">Manage</button>
+            <button (click)='openModal(true)' class="md-trigger btn btn-sm outline" data-modal="add-user">Manage</button>
+            <button (click)='openModal(false)' class="md-trigger btn btn-sm outline-danger" data-modal="add-user">Remove</button>
           </td>
         </tr>
       </tbody>
@@ -36,7 +36,7 @@
   </section>
 </div>
 
-<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='modalAddId'>
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='objectDetailsModal'>
   <div class="md-content">
     <h3 class="md-header">Add Access Control</h3>
 

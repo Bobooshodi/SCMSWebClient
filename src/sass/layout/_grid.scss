@@ -28,7 +28,8 @@
   top: 0;
   z-index: 9;
   background-color: #fff;
-  background: linear-gradient(#f5f5f5, #fafbfd);
+  // background: linear-gradient(#f5f5f5, #fafbfd);
+  // background: linear-gradient(#5bb86a, #479c4b);
   width: 100%;
   // box-shadow: 0 0px 46px 0 rgba(80, 80, 80, 0.18);
   padding: 0.5em 1em 0.5em 1em;
@@ -67,17 +68,19 @@
 }
 
 .main-section {
-  height: 86vh;
-  padding: 5em 1em;
+  height: 100vh;
+  padding: 3.5em 1em 0 1em;
   padding-bottom: 0;
   display: block !important;
   overflow: scroll !important;
+  //background-color: rgba(222, 222, 222, 0.38);
+  background-color: #f8f8f8;
   
 }
 
 .form-width {
   margin-left: 2em;
-  max-width: 700px;
+  max-width: 460px;
 }
 
 .has-tabs {

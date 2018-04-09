@@ -1,0 +1,92 @@
+.c-distribution{
+  // display: flex;
+  overflow: hidden;
+   margin-top: -1em;
+   margin-bottom: -1em;
+    &__panel{
+        flex: 1;
+        min-height: 300px;
+        
+        padding: 1em 0 1em 0;
+    }
+
+    &__list{
+        flex: 1;
+        min-height: 300px;
+        padding-right: 0.8em;
+
+        h4{
+            font-weight: 400;
+            font-size: 0.8em;
+            margin-top: 1.5em;
+            margin-bottom: -1em;
+        }
+        
+    }
+    
+}
+
+.info-panel{
+    padding: 0.8em 0.5em;
+    background-color: $balance;
+    border:1px solid $balance-text;
+    border-radius: 4px;
+    
+        
+    &__head{
+        font-size: 1.5em;
+        color: $balance-text !important;
+        font-weight: bold;
+        margin: 0 0 0.5em 0.2em;
+    }
+
+    &__item{
+        display: flex;
+        justify-content: space-between;
+        margin: 0.5em 0.4em;
+        
+
+        span{
+            font-size: 0.7em;
+            color: $balance-text !important;
+
+            &:last-child{
+                text-align: right;
+                font-weight: bold;
+            }
+        }
+
+       
+    }
+}
+
+.panel-hidden, .panel-show{
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 1em 1.5em;
+    z-index: 99;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+}
+
+.panel-show{
+    left: 0;
+
+}
+
+.panel-hidden{
+ 
+    left: -99999px;
+ 
+}
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: block;
+}

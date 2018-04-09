@@ -9,7 +9,6 @@ export class CardListFilterPipe implements PipeTransform {
   transform(listItems: Card[], filter): any {
     return filter
             ? (listItems.filter(item => item.cardInventoryNo.toLowerCase().indexOf(filter) !== -1 ||
-              item.cardaxNo.toLowerCase().indexOf(filter) !== -1 ||
               item.mifareId.toLowerCase().indexOf(filter) !== -1))
             : listItems;
   }

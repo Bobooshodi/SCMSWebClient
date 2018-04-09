@@ -40,14 +40,15 @@
   'components/loader',
   'components/tooltip',
   'components/accordion';
+ 
 
-  // Toaster
-  @import 'node_modules/angular2-toaster/toaster';
 
 // 6. Page-specific styles
 @import
   'pages/login',
+  'pages/dashboard',
   'pages/create-cardholder',
+  'pages/distribution',
   'pages/_cardholder-details.';
 
 

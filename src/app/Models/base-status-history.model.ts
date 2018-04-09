@@ -1,7 +1,7 @@
 import { BaseModel } from './base-model.model';
 
 export class BaseStatusHistory extends BaseModel {
-  sOARequestId: string;
+  soaRequestId: string;
   remark: string;
   occurrenceTime: Date;
   actionPerformById: string;

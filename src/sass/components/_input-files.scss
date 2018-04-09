@@ -43,8 +43,8 @@ INPUT  FORMS
     label{
         display: block;
         margin-bottom: 6px;
-        font-size: 0.8em;
-        font-weight: bold;
+        font-size: 0.75em;
+        font-weight: 500;
     }
 }
 
@@ -132,7 +132,7 @@ VERTICAL FORMS
 
 .input, .input-sm {
     width: 100%;
-    height: 35px;
+    height: 32px;
     box-sizing: border-box;
     -webkit-appearance: none;
     border-color: $input-border;
@@ -156,6 +156,7 @@ VERTICAL FORMS
       position: relative;
     margin-bottom: 1em;
     width: 100%;
+    max-width: 50%;
     
     &:after{
         content: '';
@@ -164,7 +165,7 @@ VERTICAL FORMS
         top: 0;
         width: 30px;
         height: 30px;
-        background-color: red;
+        
     }
 }
 

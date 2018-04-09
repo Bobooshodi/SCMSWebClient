@@ -6,12 +6,11 @@
         <input type="text" placeholder="Search Buildings" class="input" />
       </div>
 
-      <button (click)='initAdd()' class="btn primary">Add Buildings</button>
+      <button (click)='openModal(true)' class="btn primary">Add Buildings</button>
     </div>
   </div>
 
   <div class="main-section">
-
     <section class="section-row">
       <table class="table">
         <thead>
@@ -27,22 +26,17 @@
             <td class="">{{building.name}}</td>
             <td class="">{{building.phone}}</td>
             <td class="">{{building.contactPerson}}</td>
-
             <td>
-              <a class="md-trigger btn-sm btn outline" data-modal="add-building">Manage</a>
+              <a (click)="viewObject(building)" class="md-trigger btn-sm btn outline" data-modal="add-building">Manage</a>
               <a class="md-trigger btn-sm btn outline-danger" data-modal="add-building">Remove</a>
             </td>
-
           </tr>
         </tbody>
       </table>
     </section>
-
   </div>
 
-
-
-<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='modalAddId'>
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='objectDetailsModal'>
   <div class="md-content">
   <h3 class="md-header">Add Access Control</h3>
 

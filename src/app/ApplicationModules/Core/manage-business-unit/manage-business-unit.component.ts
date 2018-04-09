@@ -1,8 +1,9 @@
+import { FormBuilder } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
 
 import { BusinessUnit } from '../../../Models/Domain/business-unit.model';
 
-import { BaseComponent } from '../../General/base/base.component';
+import { BaseComponentModals } from '../../General/base/base-component-modals';
 
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ModalService } from './../../../Shared/modal/modal.service';
@@ -14,18 +15,25 @@ import { BusinessUnitsService } from '../../../Services/business-units.service';
   templateUrl: './manage-business-unit.component.html',
   styleUrls: ['./manage-business-unit.component.css']
 })
-export class ManageBusinessUnitComponent extends BaseComponent<BusinessUnit> implements OnInit {
+export class ManageBusinessUnitComponent extends BaseComponentModals<BusinessUnit> implements OnInit {
+
+  objectDetailsModal = 'businessUnitDetails';
 
   constructor(toaster: AppToasterServiceService, spinner: Ng4LoadingSpinnerService,
-    service: BusinessUnitsService, modalService: ModalService) {
-    super(spinner, service, toaster, modalService);
+    service: BusinessUnitsService, modalService: ModalService, fb: FormBuilder) {
+    super(spinner, service, toaster, modalService, fb);
   }
 
   ngOnInit() {
     this.loadAll();
   }
 
+  createForm() {
+  }
+
   viewObject(vendor: BusinessUnit): void {
   }
+
+  processFormData(create: boolean, data) {}
 
 }

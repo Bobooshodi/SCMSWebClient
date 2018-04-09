@@ -16,7 +16,7 @@ export class AppToasterServiceService {
     this.toaster.pop(toast);
   }
 
-  successToast(message: string, titleText: string) {
+  successToast(message: string, titleText?: string) {
     const toast: Toast = {
       type: 'success',
       title: 'Success' || titleText,

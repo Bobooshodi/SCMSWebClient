@@ -5,21 +5,18 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { AppToasterServiceService } from '../../../Services/common/app-toaster-service.service';
 import { CardholderService } from '../../../Services/cardholder.service';
 import { SHCCardType } from '../../../Models/Enums/shc-card-type.enum';
-import { BaseComponent } from '../../General/base/base.component';
-import { ModalService } from './../../../Shared/modal/modal.service';
+import { BaseComponentTabs } from '../../General/base/base-component-tabs';
 
 @Component({
   selector: 'app-manage-cardholders',
   templateUrl: './manage-cardholders.component.html',
   styleUrls: ['./manage-cardholders.component.css']
 })
-export class ManageCardholdersComponent extends BaseComponent<Cardholder> implements OnInit {
-
-  currentTypeTab = 10;
+export class ManageCardholdersComponent extends BaseComponentTabs<Cardholder> implements OnInit {
 
   constructor(spinnerService: Ng4LoadingSpinnerService, cardholderService: CardholderService,
-    toaster: AppToasterServiceService, modalService: ModalService) {
-      super(spinnerService, cardholderService, toaster, modalService);
+    toaster: AppToasterServiceService) {
+      super(spinnerService, cardholderService, toaster);
     }
 
   ngOnInit() {
@@ -34,10 +31,6 @@ export class ManageCardholdersComponent extends BaseComponent<Cardholder> implem
     } else {
       this.filteredList = this.mainList;
     }
-  }
-
-  viewObject(cardholder: Cardholder) {
-
   }
 
 }

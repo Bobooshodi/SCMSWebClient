@@ -1,3 +1,4 @@
+import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 import { Subscription } from 'rxjs/Subscription';
@@ -24,17 +25,13 @@ export class ReplaceCardRequestsComponent extends BaseComponent<SOAReplaceCardRe
 
   constructor(service: CardReplacementRequestsService, modalService: ModalService,
     spinner: Ng4LoadingSpinnerService, toaster: AppToasterServiceService,
-    private dataService: DataSendingService) {
-      super(spinner, service, toaster, modalService);
+    private dataService: DataSendingService, fb: FormBuilder) {
+      super(spinner, service, toaster);
       this.subscription = this.dataService.getObject1Data.subscribe(x => { this.listFilter = x; });
     }
 
   ngOnInit() {
     this.loadAll();
-  }
-
-  viewObject(request: SOAReplaceCardRequest) {
-
   }
 
   ngOnDestroy(): void {

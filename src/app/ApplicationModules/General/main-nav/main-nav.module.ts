@@ -19,6 +19,7 @@ import { ManageShcTenantsModule } from '../../Core/manage-shc-tenants/manage-shc
 import { ManageCompaniesModule } from '../../Core/manage-companies/manage-companies.module';
 import { ManageCardsModule } from '../../Core/manage-cards/manage-cards.module';
 import { ManageSettingsModule } from '../../Core/manage-settings/manage-settings.module';
+import { DashboardModule } from '../../Core/dashboard/dashboard.module';
 
 const appMainRoutes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full', canActivate: [AuthGuard] },
@@ -26,7 +27,11 @@ const appMainRoutes: Routes = [
     children: [
       {
         path: '',
-        loadChildren : () => ManageBuildingModule
+        loadChildren : () => DashboardModule
+      },
+      {
+        path: 'dashboard',
+        loadChildren : () => DashboardModule
       },
       {
         path: 'buildings',

@@ -4,15 +4,17 @@
 
 .searcher{
     position: relative;
-    
+    border-bottom:1px solid $border-color;
+    margin-bottom: 1em;
     &::after{
         @include icon-font;
         content: '\E8B6';
         width: 30px;
         height: 35px;
         position: absolute;
-        top: 6px;
-        right: 0;
+        font-size: 100%;
+        top: 10px;
+        right: -5px;
         z-index: 9;
         opacity: 0.4;
     }

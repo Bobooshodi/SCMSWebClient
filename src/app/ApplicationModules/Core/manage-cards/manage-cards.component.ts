@@ -1,3 +1,4 @@
+import { FormBuilder } from '@angular/forms';
 import { BaseStatusHistory } from './../../../Models/base-status-history.model';
 import { Component, OnInit } from '@angular/core';
 import { Card } from '../../../Models/Domain/card.model';
@@ -5,7 +6,6 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { CardService } from '../../../Services/card.service';
 import { AppToasterServiceService } from '../../../Services/common/app-toaster-service.service';
 import { BaseComponentTabs } from '../../General/base/base-component-tabs';
-import { ModalService } from './../../../Shared/modal/modal.service';
 
 @Component({
   selector: 'app-manage-cards',
@@ -15,25 +15,22 @@ import { ModalService } from './../../../Shared/modal/modal.service';
 export class ManageCardsComponent extends BaseComponentTabs<Card> implements OnInit {
 
   constructor(protected spinnerService: Ng4LoadingSpinnerService, protected cardService: CardService,
-    protected toaster: AppToasterServiceService, protected modalService: ModalService) {
-      super(spinnerService, cardService, toaster, modalService);
+    protected toaster: AppToasterServiceService) {
+      super(spinnerService, cardService, toaster);
     }
 
   ngOnInit() {
     this.loadAll();
   }
 
-  protected filterList(param: any) {
+  protected filterList(param: string) {
     this.currentTypeTab = param;
 
     if (param !== 'all') {
-      this.mainList = this.filteredList.filter(c => c.cardType.toLowerCase() === param);
+      this.filteredList = this.mainList.filter(c => c.cardType.toLowerCase() === param);
     } else {
       this.filteredList = this.mainList;
     }
-  }
-
-  viewObject(vendor: Card): void {
   }
 
 }

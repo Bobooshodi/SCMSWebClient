@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { CardTypeService } from './../../../Services/card-type.service';
 import { NgModule } from '@angular/core';
@@ -17,6 +17,7 @@ const cardTypeRoutes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     AppModalModule,
     CardTypePipesModule,
     RouterModule.forChild(cardTypeRoutes)
