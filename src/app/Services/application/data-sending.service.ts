@@ -7,10 +7,10 @@ export class DataSendingService {
 
   constructor() { }
 
-  private object1Data = new Subject<any>();
-  private object2Data = new Subject<any>();
-  private object3Data = new Subject<any>();
-  private object4Data = new Subject<any>();
+  protected object1Data = new Subject<any>();
+  protected object2Data = new Subject<any>();
+  protected object3Data = new Subject<any>();
+  protected object4Data = new Subject<any>();
 
   getObject1Data = this.object1Data.asObservable();
   getObject2Data = this.object2Data.asObservable();

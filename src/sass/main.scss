@@ -40,8 +40,10 @@
   'components/loader',
   'components/tooltip',
   'components/accordion';
- 
 
+// Toaster
+@import
+  'node_modules/angular2-toaster/toaster';
 
 // 6. Page-specific styles
 @import

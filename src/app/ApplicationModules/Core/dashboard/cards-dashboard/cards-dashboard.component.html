@@ -3,51 +3,50 @@
       <small>Active Cards</small>
     </h2>
     <div class="dashboard-graph">
-      <div class="dashboard-graph__item" style="width:10%;">
+      <div class="dashboard-graph__item" [ngStyle]="{'width':employeeCards.length / allCards.length | percent}">
       </div>
 
-      <div class="dashboard-graph__item" style="width:20%;">
+      <div class="dashboard-graph__item" [ngStyle]="{'width':individualCards.length / allCards.length | percent}">
       </div>
 
-      <div class="dashboard-graph__item" style="width:50%;">
+      <div class="dashboard-graph__item" [ngStyle]="{'width':tenantCards.length / allCards.length | percent}">
       </div>
 
-      <div class="dashboard-graph__item" style="width:15%;">
+      <div class="dashboard-graph__item" [ngStyle]="{'width':strataCards.length / allCards.length | percent}">
       </div>
 
-      <div class="dashboard-graph__item" style="width:5%;">
+      <div class="dashboard-graph__item" [ngStyle]="{'width':phantomCards.length / allCards.length | percent}">
       </div>
     </div>
   </div>
   <div class="panel__item">
-
     <div class="section-row">
       <table class="table">
         <tbody>
           <tr class="tableRow stats">
             <td class="stats__type stats--employee">Employee</td>
-            <td class="">987 Cards</td>
-            <td class="">32%</td>
+            <td class="">{{employeeCards.length}} Cards</td>
+            <td class="">{{employeeCards.length / allCards.length | percent}}</td>
           </tr>
           <tr class="tableRow stats">
             <td class="stats__type stats--individual">Individual</td>
-            <td class="">987 Cards</td>
-            <td class="">32%</td>
+            <td class="">{{individualCards.length}} Cards</td>
+            <td class="">{{individualCards.length / allCards.length | percent}}</td>
           </tr>
           <tr class="tableRow stats">
             <td class="stats__type stats--tenant">Tenant</td>
-            <td class="">987 Cards</td>
-            <td class="">32%</td>
+            <td class="">{{tenantCards.length}} Cards</td>
+            <td class="">{{tenantCards.length / allCards.length | percent}}</td>
           </tr>
           <tr class="tableRow stats">
             <td class="stats__type stats--strata">Strata</td>
-            <td class="">987 Cards</td>
-            <td class="">32%</td>
+            <td class="">{{strataCards.length}} Cards</td>
+            <td class="">{{strataCards.length / allCards.length | percent}}</td>
           </tr>
           <tr class="tableRow stats">
             <td class="stats__type stats--phantom">Phantom</td>
-            <td class="">987 Cards</td>
-            <td class="">32%</td>
+            <td class="">{{phantomCards.length}} Cards</td>
+            <td class="">{{phantomCards.length / allCards.length | percent}}</td>
           </tr>
         </tbody>
       </table>

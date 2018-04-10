@@ -6,11 +6,12 @@ import { CardholdersDashboardComponent } from './cardholders-dashboard/cardholde
 import { CardsDashboardComponent } from './cards-dashboard/cards-dashboard.component';
 import { RequestsDashboardModule } from './requests-dashboard/requests-dashboard.module';
 import { RequestsDashboardComponent } from './requests-dashboard/requests-dashboard.component';
+import { CardholderService } from '../../../Services/cardholder.service';
+import { CardService } from '../../../Services/card.service';
 
 const dashboardRoutes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
-  { path: 'dashboard', component: DashboardComponent}, // , canActivate: [AuthGuard] },
-  { path: 'requests', component: RequestsDashboardComponent, // , canActivate: [AuthGuard], canActivateChild: [AuthGuard],
+  { path: 'dashboard', component: DashboardComponent, // , canActivate: [AuthGuard] },
     children: [
       {
         path: '',
@@ -32,6 +33,11 @@ const dashboardRoutes: Routes = [
   declarations: [
     DashboardComponent,
     CardholdersDashboardComponent,
-    CardsDashboardComponent]
+    CardsDashboardComponent
+  ],
+  providers: [
+    CardService,
+    CardholderService,
+  ]
 })
 export class DashboardModule { }

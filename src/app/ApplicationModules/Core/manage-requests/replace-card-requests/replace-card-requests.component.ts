@@ -25,7 +25,7 @@ export class ReplaceCardRequestsComponent extends BaseComponent<SOAReplaceCardRe
 
   constructor(service: CardReplacementRequestsService, modalService: ModalService,
     spinner: Ng4LoadingSpinnerService, toaster: AppToasterServiceService,
-    private dataService: DataSendingService, fb: FormBuilder) {
+    protected dataService: DataSendingService, fb: FormBuilder) {
       super(spinner, service, toaster);
       this.subscription = this.dataService.getObject1Data.subscribe(x => { this.listFilter = x; });
     }

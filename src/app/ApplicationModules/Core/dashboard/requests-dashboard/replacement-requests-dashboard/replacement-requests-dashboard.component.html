@@ -1,24 +1,24 @@
 <table class="table">
     <tbody>
-      <tr class="tableRow">
+      <tr class="tableRow" *ngFor="let request of filteredList | replacementRequestsFilter:listFilter" >
         <td class="">
           <div class="placer">
             <div class="placer__img"></div>
             <p class="placer__info">
-              <span>kudakwashe</span>
-              <span>Passport: DN855033</span>
+              <span>{{request.cardholder}}</span>
+              <span>{{request.cardholderId}}</span>
             </p>
           </div>
         </td>
         <td class="">
-          <span>CIN: 123123456789123</span>
-          <span>Individual Card</span>
+          <span>CIN: {{request.cardId}}</span>
+          <span>{{request.replacementId}}</span>
         </td>
         <td class="">
           <span>Requested: </span>
-          <span>03 Mrch 2018</span>
+          <span>{{request.requestedDate | date:"fullDate"}}</span>
         </td>
-        <td class="request-status">Pending</td>
+        <td class="request-status">{{request.requestStatus}}</td>
       </tr>
     </tbody>
   </table>

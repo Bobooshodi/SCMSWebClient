@@ -24,8 +24,8 @@ export class CardDistributionRequestsComponent extends BaseComponentModals<SOACa
   subscription: Subscription;
 
   constructor(service: CardRequestsService, modalService: ModalService,
-    private spinner: Ng4LoadingSpinnerService, toaster: AppToasterServiceService,
-    private dataService: DataSendingService, fb: FormBuilder) {
+    protected spinner: Ng4LoadingSpinnerService, toaster: AppToasterServiceService,
+    protected dataService: DataSendingService, fb: FormBuilder) {
       super(spinner, service, toaster, modalService, fb);
       this.subscription = this.dataService.getObject1Data.subscribe(x => { this.listFilter = x; });
      }
@@ -40,10 +40,6 @@ export class CardDistributionRequestsComponent extends BaseComponentModals<SOACa
 
   viewObject(request: SOACardRequest) {
 
-  }
-
-  testModal() {
-    this.modalService.open(this.objectDetailsModal);
   }
 
   ngOnDestroy(): void {

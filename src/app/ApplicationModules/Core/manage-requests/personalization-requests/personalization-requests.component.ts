@@ -24,7 +24,7 @@ export class PersonalizationRequestsComponent extends BaseComponent<SOAPersonali
   subscription: Subscription;
 
   constructor(service: PersonalisationRequestsService, modalService: ModalService, fb: FormBuilder,
-    spinner: Ng4LoadingSpinnerService, toaster: AppToasterServiceService, private dataService: DataSendingService) {
+    spinner: Ng4LoadingSpinnerService, toaster: AppToasterServiceService, protected dataService: DataSendingService) {
       super(spinner, service, toaster);
       this.subscription = this.dataService.getObject1Data.subscribe(x => { this.listFilter = x; });
     }

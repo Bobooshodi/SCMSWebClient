@@ -1,6 +1,6 @@
 <table class="table">
     <tbody>
-      <tr class="tableRow">
+      <tr class="tableRow" *ngFor="let request of filteredList | personalisationRequestsFilter:listFilter" >
         <td class="">
           <div class="placer">
             <div class="placer__img">
@@ -12,8 +12,8 @@
               </i>
             </div>
             <p class="placer__info">
-              <span>kudakwashe</span>
-              <span>Passport: DN855033</span>
+              <span>{{request.cardholder}}</span>
+              <span>{{request.identificationType | cardholderIdTypeFormatter}}</span>
             </p>
           </div>
         </td>
@@ -23,9 +23,9 @@
         </td>
         <td class="">
           <span>Requested: </span>
-          <span>03 Mrch 2018</span>
+          <span>{{request.requestDate | date:"fullDate"}}</span>
         </td>
-        <td class="request-status">Pending</td>
+        <td class="request-status">{{request.personalisationStatus}}</td>
       </tr>
     </tbody>
   </table>

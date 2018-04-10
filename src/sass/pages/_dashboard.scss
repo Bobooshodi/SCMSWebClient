@@ -1,5 +1,5 @@
 /*******************************************
-DASHBOARD COMPONENT 
+DASHBOARD COMPONENT
 ******************************************/
 .dashboard {
   // background-color: #f5f5fa;
@@ -92,7 +92,7 @@ DASHBOARD COMPONENT
         margin-top: 0;
       }
 
-     
+
 
       &__searcher {
         width: 100%;
@@ -107,7 +107,7 @@ DASHBOARD COMPONENT
         .head {
           align-self: center;
           margin: 0 0 0 0.3em;
-          
+
         }
 
         .input {
@@ -146,23 +146,26 @@ DASHBOARD COMPONENT
 
     //margin: 0.5em 0;
   }
-
+// Employee
   &__item:nth-child(1) {
     background: #2064f5;
   }
 
+// Individual
   &__item:nth-child(2) {
     background: #bf6ff5;
   }
 
+// Tenant
   &__item:nth-child(3) {
     background: #f1da09;
   }
 
+// Strata
   &__item:nth-child(4) {
     background: #95989c;
   }
-
+// Phantom
   &__item:nth-child(5) {
     background: #b9c7d4;
   }
@@ -207,13 +210,14 @@ DASHBOARD COMPONENT
 
   &--strata {
     &::after {
-      background-color: red;
+      background-color: #95989c;
+
     }
   }
 
   &--phantom {
     &::after {
-      background-color: #95989c;
+      background-color: #b9c7d4;
     }
   }
 }

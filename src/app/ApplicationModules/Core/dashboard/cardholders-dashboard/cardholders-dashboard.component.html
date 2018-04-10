@@ -1,19 +1,19 @@
 <div class="panel__head">
 
-    <h2>25,311
+    <h2>{{allCardholders.length}}
       <small>cardholders</small>
     </h2>
     <div class="dashboard-graph">
-      <div class="dashboard-graph__item" style="width:20%;">
+      <div class="dashboard-graph__item" [ngStyle]="{'width':employees.length / allCardholders.length | percent}">
       </div>
 
-      <div class="dashboard-graph__item" style="width:30%;">
+      <div class="dashboard-graph__item" [ngStyle]="{'width':individuals.length / allCardholders.length | percent}">
       </div>
 
-      <div class="dashboard-graph__item" style="width:40%;">
+      <div class="dashboard-graph__item" [ngStyle]="{'width':tenants.length / allCardholders.length | percent}">
       </div>
 
-      <div class="dashboard-graph__item" style="width:10%;">
+      <div class="dashboard-graph__item" [ngStyle]="{'width':strata.length / allCardholders.length | percent}">
       </div>
     </div>
   </div>
@@ -24,23 +24,23 @@
         <tbody>
           <tr class="tableRow stats">
             <td class="stats__type stats--employee">Employee</td>
-            <td class="">987 Cards</td>
-            <td class="">32%</td>
+            <td class="">{{employees.length}} Cardholders</td>
+            <td class="">{{employees.length / allCardholders.length | percent}}</td>
           </tr>
           <tr class="tableRow stats">
             <td class="stats__type stats--individual">Individual</td>
-            <td class="">987 Cards</td>
-            <td class="">32%</td>
+            <td class="">{{individuals.length}} Cardholders</td>
+            <td class="">{{individuals.length / allCardholders.length | percent}}</td>
           </tr>
           <tr class="tableRow stats">
             <td class="stats__type stats--tenant">Tenant</td>
-            <td class="">987 Cards</td>
-            <td class="">32%</td>
+            <td class="">{{tenants.length}} Cardholders</td>
+            <td class="">{{tenants.length / allCardholders.length | percent}}</td>
           </tr>
           <tr class="tableRow stats">
             <td class="stats__type stats--strata">Strata</td>
-            <td class="">987 Cards</td>
-            <td class="">32%</td>
+            <td class="">{{strata.length}} Cardholders</td>
+            <td class="">{{strata.length / allCardholders.length | percent}}</td>
           </tr>
         </tbody>
       </table>
