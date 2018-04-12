@@ -17,11 +17,17 @@ import { BusinessUnitsService } from '../../../Services/business-units.service';
 })
 export class ManageBusinessUnitComponent extends BaseComponentModals<BusinessUnit> implements OnInit {
 
+  deleteWarningMessage = '';
   deleteObjectModal = 'deleteBusinessUnit';
   objectDetailsModal = 'businessUnitDetails';
 
-  constructor(toaster: AppToasterServiceService, spinner: Ng4LoadingSpinnerService,
-    service: BusinessUnitsService, modalService: ModalService, fb: FormBuilder) {
+  constructor(
+    toaster: AppToasterServiceService,
+    spinner: Ng4LoadingSpinnerService,
+    service: BusinessUnitsService,
+    modalService: ModalService,
+    fb: FormBuilder
+  ) {
     super(spinner, service, toaster, modalService, fb);
   }
 
@@ -40,22 +46,28 @@ export class ManageBusinessUnitComponent extends BaseComponentModals<BusinessUni
 
   viewObject(businessUnit: BusinessUnit): void {
     try {
-      this.service.get(businessUnit.id).subscribe((resp: BusinessUnit) => {
-        if (resp) {
-          this.selectedObject = resp;
+      this.spinnerService.show();
+      this.service.get(businessUnit.id).subscribe(
+        (resp: BusinessUnit) => {
+          if (resp) {
+            this.selectedObject = resp;
 
-          this.form.patchValue({
-            name: this.selectedObject.name,
-            code: this.selectedObject.description
-          });
-          this.openModal('update');
-        } else {
-          throw new Error('Unable to fetch this Business Unit details from the Server, Please try again');
+            this.form.patchValue({
+              name: this.selectedObject.name,
+              code: this.selectedObject.description
+            });
+            this.spinnerService.hide();
+            this.openModal('update');
+          } else {
+            throw new Error(
+              'Unable to fetch this Business Unit details from the Server, Please try again'
+            );
+          }
+        },
+        err => {
+          this.handleError(err);
         }
-      }, err => {
-        this.handleError(err);
-      }
-    );
+      );
     } catch (err) {
       this.handleError(err);
     }
@@ -63,6 +75,8 @@ export class ManageBusinessUnitComponent extends BaseComponentModals<BusinessUni
 
   deleteObject(businessUnit: BusinessUnit) {
     this.selectedObject = businessUnit;
+    this.deleteWarningMessage = `Are you sure you sure you want to delete
+    ${this.selectedObject.name} Business Unit? `;
 
     this.openModal('remove');
   }
@@ -79,51 +93,57 @@ export class ManageBusinessUnitComponent extends BaseComponentModals<BusinessUni
       this.selectedObject.description = data.code;
 
       if (this.modalOperation === 'create') {
-        this.service.create<BusinessUnit>(this.selectedObject).subscribe((resp: BusinessUnit) => {
-          if (resp) {
-            this.selectedObject = resp;
-            this.toaster.successToast('Businss Unit Successfully Created');
+        this.service.create<BusinessUnit>(this.selectedObject).subscribe(
+          (resp: BusinessUnit) => {
+            if (resp) {
+              this.selectedObject = resp;
+              this.toaster.successToast('Businss Unit Successfully Created');
 
-            this.refresh();
+              this.refresh();
+            }
+          },
+          err => {
+            this.handleError(err);
           }
-        }, err => {
-          this.handleError(err);
-        }
-      );
+        );
       } else if (this.modalOperation === 'update') {
-        this.service.update(this.selectedObject).subscribe((resp: BusinessUnit) => {
-          if (resp) {
-            this.selectedObject = resp;
-            this.toaster.successToast('Businss Unit Successfully Updated');
+        this.service.update(this.selectedObject).subscribe(
+          (resp: BusinessUnit) => {
+            if (resp) {
+              this.selectedObject = resp;
+              this.toaster.successToast('Businss Unit Successfully Updated');
 
-            this.refresh();
+              this.refresh();
+            }
+          },
+          err => {
+            this.handleError(err);
           }
-        }, err => {
-          this.handleError(err);
-        }
-      );
+        );
       }
-      } catch (err) {
-        this.handleError(err);
-      }
+    } catch (err) {
+      this.handleError(err);
+    }
   }
 
   processResponse(response: boolean) {
     try {
       if (response) {
         this.spinnerService.show();
-        this.service.delete(this.selectedObject.id).subscribe(resp => {
-          if (resp) {
-            this.toaster.successToast('Business Unit removed successfully');
+        this.service.delete(this.selectedObject.id).subscribe(
+          resp => {
+            if (resp) {
+              this.toaster.successToast('Business Unit removed successfully');
 
-            this.refresh();
-          } else {
-            this.toaster.errorToast('Something went wrong');
+              this.refresh();
+            } else {
+              this.toaster.errorToast('Something went wrong');
+            }
+          },
+          err => {
+            this.handleError(err);
           }
-        }, err => {
-          this.handleError(err);
-        }
-      );
+        );
       } else {
         this.closeModal();
       }

@@ -40,7 +40,7 @@ export class ManageCardsComponent extends BaseComponentTabsAndModal<Card> implem
   viewObject(card: Card) {
     this.selectedObject = card;
 
-    this.openModal('update');
+    this.openModal('remove');
   }
 
   processFormData(data) {

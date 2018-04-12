@@ -16,7 +16,7 @@ import { Building } from '../../../Models/Domain/building.model';
   styleUrls: ['./manage-access-unit.component.css']
 })
 export class ManageAccessUnitComponent extends BaseComponentModals<AccessGroup> implements OnInit {
-
+  deleteWarningMessage = '';
   objectDetailsModal = 'accessUnitDetails';
   deleteObjectModal = 'deleteAccessUnit';
   accessGroupFilter;
@@ -26,11 +26,16 @@ export class ManageAccessUnitComponent extends BaseComponentModals<AccessGroup> 
   allBuildings: Building[] = [];
   selectedBuildings: Building[] = [];
 
-  constructor(spinnerService: Ng4LoadingSpinnerService, service: AccessUnitService,
-    toaster: AppToasterServiceService, modalService: ModalService, fb: FormBuilder,
-    private buldingService: BuildingService) {
-      super(spinnerService, service, toaster, modalService, fb);
-    }
+  constructor(
+    spinnerService: Ng4LoadingSpinnerService,
+    service: AccessUnitService,
+    toaster: AppToasterServiceService,
+    modalService: ModalService,
+    fb: FormBuilder,
+    private buldingService: BuildingService
+  ) {
+    super(spinnerService, service, toaster, modalService, fb);
+  }
 
   ngOnInit() {
     this.createForm();
@@ -39,13 +44,15 @@ export class ManageAccessUnitComponent extends BaseComponentModals<AccessGroup> 
 
   loadAll() {
     this.spinnerService.show();
-    this.buldingService.getAll().subscribe((buildings: Building[]) => {
-      this.allBuildings = buildings;
-    }, err => {
-      this.handleError(err);
-    }
-  );
-  super.loadAll();
+    this.buldingService.getAll().subscribe(
+      (buildings: Building[]) => {
+        this.allBuildings = buildings;
+      },
+      err => {
+        this.handleError(err);
+      }
+    );
+    super.loadAll();
   }
 
   createForm() {
@@ -60,21 +67,27 @@ export class ManageAccessUnitComponent extends BaseComponentModals<AccessGroup> 
 
   viewObject(accessGroup: AccessGroup) {
     try {
-      this.service.get<AccessGroup>(accessGroup.id).subscribe(resp => {
-        this.selectedObject = resp;
+      this.spinnerService.show();
+      this.service.get<AccessGroup>(accessGroup.id).subscribe(
+        resp => {
+          this.selectedObject = resp;
 
-        this.form.patchValue({
-          displayName: resp.displayName,
-          accessControl: resp.accessControl,
-          description: resp.description
-        });
+          this.form.patchValue({
+            displayName: resp.displayName,
+            accessControl: resp.accessControl,
+            description: resp.description
+          });
 
-        resp.buildings.forEach(building => {
-          this.processBuildingSelection(building, true);
-        });
+          resp.buildings.forEach(building => {
+            this.processBuildingSelection(building, true);
+          });
 
-        this.openModal('update');
-      });
+          this.openModal('update');
+        },
+        err => {
+          this.handleError(err);
+        }
+      );
     } catch (err) {
       this.handleError(err);
     }
@@ -82,12 +95,15 @@ export class ManageAccessUnitComponent extends BaseComponentModals<AccessGroup> 
 
   deleteObject(accessGroup: AccessGroup) {
     this.selectedObject = accessGroup;
+    this.deleteWarningMessage = `Are you sure you want to remove
+    ${this.selectedObject.displayName} Access Group?`;
 
     this.openModal('remove');
   }
 
   processFormData(data) {
     try {
+      this.spinnerService.show();
       if (this.modalOperation === 'create') {
         this.selectedObject = new AccessGroup();
       }
@@ -97,28 +113,34 @@ export class ManageAccessUnitComponent extends BaseComponentModals<AccessGroup> 
       this.selectedObject.description = data.description;
 
       if (this.modalOperation === 'create') {
-        this.service.create<AccessGroup>(this.selectedObject).subscribe((accessGroup: AccessGroup) => {
-          this.selectedObject = accessGroup;
-          this.toaster.successToast('Access Group successfully created');
-
-          this.refresh();
-        }, err => {
-          this.handleError(err);
-        }
-      );
-      } else if (this.modalOperation === 'update') {
-        this.service.update(this.selectedObject).subscribe(resp => {
-          if (resp) {
-            this.toaster.successToast('Access Group successfully');
+        this.service.create<AccessGroup>(this.selectedObject).subscribe(
+          (accessGroup: AccessGroup) => {
+            this.selectedObject = accessGroup;
+            this.toaster.successToast('Access Group successfully created');
 
             this.refresh();
-          } else {
-            throw new Error('Unable to Create Access Group, Please try again later');
+          },
+          err => {
+            this.handleError(err);
           }
-        }, err => {
-          this.handleError(err);
-        }
-      );
+        );
+      } else if (this.modalOperation === 'update') {
+        this.service.update(this.selectedObject).subscribe(
+          resp => {
+            if (resp) {
+              this.toaster.successToast('Access Group successfully');
+
+              this.refresh();
+            } else {
+              throw new Error(
+                'Unable to Create Access Group, Please try again later'
+              );
+            }
+          },
+          err => {
+            this.handleError(err);
+          }
+        );
       }
     } catch (err) {
       this.handleError(err);
@@ -144,18 +166,26 @@ export class ManageAccessUnitComponent extends BaseComponentModals<AccessGroup> 
 
   processResponse(remove: boolean) {
     if (remove) {
-      this.service.delete(this.selectedObject.id).subscribe(resp => {
-        if (resp) {
-          this.toaster.successToast('Access group deleted Successfully');
+      this.spinnerService.show();
+      this.service.delete(this.selectedObject.id).subscribe(
+        resp => {
+          if (resp) {
+            this.toaster.successToast('Access group deleted Successfully');
 
-          this.refresh();
+            this.refresh();
+          }
+        },
+        err => {
+          this.handleError(err);
         }
-      }, err => {
-        this.handleError(err);
-      }
-    );
+      );
     } else {
       this.closeModal();
     }
+  }
+
+  clear() {
+    this.selectedBuildings = [];
+    this.selectedAccessGroups = [];
   }
 }

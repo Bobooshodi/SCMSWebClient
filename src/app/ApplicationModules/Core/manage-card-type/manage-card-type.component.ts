@@ -13,7 +13,9 @@ import { ModalService } from '../../../Shared/modal/modal.service';
   templateUrl: './manage-card-type.component.html',
   styleUrls: ['./manage-card-type.component.css']
 })
-export class ManageCardTypeComponent extends BaseComponentModals<CardType> implements OnInit {
+export class ManageCardTypeComponent extends BaseComponentModals<CardType>
+  implements OnInit {
+  deleteWarningMessage = '';
   objectDetailsModal = 'cardTypeDetails';
   deleteObjectModal = 'deleteCardtype';
 
@@ -41,6 +43,7 @@ export class ManageCardTypeComponent extends BaseComponentModals<CardType> imple
 
   viewObject(cardType: CardType) {
     try {
+      this.spinnerService.show();
       this.service.get(cardType.id).subscribe(
         (type: CardType) => {
           if (type) {
@@ -50,6 +53,8 @@ export class ManageCardTypeComponent extends BaseComponentModals<CardType> imple
               name: this.selectedObject.name,
               description: this.selectedObject.description
             });
+            this.spinnerService.hide();
+            this.openModal('update');
           } else {
             throw new Error('Unable to fetch CardType from the Server');
           }
@@ -58,8 +63,6 @@ export class ManageCardTypeComponent extends BaseComponentModals<CardType> imple
           this.handleError(err);
         }
       );
-
-      this.openModal('update');
     } catch (err) {
       this.handleError(err);
     }
@@ -67,19 +70,22 @@ export class ManageCardTypeComponent extends BaseComponentModals<CardType> imple
 
   deleteObject(cardType: CardType) {
     this.selectedObject = cardType;
+    this.deleteWarningMessage = `Are you sure you want to delete
+    ${this.selectedObject.name} Cardtype?`;
 
     this.openModal('remove');
   }
 
   processFormData(data) {
     try {
+      this.spinnerService.show();
       if (this.modalOperation === 'create') {
         this.selectedObject = new CardType();
       }
-        this.selectedObject.description = data.description;
-        this.selectedObject.name = data.name;
+      this.selectedObject.description = data.description;
+      this.selectedObject.name = data.name;
 
-        if (this.modalOperation === 'create') {
+      if (this.modalOperation === 'create') {
         this.service.create<CardType>(this.selectedObject).subscribe(
           (cardType: CardType) => {
             if (cardType) {
@@ -116,18 +122,20 @@ export class ManageCardTypeComponent extends BaseComponentModals<CardType> imple
   processResponse(response: boolean) {
     if (response) {
       this.spinnerService.show();
-      this.service.delete(this.selectedObject.id).subscribe(resp => {
-        if (resp) {
-          this.toaster.successToast('Cardtype removed Successfully');
+      this.service.delete(this.selectedObject.id).subscribe(
+        resp => {
+          if (resp) {
+            this.toaster.successToast('Cardtype removed Successfully');
 
-          this.refresh();
-        } else {
-          throw new Error('Something went Wrong');
+            this.refresh();
+          } else {
+            throw new Error('Something went Wrong');
+          }
+        },
+        err => {
+          this.handleError(err);
         }
-      }, err => {
-        this.handleError(err);
-      }
-    );
+      );
     } else {
       this.closeModal();
     }

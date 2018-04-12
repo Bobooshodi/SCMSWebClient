@@ -72,7 +72,6 @@
 </app-modal>
 
 <app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='deleteObjectModal'>
-  <app-warning-modal [modalHeader]="'Remove Building'" [modalMessage]="'Are you sure you want to remove this Building?'"
-                    (response)="processResponse($event)">
+  <app-warning-modal [modalHeader]="'Remove Building'" [modalMessage]="deleteWarningMessage" (response)="processResponse($event)">
   </app-warning-modal>
 </app-modal>

@@ -80,6 +80,6 @@
 </app-modal>
 
 <app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='deleteObjectModal'>
-  <app-warning-modal [modalHeader]="'Delete Company'" [modalMessage]="modalMessage"
+  <app-warning-modal [modalHeader]="'Delete Company'" [modalMessage]="deleteWarningMessage"
                     (response)="processResponse($event)"></app-warning-modal>
 </app-modal>

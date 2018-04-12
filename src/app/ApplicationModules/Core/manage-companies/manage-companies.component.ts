@@ -19,7 +19,7 @@ import { BusinessUnitsService } from '../../../Services/business-units.service';
   styleUrls: ['./manage-companies.component.css']
 })
 export class ManageCompaniesComponent extends BaseComponentModals<Company> implements OnInit {
-
+  deleteWarningMessage = '';
   buListFilter = '';
   modalMessage = '';
   deleteObjectModal = 'deleteCompanyModal';
@@ -27,11 +27,16 @@ export class ManageCompaniesComponent extends BaseComponentModals<Company> imple
   allBusinessUnits: BusinessUnit[] = [];
   selectedBusinessUnits: BusinessUnit[] = [];
 
-  constructor(spinnerService: Ng4LoadingSpinnerService, service: CompanyService,
-    toaster: AppToasterServiceService, modalService: ModalService, fb: FormBuilder,
-    private buService: BusinessUnitsService) {
-      super(spinnerService, service, toaster, modalService, fb);
-    }
+  constructor(
+    spinnerService: Ng4LoadingSpinnerService,
+    service: CompanyService,
+    toaster: AppToasterServiceService,
+    modalService: ModalService,
+    fb: FormBuilder,
+    private buService: BusinessUnitsService
+  ) {
+    super(spinnerService, service, toaster, modalService, fb);
+  }
 
   ngOnInit() {
     this.createForm();
@@ -41,14 +46,16 @@ export class ManageCompaniesComponent extends BaseComponentModals<Company> imple
   loadAll() {
     try {
       this.spinnerService.show();
-      this.buService.getAll<BusinessUnit>().subscribe(bu => {
-        this.allBusinessUnits = bu;
-        this.spinnerService.hide();
-      }, err => {
-        this.handleError(err);
-      }
-    );
-    super.loadAll();
+      this.buService.getAll<BusinessUnit>().subscribe(
+        bu => {
+          this.allBusinessUnits = bu;
+          this.spinnerService.hide();
+        },
+        err => {
+          this.handleError(err);
+        }
+      );
+      super.loadAll();
     } catch (err) {
       this.handleError(err);
     }
@@ -63,6 +70,7 @@ export class ManageCompaniesComponent extends BaseComponentModals<Company> imple
 
   viewObject(company: Company) {
     try {
+      this.spinnerService.show();
       this.service.get<Company>(company.id).subscribe(resp => {
         this.selectedObject = resp;
 
@@ -72,10 +80,15 @@ export class ManageCompaniesComponent extends BaseComponentModals<Company> imple
         });
 
         if (resp.businessUnits) {
-          resp.businessUnits.forEach(bu => this.processBusinessUnitSelection(bu, true));
+          resp.businessUnits.forEach(bu =>
+            this.processBusinessUnitSelection(bu, true)
+          );
         }
 
+        this.spinnerService.hide();
         this.openModal('update');
+      }, err => {
+        this.handleError(err);
       });
     } catch (err) {
       this.handleError(err);
@@ -84,13 +97,15 @@ export class ManageCompaniesComponent extends BaseComponentModals<Company> imple
 
   deleteObject(company: Company) {
     this.selectedObject = company;
-    this.modalMessage = `Are you sure you want to delete ${this.selectedObject.name}?`;
+    this.deleteWarningMessage = `Are you sure you want to delete
+    ${this.selectedObject.name} Company?`;
 
     this.openModal('remove');
   }
 
   processFormData(data) {
     try {
+      this.spinnerService.show();
       if (this.modalOperation === 'create') {
         this.selectedObject = new Company();
       }
@@ -100,28 +115,32 @@ export class ManageCompaniesComponent extends BaseComponentModals<Company> imple
       this.selectedObject.businessUnits = this.selectedBusinessUnits;
 
       if (this.modalOperation === 'create') {
-        this.service.create<Company>(this.selectedObject).subscribe(company => {
-          this.selectedObject = company;
-          this.toaster.successToast('Company created Successfully');
+        this.service.create<Company>(this.selectedObject).subscribe(
+          company => {
+            this.selectedObject = company;
+            this.toaster.successToast('Company created Successfully');
 
-          this.clear();
+            this.clear();
 
-          this.refresh();
-        }, err => {
-          this.handleError(err);
-        }
-      );
+            this.refresh();
+          },
+          err => {
+            this.handleError(err);
+          }
+        );
       } else if (this.modalOperation === 'update') {
-        this.service.update(this.selectedObject).subscribe(company => {
-          this.toaster.successToast('Company updated Successfully');
+        this.service.update(this.selectedObject).subscribe(
+          company => {
+            this.toaster.successToast('Company updated Successfully');
 
-          this.clear();
+            this.clear();
 
-          this.refresh();
-        }, err => {
-          this.handleError(err);
-        }
-      );
+            this.refresh();
+          },
+          err => {
+            this.handleError(err);
+          }
+        );
       }
     } catch (err) {
       this.handleError(err);
@@ -129,17 +148,24 @@ export class ManageCompaniesComponent extends BaseComponentModals<Company> imple
   }
 
   processResponse(response: boolean) {
-    if (response) {
-      this.service.delete(this.selectedObject.id).subscribe(resp => {
-        this.toaster.successToast('Company has been successfully deleted');
+    try {
+      if (response) {
+        this.spinnerService.show();
+        this.service.delete(this.selectedObject.id).subscribe(
+          resp => {
+            this.toaster.successToast('Company has been successfully deleted');
 
-        this.refresh();
-      }, err => {
-        this.handleError(err);
+            this.refresh();
+          },
+          err => {
+            this.handleError(err);
+          }
+        );
+      } else {
+        this.closeModal();
       }
-    );
-    } else {
-      this.closeModal();
+    } catch (err) {
+      this.handleError(err);
     }
   }
 
@@ -163,5 +189,4 @@ export class ManageCompaniesComponent extends BaseComponentModals<Company> imple
   clear() {
     this.selectedBusinessUnits = [];
   }
-
 }
