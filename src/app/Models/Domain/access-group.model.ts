@@ -12,4 +12,6 @@ export class AccessGroup extends BaseModel {
   accessControl: string;
   accessControlId: string;
   buildings: Building[];
+
+  isSelected: boolean;
 }

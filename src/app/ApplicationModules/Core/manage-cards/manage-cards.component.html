@@ -48,7 +48,7 @@
                   <td class="">{{card.distributionId}}</td>
                   <td class="">{{card.startDate | date:'fullDate'}}</td>
                   <td>
-                      <button class="btn btn-sm outline-danger">Deactivate Card</button>
+                      <button (click)="viewObject(card)" class="btn btn-sm outline-danger">Deactivate Card</button>
                   </td>
               </tr>
           </tbody>
@@ -56,29 +56,6 @@
   </section>
 </div>
 
-  <div class="md-modal md-effect" id="add-numbers">
-      <div class="md-content">
-          <h3 class="md-header">Create Inventory Numbers</h3>
-          <div class="body">
-              <div class="form-group form-vertical">
-                  <label>Inventory Type</label>
-                  <select class="input">
-                      <option>1</option>
-                      <option>2</option>
-                  </select>
-                  <span class="error-msg">Please select inventory type</span>
-              </div>
-
-              <div class="form-group">
-                  <label>Quantity</label>
-                  <input type="text" class="input" />
-                  <span class="error-msg">Please enter a full name</span>
-              </div>
-
-          </div>
-          <div class="md-footer">
-              <button class="md-close btn outline">Cancel</button>
-              <button class="btn primary pull-right">Generate Inventory</button>
-          </div>
-      </div>
-  </div>
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='deleteObjectModal'>
+  <app-delete-modal [modalHeader]="'Deactivate Card'" (formData)="processFormData($event)"></app-delete-modal>
+  </app-modal>

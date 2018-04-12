@@ -20,6 +20,8 @@ import { CardRequestsService } from '../../../../Services/card-requests.service'
 })
 export class CardDistributionRequestsComponent extends BaseComponentModals<SOACardRequest> implements OnInit, OnDestroy {
 
+  deleteObjectModal = 'deleteCardDistributionRequest';
+  objectDetailsModal = 'cardDistributionRequestDetails';
   listFilter: any;
   subscription: Subscription;
 

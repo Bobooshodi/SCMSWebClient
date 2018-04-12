@@ -2,11 +2,9 @@
   <div class="section-flex">
     <h3>Manage Companies</h3>
     <div class="searcher">
-      <input type="text" placeholder="Search companies" class="input" />
+      <input type="text" placeholder="Search companies" class="input" name="filter" [(ngModel)]="filter" />
     </div>
-
-    <button class="md-trigger btn primary" data-modal="add-company">Add Company</button>
-
+    <button (click)="openModal('create')" class="md-trigger btn primary" data-modal="add-company">Add Company</button>
   </div>
 
 </div>
@@ -18,19 +16,18 @@
           <th class="thead">Company Name</th>
           <th class="thead">Company Code</th>
           <th class="thead">Business Unit </th>
-
           <th class="thead"></th>
         </tr>
       </thead>
       <tbody>
-        <tr class="tableRow productList">
-          <td class="">Damansara Utama CarPark</td>
-          <td class="">DUCP</td>
+        <tr class="tableRow productList" *ngFor="let company of filteredList | companiesListFilter:filter">
+          <td class="">{{company.name}}</td>
+          <td class="">{{company.code}}</td>
 
-          <td class="">(3) Selected</td>
+          <td class="">({{company.businessUnits ? company.businessUnits.length : 0}}) Selected</td>
           <td>
-            <a href="#" class="md-trigger btn btn-sm outline" data-modal="add-company">Manage</a>
-            <a href="#" class="md-trigger btn btn-sm outline-danger" data-modal="add-user">Remove</a>
+            <a (click)="viewObject(company)" class="md-trigger btn btn-sm outline" data-modal="add-company">Manage</a>
+            <a (click)="deleteObject(company)" class="md-trigger btn btn-sm outline-danger" data-modal="add-user">Remove</a>
           </td>
         </tr>
       </tbody>
@@ -38,50 +35,51 @@
   </section>
 </div>
 
-<div class="md-modal md-effect" id="add-company">
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='objectDetailsModal'>
   <div class="md-content">
     <h3 class="md-header">Manage Companies</h3>
-    <div class="body">
-      <div class="form-group form-vertical">
-        <label>Company Name</label>
-        <input type="text" class="input" />
-        <span class="error-msg">Please enter a company name</span>
-      </div>
+    <form [formGroup]="form" novalidate (ngSubmit)="processFormData(form.value)">
+      <div class="body">
+        <div class="form-group form-vertical">
+          <label>Company Name</label>
+          <input type="text" class="input" formControlName="name"/>
+          <span *ngIf="!form.controls.name.valid && !form.controls.name.pristine"
+                class="error-msg">Please enter a company name</span>
+        </div>
 
-      <div class="form-group">
-        <label>Company Code</label>
-        <input type="text" class="input" />
-        <span class="error-msg">Please enter a company code</span>
-      </div>
+        <div class="form-group">
+          <label>Company Code</label>
+          <input type="text" class="input" formControlName="code"/>
+          <span *ngIf="!form.controls.code.valid && !form.controls.code.pristine"
+                class="error-msg">Please enter a company code</span>
+        </div>
 
 
-      <div class="form-group">
-        <label>Select Building
-          <span class="pull-right">(3) Selected</span>
-        </label>
-        <input type="search" placeholder="search buildings" class="input list-searcher" />
-        <div class="bu-units">
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
-            <div class="control__indicator"></div>
+        <div class="form-group">
+          <label>Select Business Units
+            <span class="pull-right">({{selectedBusinessUnits.length}}) Selected</span>
           </label>
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
-            <div class="control__indicator"></div>
-          </label>
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
-            <div class="control__indicator"></div>
-          </label>
+          <input type="search" placeholder="search buildings" class="input list-searcher"
+          name="buListFilter" [(ngModel)]="buListFilter" [ngModelOptions]="{standalone:true}"/>
+          <div class="bu-units">
+            <label class="control control--checkbox" *ngFor="let bu of allBusinessUnits | businessUnitsListFilter:buListFilter" >
+              {{bu.name}}
+              <input type="checkbox" value="{{bu.id}}" (change)="processBusinessUnitSelection(bu, $event.target.checked)"
+              [checked]="bu.isSelected" />
+              <div class="control__indicator"></div>
+            </label>
+          </div>
         </div>
       </div>
-
-    </div>
-    <div class="md-footer">
-      <button class="md-close btn outline">Cancel</button>
-      <button class="btn primary pull-right">Save Company</button>
-    </div>
+      <div class="md-footer">
+        <button type="button" (click)="closeModal()" class="md-close btn outline">Cancel</button>
+        <button type="submit" class="btn primary pull-right">Save Company</button>
+      </div>
+    </form>
   </div>
+</app-modal>
+
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='deleteObjectModal'>
+  <app-warning-modal [modalHeader]="'Delete Company'" [modalMessage]="modalMessage"
+                    (response)="processResponse($event)"></app-warning-modal>
+</app-modal>

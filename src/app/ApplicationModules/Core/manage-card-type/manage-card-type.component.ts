@@ -13,9 +13,9 @@ import { ModalService } from '../../../Shared/modal/modal.service';
   templateUrl: './manage-card-type.component.html',
   styleUrls: ['./manage-card-type.component.css']
 })
-export class ManageCardTypeComponent extends BaseComponentModals<CardType>
-  implements OnInit {
+export class ManageCardTypeComponent extends BaseComponentModals<CardType> implements OnInit {
   objectDetailsModal = 'cardTypeDetails';
+  deleteObjectModal = 'deleteCardtype';
 
   constructor(
     service: CardTypeService,
@@ -25,10 +25,10 @@ export class ManageCardTypeComponent extends BaseComponentModals<CardType>
     fb: FormBuilder
   ) {
     super(spinner, service, toaster, modalService, fb);
-    this.createForm();
   }
 
   ngOnInit() {
+    this.createForm();
     this.loadAll();
   }
 
@@ -41,8 +41,6 @@ export class ManageCardTypeComponent extends BaseComponentModals<CardType>
 
   viewObject(cardType: CardType) {
     try {
-      this.modalOperation = 'update';
-
       this.service.get(cardType.id).subscribe(
         (type: CardType) => {
           if (type) {
@@ -57,63 +55,81 @@ export class ManageCardTypeComponent extends BaseComponentModals<CardType>
           }
         },
         err => {
-          this.toaster.errorToast(err.message);
-          console.log(err);
+          this.handleError(err);
         }
       );
 
       this.openModal('update');
     } catch (err) {
-      this.toaster.errorToast(err.message);
-      console.log(err);
+      this.handleError(err);
     }
+  }
+
+  deleteObject(cardType: CardType) {
+    this.selectedObject = cardType;
+
+    this.openModal('remove');
   }
 
   processFormData(data) {
     try {
       if (this.modalOperation === 'create') {
         this.selectedObject = new CardType();
-
+      }
         this.selectedObject.description = data.description;
         this.selectedObject.name = data.name;
 
-        this.service.create(this.selectedObject).subscribe(
+        if (this.modalOperation === 'create') {
+        this.service.create<CardType>(this.selectedObject).subscribe(
           (cardType: CardType) => {
             if (cardType) {
               this.selectedObject = cardType;
             }
             this.toaster.successToast('CardType created Successfully');
-            this.closeModal();
-            this.loadAll();
+
+            this.refresh();
           },
           err => {
-            this.toaster.errorToast(err.message);
-            console.log(err);
+            this.handleError(err);
           }
         );
       } else if (this.modalOperation === 'update') {
-        this.selectedObject.description = data.description;
-        this.selectedObject.name = data.name;
-
         this.service.update(this.selectedObject).subscribe(
           (type: CardType) => {
             if (type) {
               this.selectedObject = type;
             }
-
             this.toaster.successToast('CardType updated Successfully');
-            this.closeModal();
-            this.loadAll();
+
+            this.refresh();
           },
           err => {
-            this.toaster.errorToast(err.message);
-            console.log(err);
+            this.handleError(err);
           }
         );
       }
     } catch (err) {
-      this.toaster.errorToast(err.message);
-      console.log(err);
+      this.handleError(err);
+    }
+  }
+
+  processResponse(response: boolean) {
+    if (response) {
+      this.spinnerService.show();
+      this.service.delete(this.selectedObject.id).subscribe(resp => {
+        if (resp) {
+          this.toaster.successToast('Cardtype removed Successfully');
+
+          this.refresh();
+        } else {
+          throw new Error('Something went Wrong');
+        }
+      }, err => {
+        this.handleError(err);
+      }
+    );
+    } else {
+      this.closeModal();
     }
   }
 }

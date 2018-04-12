@@ -27,14 +27,14 @@ export abstract class AbstractService {
     return this.httpService.getAsync<T>(url);
   }
 
-  update<T>(updatedCardType: CardType): Observable<T> {
+  update<T>(updatedObject: T): Observable<T> {
     return this.httpService.putAsync<T>(
-      updatedCardType, this.putUrl);
+      updatedObject, this.putUrl);
   }
 
-  create<T>(newCardType: CardType): Observable<T> {
+  create<T>(newObject: T): Observable<T> {
     return this.httpService.postAsync<T>(
-      newCardType, this.postUrl);
+      newObject, this.postUrl);
   }
 
   delete<T>(id: string): Observable<T> {

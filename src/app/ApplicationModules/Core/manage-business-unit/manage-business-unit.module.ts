@@ -6,6 +6,8 @@ import { AuthGuard } from '../../../Shared/auth/auth.guard';
 import { AppModalModule } from '../../../Shared/modal/modal.module';
 import { ModalService } from './../../../Shared/modal/modal.service';
 import { BusinessUnitsService } from '../../../Services/business-units.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BusinessUnitPipesModule } from '../../../Shared/pipes/business-unit-pipes/business-unit-pipes.module';
 
 const businessUnitRoutes: Routes = [
   { path: '', redirectTo: 'manage', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
@@ -15,7 +17,10 @@ const businessUnitRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     AppModalModule,
+    ReactiveFormsModule,
+    BusinessUnitPipesModule,
     RouterModule.forChild(businessUnitRoutes)
   ],
   exports: [

@@ -9,6 +9,10 @@ import { ModalService } from '../../../Shared/modal/modal.service';
 
 export abstract class BaseComponentTabsAndModal<T> extends BaseComponentModals<T> {
 
+  currentTypeTab = 'all';
+  abstract deleteObjectModal;
+  abstract objectDetailsModal;
+
   constructor(protected spinnerService: Ng4LoadingSpinnerService, protected service: AbstractService,
     protected toaster: AppToasterServiceService, protected modalService: ModalService,
     protected fb: FormBuilder) { super(spinnerService, service, toaster, modalService, fb); }
@@ -16,5 +20,4 @@ export abstract class BaseComponentTabsAndModal<T> extends BaseComponentModals<T
   abstract createForm();
 
   abstract viewObject(object: T);
-
 }

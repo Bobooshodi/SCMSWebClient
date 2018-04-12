@@ -2,30 +2,27 @@
     <div class="requests__header">
       <h4>Pending Request</h4>
       <ul class="tabs">
-        <li class="active">
+        <li routerLinkActive="active">
           <a routerLink="distribution">Card</a>
-          <span class="notification">12</span>
+          <!-- <span class="notification">12</span> -->
         </li>
-        <li>
+        <li routerLinkActive="active">
           <a routerLink="blacklist">Blacklist</a>
-          <span class="notification">12</span>
         </li>
-        <li>
+        <li routerLinkActive="active">
           <a routerLink="personalisation">Personalization</a>
-          <span class="notification">12</span>
         </li>
-        <li>
+        <li routerLinkActive="active">
           <a routerLink="replacement">Replacement</a>
-          <span class="notification">12</span>
         </li>
-        <li>
+        <li routerLinkActive="active">
           <a>Collection</a>
 
         </li>
       </ul>
       <div class="c-requests__searcher">
         <h4 class="head">Pending Cards Request (254)</h4>
-        <input type="search" placeholder="Search request record" class="input" [(ngModel)]="filter"
+        <input type="search" placeholder="Search request record" class="input" name="filter" [(ngModel)]="filter"
               (input)="sendFilterData($event.target.value)" />
       </div>
     </div>

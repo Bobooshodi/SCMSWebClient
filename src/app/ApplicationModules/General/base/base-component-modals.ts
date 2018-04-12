@@ -14,9 +14,8 @@ export abstract class BaseComponentModals<T> extends BaseComponent<T> {
   modalOperation: string;
   @Input() blocking = false;
   isOpen = false;
-  warningModal;
-  deleteObjectModal;
-  objectDetailsModal;
+  abstract deleteObjectModal;
+  abstract objectDetailsModal;
   selectedObject: T;
   form: FormGroup;
 
@@ -26,6 +25,7 @@ export abstract class BaseComponentModals<T> extends BaseComponent<T> {
 
   openModal(mode: string) {
       if (mode === 'create') {
+        this.form.reset();
         this.modalOperation = 'create';
         this.modalService.open(this.objectDetailsModal);
       } else if (mode === 'update') {
@@ -40,6 +40,17 @@ export abstract class BaseComponentModals<T> extends BaseComponent<T> {
   closeModal() {
     this.modalService.close(this.deleteObjectModal);
     this.modalService.close(this.objectDetailsModal);
+  }
+
+  refresh() {
+    this.closeModal();
+    super.refresh();
+  }
+
+  protected handleError(err) {
+    this.closeModal();
+
+    super.handleError(err);
   }
 
   abstract createForm();

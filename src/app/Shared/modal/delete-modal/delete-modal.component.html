@@ -1,0 +1,15 @@
+<div class="md-content">
+    <h3 class="md-header">{{modalHeader}}</h3>
+    <form [formGroup]="form" novalidate (ngSubmit)="processFormData(form.value)">
+    <div class="body">
+        <div class="form-group">
+            <label>Reason</label>
+            <textarea class="input" formControlName="reason"></textarea>
+        </div>
+    </div>
+    <div class="md-footer">
+        <button type="button" (click)="closeModal()" class="md-close btn outline">Cancel</button>
+        <button [disabled]="!form.valid" class="btn danger pull-right">Deactivate Card</button>
+    </div>
+  </form>
+</div>

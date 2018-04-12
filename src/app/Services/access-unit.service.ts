@@ -7,11 +7,11 @@ import { HttpRequestService } from './common/http-request.service';
 @Injectable()
 export class AccessUnitService extends AbstractService {
 
-  getAllUrl = ApiEndPoints.allAccessUnits;
-  getUrl = ApiEndPoints.getAccessUnit;
-  postUrl = ApiEndPoints.createNewAccessUnit;
-  putUrl = ApiEndPoints.updateAccessUnit;
-  deleteUrl = ApiEndPoints.deleteAccessUnit;
+  getAllUrl = ApiEndPoints.allAccessGroups;
+  getUrl = ApiEndPoints.getAccessGroup;
+  postUrl = ApiEndPoints.createNewAccessGroup;
+  putUrl = ApiEndPoints.updateAccessGroup;
+  deleteUrl = ApiEndPoints.deleteAccessGroup;
 
   constructor(httpService: HttpRequestService) { super(httpService); }
 

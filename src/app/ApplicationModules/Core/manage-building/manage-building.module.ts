@@ -9,6 +9,8 @@ import { AuthGuard } from '../../../Shared/auth/auth.guard';
 import { BuildingService } from './../../../Services/building.service';
 import { AppModalModule } from '../../../Shared/modal/modal.module';
 import { ModalService } from './../../../Shared/modal/modal.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BuildingPipesModule } from '../../../Shared/pipes/building-pipes/building-pipes.module';
 
 
 const buildingRoutes: Routes = [
@@ -19,7 +21,10 @@ const buildingRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     AppModalModule,
+    ReactiveFormsModule,
+    BuildingPipesModule,
     RouterModule.forChild(buildingRoutes)
   ],
   exports: [

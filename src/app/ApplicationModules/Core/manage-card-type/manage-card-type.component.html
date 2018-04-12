@@ -27,7 +27,7 @@
           <td class="">{{cardType.description}}</td>
           <td>
             <a (click)="viewObject(cardType)" class="md-trigger btn btn-sm outline" data-modal="add-user">Manage</a>
-            <a class="md-trigger btn btn-sm outline-danger" data-modal="add-user">Remove</a>
+            <a (click)="deleteObject(cardType)" class="md-trigger btn btn-sm outline-danger" data-modal="add-user">Remove</a>
           </td>
         </tr>
       </tbody>
@@ -60,5 +60,11 @@
     </form>
   </div>
 </app-modal>
+
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='deleteObjectModal'>
+    <app-warning-modal [modalHeader]="'Delete Cardtype'" [modalMessage]="'Are you sure you want to Remove this Cardtype?'"
+                      (response)="processResponse($event)">
+  </app-warning-modal>
+  </app-modal>
 
 <div class="md-overlay"></div>

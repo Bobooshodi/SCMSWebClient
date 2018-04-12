@@ -3,10 +3,10 @@
     <div class="section-flex">
       <h3>Manage Buildings</h3>
       <div class="searcher">
-        <input type="text" placeholder="Search Buildings" class="input" />
+        <input type="text" placeholder="Search Buildings" class="input" name="filter" [(ngModel)]="filter"/>
       </div>
 
-      <button (click)='openModal(true)' class="btn primary">Add Buildings</button>
+      <button (click)="openModal('create')" class="btn primary">Add Buildings</button>
     </div>
   </div>
 
@@ -22,13 +22,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="tableRow productList" *ngFor="let building of filteredList">
+          <tr class="tableRow productList" *ngFor="let building of filteredList | buildingListFilter:filter">
             <td class="">{{building.name}}</td>
             <td class="">{{building.phone}}</td>
             <td class="">{{building.contactPerson}}</td>
             <td>
               <a (click)="viewObject(building)" class="md-trigger btn-sm btn outline" data-modal="add-building">Manage</a>
-              <a class="md-trigger btn-sm btn outline-danger" data-modal="add-building">Remove</a>
+              <a (click)="deleteObject(building)" class="md-trigger btn-sm btn outline-danger" data-modal="add-building">Remove</a>
             </td>
           </tr>
         </tbody>
@@ -39,18 +39,20 @@
 <app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='objectDetailsModal'>
   <div class="md-content">
   <h3 class="md-header">Add Access Control</h3>
-
+  <form [formGroup]="form" novalidate (ngSubmit)="processFormData(form.value)">
     <div class="body">
       <div class="form-group form-vertical">
         <label>Building Name</label>
-        <input type="text" class="input" />
-        <span class="error-msg">Please enter building name</span>
+        <input type="text" class="input" formControlName="name"/>
+        <span *ngIf="!form.controls.name.valid && !form.controls.name.pristine"
+              class="error-msg">Please enter building name</span>
       </div>
 
       <div class="form-group">
         <label>Building Code</label>
-        <input type="text" class="input" />
-        <span class="error-msg">Please enter a building Code</span>
+        <input type="text" class="input" formControlName="code"/>
+        <span *ngIf="!form.controls.code.valid && !form.controls.code.pristine"
+              class="error-msg">Please enter a building Code</span>
       </div>
 
       <div class="form-group form-vertical">
@@ -59,12 +61,18 @@
           <option>Active</option>
           <option>Deactive</option>
         </select>
-        <span class="error-msg">Please select building status</span>
       </div>
     </div>
     <div class="md-footer">
-      <button (click)="closeModal()" class="md-close btn outline">Cancel</button>
-      <button class="btn primary pull-right">Save Building</button>
+      <button type="button" (click)="closeModal()" class="md-close btn outline">Cancel</button>
+      <button type="submit" class="btn primary pull-right">Save Building</button>
     </div>
+  </form>
   </div>
+</app-modal>
+
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='deleteObjectModal'>
+  <app-warning-modal [modalHeader]="'Remove Building'" [modalMessage]="'Are you sure you want to remove this Building?'"
+                    (response)="processResponse($event)">
+  </app-warning-modal>
 </app-modal>

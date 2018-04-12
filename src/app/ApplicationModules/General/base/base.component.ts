@@ -16,7 +16,8 @@ export abstract class BaseComponent<T> {
     protected toaster: AppToasterServiceService) { }
 
   protected loadAll() {
-    this.spinnerService.show();
+    try {
+      this.spinnerService.show();
 
     this.service.getAll().subscribe((cards: T[]) => {
       this.mainList = this.filteredList = cards;
@@ -24,12 +25,24 @@ export abstract class BaseComponent<T> {
       this.spinnerService.hide();
     },
     (err) => {
-      this.spinnerService.hide();
-      this.toaster.errorToast(err.message);
-
-      console.log(JSON.stringify(err));
+      this.handleError(err);
     }
   );
+    } catch (err) {
+      this.handleError(err);
+    }
   }
 
+  refresh() {
+    this.spinnerService.hide();
+    this.loadAll();
+  }
+
+  protected handleError(err) {
+    this.spinnerService.hide();
+    this.toaster.errorToast(err.message || err.error.message);
+    console.log(err);
+  }
+
+  clear() { }
 }

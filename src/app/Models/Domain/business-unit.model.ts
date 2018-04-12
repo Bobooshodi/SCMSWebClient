@@ -7,4 +7,5 @@ export class BusinessUnit extends BaseModel {
   description: string;
   cardTypes: CardType[];
   companies: Company[];
+  isSelected: boolean;
 }

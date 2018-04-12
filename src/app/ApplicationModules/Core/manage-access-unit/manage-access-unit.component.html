@@ -2,66 +2,68 @@
   <div class="section-flex">
     <h3>Manage Access Group</h3>
     <div class="searcher">
-      <input type="text" placeholder="Search access group" class="input" />
+      <input type="text" placeholder="Search access group" class="input" name="filter" [(ngModel)]="filter"/>
     </div>
-    <button class="md-trigger btn primary" data-modal="add-accessgroup">Add Access Group</button>
+    <button (click)="openModal('create')" class="btn primary">Add Access Group</button>
   </div>
-
 </div>
+<div class="main-section">
 <section class="section-row">
   <table class="table">
     <thead>
       <tr>
         <th class="thead">Display Name</th>
         <th class="thead">Access Control</th>
-        <th class="thead">Access Control Group </th>
+        <th class="thead">Access Control Description </th>
         <th class="thead"></th>
       </tr>
     </thead>
     <tbody>
-      <tr class="tableRow productList">
-        <td class="">Back Entrance</td>
-        <td class=""> no access control</td>
-        <td class="">No Access Group</td>
+      <tr class="tableRow productList" *ngFor="let accessGroup of filteredList | accessGroupFilter:filter" >
+        <td class="">{{accessGroup.displayName}}</td>
+        <td class="">{{accessGroup.accessControl}}</td>
+        <td class="">{{accessGroup.description}}</td>
         <td>
-          <a href="#" class="md-trigger btn outline" data-modal="add-accessgroup">Manage</a>
-          <a href="#" class="md-trigger btn btn-sm outline-danger" data-modal="add-user">Remove</a>
+          <a (click)="viewObject(accessGroup)" class="btn outline">Manage</a>
+          <a (click)="deleteObject(accessGroup)" class="btn btn-sm outline-danger">Remove</a>
         </td>
       </tr>
     </tbody>
   </table>
 </section>
+</div>
 
-<div class="md-modal md-effect" id="add-accessgroup">
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='objectDetailsModal'>
   <div class="md-content">
     <h3 class="md-header">Manage Access Group</h3>
     <div class="body">
+      <form [formGroup]="form" novalidate (ngSubmit)="processFormData(form.value)">
       <div class="form-group form-vertical">
         <label>Display Name</label>
-        <input type="text" class="input" />
-        <span class="error-msg">Please enter a full name</span>
+        <input type="text" class="input" formControlName="displayName"/>
+        <span *ngIf="!form.controls.displayName.valid && !form.controls.displayName.pristine"
+              class="error-msg">Please enter Access Control display name</span>
       </div>
 
       <div class="form-group">
         <label>Description</label>
-        <textarea class="input"></textarea>
-        <span class="error-msg">Please enter a full name</span>
+        <textarea class="input" formControlName="description"></textarea>
+        <span *ngIf="!form.controls.description.valid && !form.controls.description.pristine"
+              class="error-msg">Please enter a full name</span>
       </div>
 
       <div class="form-group form-vertical">
         <label>Access Control</label>
-        <select class="input">
+        <select class="input" formControlName="accessControl">
           <option>1</option>
           <option>2</option>
           <option>3</option>
         </select>
-        <span class="error-msg">Please enter a full name</span>
       </div>
-
 
       <div class="form-group">
         <label>Name In Access Control
-          <span class="pull-right">(3) Selected</span>
+          <span class="pull-right">({{selectedAccessGroups.length}}) Selected</span>
         </label>
         <input type="search" placeholder="search buildings" class="input list-searcher" />
         <div class="bu-units">
@@ -82,36 +84,34 @@
           </label>
         </div>
       </div>
-
 
       <div class="form-group">
         <label>Select buildings
-          <span class="pull-right">(3) Selected</span>
+          <span class="pull-right">({{selectedBuildings.length}}) Selected</span>
         </label>
-        <input type="search" placeholder="search buildings" class="input list-searcher" />
+        <input type="search" placeholder="search buildings" class="input list-searcher"
+                name="buldingsFilter" [(ngModel)]="buildingsFilter" [ngModelOptions]="{standalone:true}"/>
         <div class="bu-units">
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
-            <div class="control__indicator"></div>
-          </label>
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
-            <div class="control__indicator"></div>
-          </label>
-          <label class="control control--checkbox">
-            Facility Management
-            <input type="checkbox" />
+          <label class="control control--checkbox" *ngFor="let building of allBuildings | buildingListFilter:buildingsFilter" >
+            {{building.name}}
+            <input type="checkbox" value="{{building.id}}" (change)="processBuildingSelection(building, $event.target.checked)"
+                    [checked]="building.isSelected" />
             <div class="control__indicator"></div>
           </label>
         </div>
       </div>
 
-    </div>
     <div class="md-footer">
-      <button class="md-close btn outline">Cancel</button>
-      <button class="btn primary pull-right">Save Access Group</button>
+      <button type="button" (click)="closeModal()" class="md-close btn outline">Cancel</button>
+      <button type="submit" class="btn primary pull-right">Save Access Group</button>
     </div>
+  </form>
   </div>
-</div>
+  </div>
+</app-modal>
+
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='deleteObjectModal'>
+    <app-warning-modal [modalHeader]="'Remove Access Group'" [modalMessage]="'Are you sure you want to remove this Access Group?'"
+                      (response)=processResponse($event)>
+    </app-warning-modal>
+</app-modal>

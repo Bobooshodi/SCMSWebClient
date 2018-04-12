@@ -2,9 +2,9 @@
   <div class="section-flex">
     <h3>Manage Business Units</h3>
     <div class="searcher">
-      <input type="text" placeholder="Search  business unit" class="input" />
+      <input type="text" placeholder="Search  business unit" class="input" name="filter" [(ngModel)]="filter" />
     </div>
-    <button (click)='openModal(true)' class="btn primary">Add Business Unit</button>
+    <button (click)="openModal('create')" class="btn primary">Add Business Unit</button>
   </div>
 </div>
 
@@ -21,14 +21,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="tableRow productList" *ngFor="let businessUnit of filteredList" >
+        <tr class="tableRow productList" *ngFor="let businessUnit of filteredList | businessUnitsListFilter:filter" >
           <td class="">{{businessUnit.name}}</td>
           <td class="">{{businessUnit.description}}</td>
-          <td class="">({{businessUnit.cardTypes.length}}) Selected</td>
-          <td class="">({{businessUnit.companies.length}}) Selected</td>
+          <td class="">({{businessUnit.cardTypes ? businessUnit.cardTypes.length : 0}}) Selected</td>
+          <td class="">({{businessUnit.companies ? businessUnit.companies.length : 0}}) Selected</td>
           <td>
-            <button (click)='openModal(true)' class="md-trigger btn btn-sm outline" data-modal="add-user">Manage</button>
-            <button (click)='openModal(false)' class="md-trigger btn btn-sm outline-danger" data-modal="add-user">Remove</button>
+            <button (click)='viewObject(businessUnit)' class="md-trigger btn btn-sm outline" data-modal="add-user">Manage</button>
+            <button (click)='deleteObject(businessUnit)' class="md-trigger btn btn-sm outline-danger" data-modal="add-user">Remove</button>
           </td>
         </tr>
       </tbody>
@@ -39,32 +39,40 @@
 <app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='objectDetailsModal'>
   <div class="md-content">
     <h3 class="md-header">Add Access Control</h3>
-
+    <form [formGroup]="form" novalidate (ngSubmit)="processFormData(form.value)">
     <div class="body">
       <div class="form-group form-vertical">
         <label>Building Name</label>
-        <input type="text" class="input" />
-        <span class="error-msg">Please enter building name</span>
+        <input type="text" class="input" formControlName="name" />
+        <span *ngIf="!form.controls.name.valid && !form.controls.name.pristine"
+              class="error-msg">Please enter building name</span>
       </div>
 
       <div class="form-group">
         <label>Building Code</label>
-        <input type="text" class="input" />
-        <span class="error-msg">Please enter a building Code</span>
+        <input type="text" class="input" formControlName="code"/>
+        <span *ngIf="!form.controls.code.valid && !form.controls.code.pristine"
+              class="error-msg">Please enter a building Code</span>
       </div>
 
       <div class="form-group form-vertical">
         <label>Buidling Status</label>
-        <select class="input">
+        <select class="input" formControlName="status">
           <option>Active</option>
           <option>Deactive</option>
         </select>
-        <span class="error-msg">Please select building status</span>
       </div>
     </div>
     <div class="md-footer">
-      <button class="md-close btn outline" (click)="closeModal()">Cancel</button>
-      <button class="btn primary pull-right">Save Building</button>
+      <button type="button" class="md-close btn outline" (click)="closeModal()">Cancel</button>
+      <button [disabled]="!form.valid" class="btn primary pull-right">Save Building</button>
     </div>
+  </form>
   </div>
+</app-modal>
+
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='deleteObjectModal'>
+  <app-warning-modal [modalHeader]="'Remove Business Unit'" [modalMessage]="'Are you sure you want to remove this Business Unit?'"
+                      (response)="processResponse($event)">
+  </app-warning-modal>
 </app-modal>

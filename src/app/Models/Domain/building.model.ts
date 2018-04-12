@@ -9,4 +9,5 @@ export class Building extends BaseModel {
   email: string;
   address: string;
   accessGroups: AccessGroup[];
+  isSelected: boolean;
 }
