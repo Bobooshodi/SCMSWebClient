@@ -13,10 +13,13 @@ import { CardholderPipesModule } from '../../../Shared/pipes/cardholder-pipes/ca
 import { CardPipesModule } from '../../../Shared/pipes/card-pipes/card-pipes.module';
 import { AppModalModule } from '../../../Shared/modal/modal.module';
 import { ModalService } from '../../../Shared/modal/modal.service';
+import { BuildingPipesModule } from '../../../Shared/pipes/building-pipes/building-pipes.module';
+import { CardTypePipesModule } from '../../../Shared/pipes/card-type-pipes/card-type-pipes.module';
 
 const cardholderRoutes: Routes = [
   { path: '', redirectTo: 'manage', pathMatch: 'full' }, // , canActivate: [AuthGuard] },
   { path: 'manage', component: ManageCardholdersComponent}, // , canActivate: [AuthGuard] },
+  { path: 'details/:id', component: CardholderDetailsComponent},
   { path: 'create', component: CardholderRegistrationComponent,
     children: [
       {
@@ -33,6 +36,8 @@ const cardholderRoutes: Routes = [
     CommonModule,
     AppModalModule,
     CardPipesModule,
+    CardTypePipesModule,
+    BuildingPipesModule,
     CardholderPipesModule,
     CardholderRegistrationModule,
     RouterModule.forChild(cardholderRoutes)

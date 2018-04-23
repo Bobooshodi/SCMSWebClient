@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="tableRow productList">
+        <tr class="tableRow productList" *ngFor="let request of filteredList" >
           <td>
             <span>Kudakwashe apollo shamu</span>
             <span>ID: 459-454-9565</span>
@@ -19,12 +19,15 @@
           <td class="">28 Dec 2018</td>
           <td class="">L3</td>
           <td class="">Active</td>
-
           <td class="">
-            <a class="md-trigger btn btn-sm outline-success">Process</a>
+            <a (click)="viewObject(request)" class="md-trigger btn btn-sm outline-success">Process</a>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
+
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='deleteObjectModal'>
+  <app-delete-modal [modalHeader]="'Blacklist'"></app-delete-modal>
+</app-modal>

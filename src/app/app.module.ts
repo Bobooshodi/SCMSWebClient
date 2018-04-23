@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { Ng4LoadingSpinnerModule, Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { AppToasterModule } from './Shared/app-toaster/app-toaster.module';
 import { LoginModule } from './ApplicationModules/General/login/login.module';
@@ -51,27 +52,30 @@ import { ModalService } from './Shared/modal/modal.service';
     AppComponent,
   ],
   imports: [
+    LoginModule,
     BrowserModule,
+    MainNavModule,
     AppModalModule,
     HttpClientModule,
     AppToasterModule,
-    LoginModule,
-    MainNavModule,
+    ManageCardsModule,
+    OwlDateTimeModule,
+    PageNotFoundModule,
+    ManageReportsModule,
     CardInventoryModule,
-    ManageAccessUnitModule,
-    ManageBuildingModule,
-    ManageBusinessUnitModule,
     ManageRequestsModule,
     ManageCardTypeModule,
-    ManageCardVendorsModule,
-    ManageCompaniesModule,
-    ManageShcTenantsModule,
-    ManageCardholdersModule,
-    ManageCardsModule,
+    ManageBuildingModule,
     ManageOperatorsModule,
-    ManageReportsModule,
-    PageNotFoundModule,
+    ManageCompaniesModule,
+    ManageAccessUnitModule,
+    ManageShcTenantsModule,
+    ManageCardVendorsModule,
+    ManageCardholdersModule,
+    OwlNativeDateTimeModule,
+    BrowserAnimationsModule,
     ApplicationRouterModule,
+    ManageBusinessUnitModule,
     Ng4LoadingSpinnerModule.forRoot(),
   ],
   exports: [

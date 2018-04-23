@@ -5,6 +5,7 @@ import { Card } from './card.model';
 import { CarPark } from './car-park.model';
 import { Vehicle } from './vehicle.model';
 import { SHCCardType } from '../Enums/shc-card-type.enum';
+import { Building } from './building.model';
 
 export class Cardholder extends BaseModel {
   firstName: string;
@@ -28,4 +29,5 @@ export class Cardholder extends BaseModel {
   cards: Card[];
   carParks: CarPark[];
   vehicles: Vehicle[];
+  buildings: Building[];
 }

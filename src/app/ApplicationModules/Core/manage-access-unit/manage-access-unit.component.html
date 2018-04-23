@@ -36,8 +36,8 @@
 <app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='objectDetailsModal'>
   <div class="md-content">
     <h3 class="md-header">Manage Access Group</h3>
+    <form [formGroup]="form" novalidate (ngSubmit)="processFormData(form.value)">
     <div class="body">
-      <form [formGroup]="form" novalidate (ngSubmit)="processFormData(form.value)">
       <div class="form-group form-vertical">
         <label>Display Name</label>
         <input type="text" class="input" formControlName="displayName"/>
@@ -100,13 +100,12 @@
           </label>
         </div>
       </div>
-
-    <div class="md-footer">
+  </div>
+  <div class="md-footer">
       <button type="button" (click)="closeModal()" class="md-close btn outline">Cancel</button>
       <button type="submit" class="btn primary pull-right">Save Access Group</button>
     </div>
   </form>
-  </div>
   </div>
 </app-modal>
 

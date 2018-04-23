@@ -9,6 +9,10 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ModalService } from './../../../Shared/modal/modal.service';
 import { AppToasterServiceService } from '../../../Services/common/app-toaster-service.service';
 import { BusinessUnitsService } from '../../../Services/business-units.service';
+import { Building } from '../../../Models/Domain/building.model';
+import { CardType } from '../../../Models/Domain/card-type.model';
+import { BuildingService } from '../../../Services/building.service';
+import { CardTypeService } from '../../../Services/card-type.service';
 
 @Component({
   selector: 'app-manage-business-unit',
@@ -17,16 +21,24 @@ import { BusinessUnitsService } from '../../../Services/business-units.service';
 })
 export class ManageBusinessUnitComponent extends BaseComponentModals<BusinessUnit> implements OnInit {
 
+  buildingsFilter;
+  cardTypesFilter;
   deleteWarningMessage = '';
   deleteObjectModal = 'deleteBusinessUnit';
   objectDetailsModal = 'businessUnitDetails';
+  allBuildings: Building[] = [];
+  selectedBuildings: Building[] = [];
+  allCardtypes: CardType[] = [];
+  selectedCardtypes: CardType[] = [];
 
   constructor(
     toaster: AppToasterServiceService,
     spinner: Ng4LoadingSpinnerService,
     service: BusinessUnitsService,
     modalService: ModalService,
-    fb: FormBuilder
+    fb: FormBuilder,
+    private buildingService: BuildingService,
+    private cardTypeService: CardTypeService
   ) {
     super(spinner, service, toaster, modalService, fb);
   }
@@ -39,9 +51,29 @@ export class ManageBusinessUnitComponent extends BaseComponentModals<BusinessUni
   createForm() {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(1)]],
-      code: ['', [Validators.required, Validators.minLength(1)]],
-      status: [Validators.required]
+      description: ['', [Validators.required, Validators.minLength(1)]]
     });
+  }
+
+  loadAll() {
+    this.spinnerService.show();
+    this.buildingService.getAll<Building>().subscribe(buildings => {
+      this.allBuildings = buildings;
+    },
+    err => {
+      this.handleError(err);
+    }
+  );
+
+  this.cardTypeService.getAll<CardType>().subscribe(cardTypes => {
+    this.allCardtypes = cardTypes;
+  },
+  err => {
+    this.handleError(err);
+  }
+);
+
+  super.loadAll();
   }
 
   viewObject(businessUnit: BusinessUnit): void {
@@ -54,7 +86,7 @@ export class ManageBusinessUnitComponent extends BaseComponentModals<BusinessUni
 
             this.form.patchValue({
               name: this.selectedObject.name,
-              code: this.selectedObject.description
+              description: this.selectedObject.description
             });
             this.spinnerService.hide();
             this.openModal('update');
@@ -124,6 +156,50 @@ export class ManageBusinessUnitComponent extends BaseComponentModals<BusinessUni
     } catch (err) {
       this.handleError(err);
     }
+  }
+
+  processBuildingSelection(building: Building, isSelected) {
+    const refIndex = this.allBuildings.findIndex(o => o.id === building.id);
+
+    if (isSelected && refIndex !== -1) {
+      this.allBuildings[refIndex].isSelected = true;
+      this.selectedBuildings.push(building);
+    } else {
+      const index = this.selectedBuildings.findIndex(o => o.id === building.id);
+      if (index !== -1) {
+        this.selectedBuildings.splice(index, 1);
+      }
+      if (refIndex !== -1) {
+        this.allBuildings[refIndex].isSelected = false;
+      }
+    }
+  }
+
+  processCardtypeSelection(cardType: CardType, isSelected) {
+    const refIndex = this.allCardtypes.findIndex(o => o.id === cardType.id);
+
+    if (isSelected && refIndex !== -1) {
+      this.allCardtypes[refIndex].isSelected = true;
+      this.selectedCardtypes.push(cardType);
+    } else {
+      const index = this.selectedCardtypes.findIndex(o => o.id === cardType.id);
+      if (index !== -1) {
+        this.selectedCardtypes.splice(index, 1);
+      }
+      if (refIndex !== -1) {
+        this.allCardtypes[refIndex].isSelected = false;
+      }
+    }
+  }
+
+  closeModal() {
+    this.modalService.close(this.objectDetailsModal);
+    this.modalService.close(this.deleteObjectModal);
+
+    this.selectedBuildings = [];
+    this.selectedCardtypes = [];
+    this.allBuildings.forEach(c => c.isSelected = false);
+    this.allCardtypes.forEach(c => c.isSelected = false);
   }
 
   processResponse(response: boolean) {

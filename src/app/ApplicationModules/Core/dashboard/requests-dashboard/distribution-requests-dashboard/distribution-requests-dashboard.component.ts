@@ -7,6 +7,7 @@ import { ModalService } from '../../../../../Shared/modal/modal.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 // tslint:disable-next-line:max-line-length
 import { CardDistributionRequestsComponent } from '../../../manage-requests/card-distribution-requests/card-distribution-requests.component';
+import { BuildingService } from '../../../../../Services/building.service';
 
 @Component({
   selector: 'app-distribution-requests-dashboard',
@@ -17,8 +18,8 @@ export class DistributionRequestsDashboardComponent extends CardDistributionRequ
 
   constructor(service: CardRequestsService, modalService: ModalService,
     spinner: Ng4LoadingSpinnerService, toaster: AppToasterServiceService,
-    dataService: DataSendingService, fb: FormBuilder) {
-      super(service, modalService, spinner, toaster, dataService, fb);
+    dataService: DataSendingService, fb: FormBuilder, buildingService: BuildingService) {
+      super(service, modalService, fb, spinner, toaster, dataService, buildingService);
       this.subscription = this.dataService.getObject1Data.subscribe(x => { this.listFilter = x; });
      }
 

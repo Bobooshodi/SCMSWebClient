@@ -8,4 +8,5 @@ export class CardType extends BaseModel {
   isPermanent: boolean;
   cardType: SHCCardType;
   businessUnits: BusinessUnit[];
+  isSelected: boolean;
 }

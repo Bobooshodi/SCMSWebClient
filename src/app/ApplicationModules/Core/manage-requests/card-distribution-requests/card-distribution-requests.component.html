@@ -21,10 +21,85 @@
           <td class="">{{request.cardType.name}}</td>
           <td class="">{{request.requestDate | date:"fullDate"}}</td>
           <td class="">
-            <a class="btn btn-sm outline-success">Process</a>
+            <a (click)="process(request)" class="btn btn-sm outline-success">Process</a>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
+
+<app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='objectDetailsModal'>
+  <div class="md-content">
+      <h3 class="md-header">Card Distribution</h3>
+      <div class="body">
+          <div class="c-distribution">
+              <div class="c-distribution__panel" *ngIf="!showAvailableNumbers" >
+                  <div class="info-panel">
+                      <div class="info-panel__head">
+                        {{selectedObject.quantityDistributed}}/{{selectedObject.quantity}}
+                      </div>
+
+                      <div class="info-panel__item">
+                          <span>Request from</span>
+                          <span>{{selectedObject.requestedBy}}</span>
+                      </div>
+
+                      <div class="info-panel__item">
+                          <span>Request Date</span>
+                          <span>{{selectedObject.requestDate | date:"fullDate"}}</span>
+                      </div>
+
+                      <div class="info-panel__item">
+                          <span>Card Type</span>
+                          <span>{{selectedObject.cardType.name}}</span>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="label">Start Number</label>
+                      <input type="text" class="input" name="startNumber" [(ngModel)]="startNumber" />
+                  </div>
+
+                  <div class="form-group">
+                      <label class="label">Start Number</label>
+                      <input type="text" class="input" name="endNumber" [(ngModel)]="endNumber" />
+                  </div>
+              </div>
+
+              <div class="c-distribution__list" *ngIf="showAvailableNumbers" >
+                  <h4>{{cards.length}} Numbers ready for distribution</h4>
+                  <div class="form-group">
+                      <div class="searcher">
+                          <input type="text" class="input list-searcher" />
+                          <label class="control control--checkbox">
+                              Select CArds
+                              <input type="checkbox">
+                              <div class="control__indicator"></div>
+
+                              <span class="pull-right">({{selectedCards.length}}) Selected</span>
+                          </label>
+                      </div>
+
+                      <div class="">
+                          <label class="control control--checkbox" *ngFor="let card of cards" >
+                              {{card.cardInventoryNo}}
+                              <input type="checkbox" value="{{card.id}}" (change)="processBuildingSelection(card, $event.target.checked)">
+                              <div class="control__indicator"></div>
+                          </label>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div id="find-footer" class="md-footer" *ngIf="!showAvailableNumbers">
+          <button type="button" (click)="goBack()" class="md-close btn outline">Cancel</button>
+          <button type="button" (click)="fetchNumbers()" class="btn test primary pull-right" id="findnumbers">Find Numbers</button>
+      </div>
+
+      <div id="generate-footer" class="md-footer" *ngIf="showAvailableNumbers">
+          <button type="button" (click)="closeModal()" class="md-close test btn outline">Back</button>
+          <button class="btn primary pull-right">Distribute</button>
+      </div>
+  </div>
+</app-modal>

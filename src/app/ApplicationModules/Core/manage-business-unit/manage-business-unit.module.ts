@@ -8,6 +8,7 @@ import { ModalService } from './../../../Shared/modal/modal.service';
 import { BusinessUnitsService } from '../../../Services/business-units.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BusinessUnitPipesModule } from '../../../Shared/pipes/business-unit-pipes/business-unit-pipes.module';
+import { BuildingPipesModule } from '../../../Shared/pipes/building-pipes/building-pipes.module';
 
 const businessUnitRoutes: Routes = [
   { path: '', redirectTo: 'manage', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
@@ -20,6 +21,7 @@ const businessUnitRoutes: Routes = [
     FormsModule,
     AppModalModule,
     ReactiveFormsModule,
+    BuildingPipesModule,
     BusinessUnitPipesModule,
     RouterModule.forChild(businessUnitRoutes)
   ],

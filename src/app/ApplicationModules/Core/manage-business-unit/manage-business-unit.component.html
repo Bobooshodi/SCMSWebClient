@@ -21,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="tableRow productList" *ngFor="let businessUnit of filteredList | businessUnitsListFilter:filter" >
+        <tr class="tableRow productList" *ngFor="let businessUnit of filteredList | businessUnitsListFilter:filter">
           <td class="">{{businessUnit.name}}</td>
           <td class="">{{businessUnit.description}}</td>
           <td class="">({{businessUnit.cardTypes ? businessUnit.cardTypes.length : 0}}) Selected</td>
@@ -37,42 +37,65 @@
 </div>
 
 <app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='objectDetailsModal'>
-  <div class="md-content">
-    <h3 class="md-header">Add Access Control</h3>
-    <form [formGroup]="form" novalidate (ngSubmit)="processFormData(form.value)">
-    <div class="body">
-      <div class="form-group form-vertical">
-        <label>Building Name</label>
-        <input type="text" class="input" formControlName="name" />
-        <span *ngIf="!form.controls.name.valid && !form.controls.name.pristine"
-              class="error-msg">Please enter building name</span>
-      </div>
+    <div class="md-content">
+      <h3 class="md-header">Manage Business Units</h3>
+      <form [formGroup]="form" novalidate (ngSubmit)="processFormData(form.value)">
+      <div class="body">
+        <div class="form-group form-vertical">
+          <label>Business Unit Name</label>
+          <input type="text" class="input" formControlName="name"/>
+          <span *ngIf="!form.controls.name.valid && !form.controls.name.pristine"
+                class="error-msg">Please enter Access Control display name</span>
+        </div>
 
-      <div class="form-group">
-        <label>Building Code</label>
-        <input type="text" class="input" formControlName="code"/>
-        <span *ngIf="!form.controls.code.valid && !form.controls.code.pristine"
-              class="error-msg">Please enter a building Code</span>
-      </div>
+        <div class="form-group">
+          <label>Business Unit Description</label>
+          <textarea class="input" formControlName="description"></textarea>
+          <span *ngIf="!form.controls.description.valid && !form.controls.description.pristine"
+                class="error-msg">Please enter a full name</span>
+        </div>
 
-      <div class="form-group form-vertical">
-        <label>Buidling Status</label>
-        <select class="input" formControlName="status">
-          <option>Active</option>
-          <option>Deactive</option>
-        </select>
-      </div>
+        <div class="form-group">
+          <label>Select Card Types
+            <span class="pull-right">({{selectedCardtypes.length}}) Selected</span>
+          </label>
+          <input type="search" placeholder="search Cardtypes" class="input list-searcher"
+                name="cardTypesFilter" [(ngModel)]="cardTypesFilter" [ngModelOptions]="{standalone:true}"/>
+          <div class="bu-units">
+            <label class="control control--checkbox" *ngFor="let cardType of allCardtypes" >
+              {{cardType.name}}
+              <input type="checkbox" value="{{cardType.id}}" (change)="processCardtypeSelection(cardType, $event.target.checked)"
+              [checked]="cardType.isSelected" />
+              <div class="control__indicator"></div>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Select buildings
+            <span class="pull-right">({{selectedBuildings.length}}) Selected</span>
+          </label>
+          <input type="search" placeholder="search buildings" class="input list-searcher"
+                  name="buldingsFilter" [(ngModel)]="buildingsFilter" [ngModelOptions]="{standalone:true}"/>
+          <div class="bu-units">
+            <label class="control control--checkbox" *ngFor="let building of allBuildings | buildingListFilter:buildingsFilter" >
+              {{building.name}}
+              <input type="checkbox" value="{{building.id}}" (change)="processBuildingSelection(building, $event.target.checked)"
+                      [checked]="building.isSelected" />
+              <div class="control__indicator"></div>
+            </label>
+          </div>
+        </div>
     </div>
     <div class="md-footer">
-      <button type="button" class="md-close btn outline" (click)="closeModal()">Cancel</button>
-      <button [disabled]="!form.valid" class="btn primary pull-right">Save Building</button>
+        <button type="button" (click)="closeModal()" class="md-close btn outline">Cancel</button>
+        <button type="submit" class="btn primary pull-right">Save Access Group</button>
+      </div>
+    </form>
     </div>
-  </form>
-  </div>
-</app-modal>
+  </app-modal>
 
 <app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='deleteObjectModal'>
-  <app-warning-modal [modalHeader]="'Remove Business Unit'" [modalMessage]="deleteWarningMessage"
-                      (response)="processResponse($event)">
+  <app-warning-modal [modalHeader]="'Remove Business Unit'" [modalMessage]="deleteWarningMessage" (response)="processResponse($event)">
   </app-warning-modal>
 </app-modal>

@@ -25,4 +25,5 @@ export class Card extends BaseModel {
   personalizedById: string;
   cardVendor: CardVendor;
   cardStatus: CardStatus;
+  isSelected: boolean;
 }

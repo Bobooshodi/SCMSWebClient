@@ -20,9 +20,9 @@
         <div class="form-group">
           <label>User Type</label>
           <select class="input" formControlName="userType">
-            <option value="individual" selected>Individual</option>
-            <option value="employee">Employee</option>
-            <option value="tenant">Tenant</option>
+            <option value="0" selected>Individual</option>
+            <option value="2">Employee</option>
+            <option value="1">Tenant</option>
           </select>
         </div>
 
@@ -58,14 +58,21 @@
           <div class="form-group">
             <label>Gender</label>
             <select class="input" formControlName="gender">
-              <option>Female</option>
-              <option>Male</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
             </select>
           </div>
 
           <div class="form-group form-vertical">
-            <label>Date of Birth</label>
-            <input type="text" class="input" formControlName="dateOfBirth" />
+            <label>
+              Date of Birth
+            </label>
+              <input class="input" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time" formControlName="dateOfBirth"
+                      [max]="maxDate">
+              <span [owlDateTimeTrigger]="dt1" class="trigger">
+                <i class="fas fa-calendar-alt"></i>
+              </span>
+              <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
             <span *ngIf="!registrationForm.controls.dateOfBirth.valid && !registrationForm.controls.dateOfBirth.pristine" class="error-msg">Please enter Date of Birth</span>
           </div>
         </div>
@@ -74,11 +81,11 @@
           <div class="form-group">
             <label>Identification Type</label>
             <select class="input" formControlName="identificationType">
-              <option>Female</option>
-              <option>Male</option>
+              <option value="1">Passport</option>
+              <option value="0">NRIC</option>
             </select>
-            <span <span *ngIf="!registrationForm.controls.identificationType.valid && !registrationForm.controls.identificationType.pristine"
-              class="error-msg">Please Select Identification Type</span>
+            <span *ngIf="!registrationForm.controls.identificationType.valid && !registrationForm.controls.identificationType.pristine">
+                    class="error-msg">Please Select Identification Type</span>
           </div>
 
           <div class="form-group form-vertical">

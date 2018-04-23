@@ -17,6 +17,9 @@ import { PersonalisationRequestsService } from '../../../Services/personalisatio
 import { CardRequestsService } from '../../../Services/card-requests.service';
 import { RequestPipesModule } from '../../../Shared/pipes/request-pipes/request-pipes.module';
 import { ModalService } from '../../../Shared/modal/modal.service';
+import { AppModalModule } from '../../../Shared/modal/modal.module';
+import { BuildingPipesModule } from '../../../Shared/pipes/building-pipes/building-pipes.module';
+import { BuildingService } from '../../../Services/building.service';
 
 const requestsRoutes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full'}, // , canActivate: [AuthGuard] },
@@ -33,9 +36,11 @@ const requestsRoutes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
     FormsModule,
+    CommonModule,
+    AppModalModule,
     RequestPipesModule,
+    BuildingPipesModule,
     RouterModule.forChild(requestsRoutes)
   ],
   exports: [
@@ -50,6 +55,7 @@ const requestsRoutes: Routes = [
   ],
   providers: [
     ModalService,
+    BuildingService,
     DataSendingService,
     CardRequestsService,
     CardReplacementRequestsService,

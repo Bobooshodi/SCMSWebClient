@@ -1,7 +1,7 @@
 <div class="cardholder-container">
   <div class="section-header">
     <div class="registration__process">
-      <a routerLink="./main/cardholders/create/cardholder" class="step step-active">
+      <a routerLink="../cardholder" class="step step-active">
         <span>Personal Details</span>
       </a>
       <a class="step step-active">
@@ -15,47 +15,40 @@
     </div>
   </div>
   <div class="main-section has-footer">
+    <form [formGroup]="registrationForm" novalidate (ngSubmit)="sendCardholderData(registrationForm.value)">
     <div class="form-width">
-
-        <select class="input" formControlName="tenant">
-            <option value="individual" selected>Individual</option>
-            <option value="employee">Employee</option>
-            <option value="tenant">Tenant</option>
-          </select>
+        <div class="form-group">
+            <label>Tenant</label>
+            <select class="input" formControlName="tenant">
+              <option>Select Tenant</option>
+              <option *ngFor="let tenant of allTenants" value="{{tenant.id}}" >{{tenant.name}}</option>
+            </select>
+          </div>
 
       <div class="form-separetor">
         <div class="form-group">
           <div class="form-header">Buildings</div>
 
           <label>Select Business Units
-            <span class="pull-right">(3) Selected</span>
+            <span class="pull-right">({{selectedBuildings.length}}) Selected</span>
           </label>
-          <input class="input list-searcher" placeholder="search" />
+          <input class="input list-searcher" placeholder="search" name="buildingsFilter"
+                [(ngModel)]="buildingsFilter" [ngModelOptions]="{standalone:true}"/>
           <div class="bu-units">
-            <label class="control control--checkbox">
-              Facility Management
-              <input type="checkbox" />
-              <div class="control__indicator"></div>
-            </label>
-            <label class="control control--checkbox">
-              Facility Management
-              <input type="checkbox" />
-              <div class="control__indicator"></div>
-            </label>
-            <label class="control control--checkbox">
-              Facility Management
-              <input type="checkbox" />
+            <label class="control control--checkbox" *ngFor="let building of allBuildings | buildingListFilter:buildingsFilter" >
+              {{building.name}}
+              <input type="checkbox" value="{{building.name}}" [checked]="building.isSelected"
+                    (change)="processBuildingSelection(building, $event.target.checked)" />
               <div class="control__indicator"></div>
             </label>
           </div>
         </div>
-
       </div>
-
 
       <div class="section-footer">
-        <button class="btn primary">Save Tenant</button>
+        <button type="submit" class="btn primary">Save Tenant</button>
       </div>
     </div>
+  </form>
   </div>
 </div>

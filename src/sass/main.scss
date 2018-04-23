@@ -45,6 +45,10 @@
 @import
   'node_modules/angular2-toaster/toaster';
 
+// DateTime Picker
+@import
+  '~ng-pick-datetime/assets/style/picker.min.css';
+
 // 6. Page-specific styles
 @import
   'pages/login',

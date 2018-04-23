@@ -110,5 +110,17 @@ export class ApiEndPoints {
     static getAccessGroup = 'api/access-groups/get/';
     static allAccessGroups = 'api/access-groups/get/all';
 
+    // Employees
+    static createNewEmployee = 'api/employees/create';
+    static updateEmployee = 'api/employees/update';
+    static deleteEmployee = 'api/employees/delete/';
+    static getEmployee = 'api/employees/get/';
+    static allEmployees = 'api/employees/get/all';
 
+     // Tenants
+     static createNewTenant = 'api/tenants/create';
+     static updateTenant = 'api/tenants/update';
+     static deleteTenant = 'api/tenants/delete/';
+     static getTenant = 'api/tenants/get/';
+     static allTenants = 'api/tenants/get/all';
 }
